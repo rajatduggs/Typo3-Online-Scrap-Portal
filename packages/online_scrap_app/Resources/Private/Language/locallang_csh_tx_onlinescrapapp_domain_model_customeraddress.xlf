@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:online_scrap_app/Resources/Private/Language/locallang_csh" date="2020-01-07T01:47:05Z" product-name="online_scrap_app">
+		<header/>
+		<body>
+			<trans-unit id="customer_id.description" resname="customer_id.description">
+				<source>customerId</source>
+			</trans-unit>
+			<trans-unit id="phone.description" resname="phone.description">
+				<source>phone</source>
+			</trans-unit>
+			<trans-unit id="building.description" resname="building.description">
+				<source>building</source>
+			</trans-unit>
+			<trans-unit id="street.description" resname="street.description">
+				<source>street</source>
+			</trans-unit>
+			<trans-unit id="locality.description" resname="locality.description">
+				<source>locality</source>
+			</trans-unit>
+			<trans-unit id="pincode.description" resname="pincode.description">
+				<source>pincode</source>
+			</trans-unit>
+			<trans-unit id="city.description" resname="city.description">
+				<source>city</source>
+			</trans-unit>
+			<trans-unit id="state.description" resname="state.description">
+				<source>state</source>
+			</trans-unit>
+			<trans-unit id="country.description" resname="country.description">
+				<source>country</source>
+			</trans-unit>
+			<trans-unit id="address.description" resname="address.description">
+				<source>address</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

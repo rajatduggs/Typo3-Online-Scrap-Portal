@@ -1,0 +1,50 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="content">
+    <h1>Listing for Customer</h1>
+
+    <f:flashMessages />
+
+    <table  class="tx_onlinescrapapp" >
+        <tr>
+            <th><f:translate key="tx_onlinescrapapp_domain_model_customer.customer_id" /></th>
+            <th><f:translate key="tx_onlinescrapapp_domain_model_customer.name" /></th>
+            <th><f:translate key="tx_onlinescrapapp_domain_model_customer.email" /></th>
+            <th><f:translate key="tx_onlinescrapapp_domain_model_customer.password" /></th>
+            <th><f:translate key="tx_onlinescrapapp_domain_model_customer.login_type" /></th>
+            <th><f:translate key="tx_onlinescrapapp_domain_model_customer.status" /></th>
+            <th><f:translate key="tx_onlinescrapapp_domain_model_customer.registration_key" /></th>
+            <th> </th>
+            <th> </th>
+        </tr>
+
+        <f:for each="{customers}" as="customer">
+            <tr>
+                <td><f:link.action action="show" arguments="{customer : customer}">{customer.customerId}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{customer : customer}">{customer.name}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{customer : customer}">{customer.email}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{customer : customer}">{customer.password}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{customer : customer}">{customer.loginType}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{customer : customer}">{customer.status}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{customer : customer}">{customer.registrationKey}</f:link.action></td>
+                <td><f:link.action action="edit" arguments="{customer : customer}">Edit</f:link.action></td>
+                <td><f:link.action action="delete" arguments="{customer : customer}">Delete</f:link.action></td>
+            </tr>
+        </f:for>
+    </table>
+
+    <f:link.action action="new">New Customer</f:link.action>
+</f:section>
+</html>

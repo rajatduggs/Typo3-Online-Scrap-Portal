@@ -1,0 +1,56 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="content">
+    <h1>Listing for CustomerAddress</h1>
+
+    <f:flashMessages />
+
+    <table  class="tx_onlinescrapapp" >
+        <tr>
+            <th><f:translate key="tx_onlinescrapapp_domain_model_customeraddress.customer_id" /></th>
+            <th><f:translate key="tx_onlinescrapapp_domain_model_customeraddress.phone" /></th>
+            <th><f:translate key="tx_onlinescrapapp_domain_model_customeraddress.building" /></th>
+            <th><f:translate key="tx_onlinescrapapp_domain_model_customeraddress.street" /></th>
+            <th><f:translate key="tx_onlinescrapapp_domain_model_customeraddress.locality" /></th>
+            <th><f:translate key="tx_onlinescrapapp_domain_model_customeraddress.pincode" /></th>
+            <th><f:translate key="tx_onlinescrapapp_domain_model_customeraddress.city" /></th>
+            <th><f:translate key="tx_onlinescrapapp_domain_model_customeraddress.state" /></th>
+            <th><f:translate key="tx_onlinescrapapp_domain_model_customeraddress.country" /></th>
+            <th><f:translate key="tx_onlinescrapapp_domain_model_customeraddress.address" /></th>
+            <th> </th>
+            <th> </th>
+        </tr>
+
+        <f:for each="{customerAddresses}" as="customerAddress">
+            <tr>
+                <td><f:link.action action="show" arguments="{customerAddress : customerAddress}">{customerAddress.customerId}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{customerAddress : customerAddress}">{customerAddress.phone}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{customerAddress : customerAddress}">{customerAddress.building}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{customerAddress : customerAddress}">{customerAddress.street}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{customerAddress : customerAddress}">{customerAddress.locality}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{customerAddress : customerAddress}">{customerAddress.pincode}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{customerAddress : customerAddress}">{customerAddress.city}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{customerAddress : customerAddress}">{customerAddress.state}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{customerAddress : customerAddress}">{customerAddress.country}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{customerAddress : customerAddress}">{customerAddress.address}</f:link.action></td>
+                <td><f:link.action action="edit" arguments="{customerAddress : customerAddress}">Edit</f:link.action></td>
+                <td><f:link.action action="delete" arguments="{customerAddress : customerAddress}">Delete</f:link.action></td>
+            </tr>
+        </f:for>
+    </table>
+
+    <f:link.action action="new">New CustomerAddress</f:link.action>
+</f:section>
+</html>

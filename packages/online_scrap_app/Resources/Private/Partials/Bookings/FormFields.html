@@ -1,0 +1,34 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<label for="customerId">
+	<f:translate key="tx_onlinescrapapp_domain_model_bookings.customer_id" /> <span class="required">(required)</span>
+</label><br />
+	<f:form.textfield property="customerId" /><br />
+<label for="bookingTime">
+	<f:translate key="tx_onlinescrapapp_domain_model_bookings.booking_time" /> <span class="required">(required)</span>
+</label><br />
+	<f:form.textfield property="bookingTime" value="{bookings.bookingTime->f:format.date()}" /><br />
+<label for="dateTime">
+	<f:translate key="tx_onlinescrapapp_domain_model_bookings.date_time" /> <span class="required">(required)</span>
+</label><br />
+	<f:form.textfield property="dateTime" value="{bookings.dateTime->f:format.date()}" /><br />
+<label for="visitId">
+	<f:translate key="tx_onlinescrapapp_domain_model_bookings.visit_id" /> <span class="required">(required)</span>
+</label><br />
+	<f:form.textfield property="visitId" /><br />
+<label for="orderSummary">
+	<f:translate key="tx_onlinescrapapp_domain_model_bookings.order_summary" /> <span class="required">(required)</span>
+</label><br />
+	<f:form.textfield property="orderSummary" /><br />
+<label for="comments">
+	<f:translate key="tx_onlinescrapapp_domain_model_bookings.comments" /> <span class="required">(required)</span>
+</label><br />
+	<f:form.textfield property="comments" /><br />
+<label for="status">
+	<f:translate key="tx_onlinescrapapp_domain_model_bookings.status" /> <span class="required">(required)</span>
+</label><br />
+	<f:form.textfield property="status" /><br />
+<label for="feedback">
+	<f:translate key="tx_onlinescrapapp_domain_model_bookings.feedback" /> <span class="required">(required)</span>
+</label><br />
+	<f:form.textfield property="feedback" /><br />
+</html>

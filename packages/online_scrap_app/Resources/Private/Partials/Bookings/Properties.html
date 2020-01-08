@@ -1,0 +1,68 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<table class="tx-online-scrap-app" >
+	<tr>
+		<td>
+			<f:translate key="tx_onlinescrapapp_domain_model_bookings.customer_id" />
+		</td>
+		<td>
+		{bookings.customerId}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_onlinescrapapp_domain_model_bookings.booking_time" />
+		</td>
+		<td>
+		{bookings.bookingTime -> f:format.date()}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_onlinescrapapp_domain_model_bookings.date_time" />
+		</td>
+		<td>
+		{bookings.dateTime -> f:format.date()}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_onlinescrapapp_domain_model_bookings.visit_id" />
+		</td>
+		<td>
+		{bookings.visitId}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_onlinescrapapp_domain_model_bookings.order_summary" />
+		</td>
+		<td>
+		{bookings.orderSummary}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_onlinescrapapp_domain_model_bookings.comments" />
+		</td>
+		<td>
+		{bookings.comments}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_onlinescrapapp_domain_model_bookings.status" />
+		</td>
+		<td>
+		{bookings.status}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_onlinescrapapp_domain_model_bookings.feedback" />
+		</td>
+		<td>
+		{bookings.feedback}
+		</td>
+	</tr>
+</table>
+</html>

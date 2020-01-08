@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:online_scrap_app/Resources/Private/Language/locallang_csh" date="2020-01-07T01:47:05Z" product-name="online_scrap_app">
+		<header/>
+		<body>
+			<trans-unit id="collector_id.description" resname="collector_id.description">
+				<source>collectorId</source>
+			</trans-unit>
+			<trans-unit id="name.description" resname="name.description">
+				<source>name</source>
+			</trans-unit>
+			<trans-unit id="phone_number.description" resname="phone_number.description">
+				<source>phoneNumber</source>
+			</trans-unit>
+			<trans-unit id="email_id.description" resname="email_id.description">
+				<source>emailId</source>
+			</trans-unit>
+			<trans-unit id="social_security_number.description" resname="social_security_number.description">
+				<source>socialSecurityNumber</source>
+			</trans-unit>
+			<trans-unit id="gender.description" resname="gender.description">
+				<source>gender</source>
+			</trans-unit>
+			<trans-unit id="birth_date.description" resname="birth_date.description">
+				<source>birthDate</source>
+			</trans-unit>
+			<trans-unit id="account_number.description" resname="account_number.description">
+				<source>accountNumber</source>
+			</trans-unit>
+			<trans-unit id="bank_name.description" resname="bank_name.description">
+				<source>bankName</source>
+			</trans-unit>
+			<trans-unit id="uniform_size.description" resname="uniform_size.description">
+				<source>uniformSize</source>
+			</trans-unit>
+			<trans-unit id="cap.description" resname="cap.description">
+				<source>cap</source>
+			</trans-unit>
+			<trans-unit id="issue_date.description" resname="issue_date.description">
+				<source>issueDate</source>
+			</trans-unit>
+			<trans-unit id="id_expiry.description" resname="id_expiry.description">
+				<source>idExpiry</source>
+			</trans-unit>
+			<trans-unit id="status.description" resname="status.description">
+				<source>status</source>
+			</trans-unit>
+			<trans-unit id="rating.description" resname="rating.description">
+				<source>rating</source>
+			</trans-unit>
+			<trans-unit id="locality.description" resname="locality.description">
+				<source>locality</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

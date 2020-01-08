@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:online_scrap_app/Resources/Private/Language/locallang" date="2020-01-07T01:47:05Z" product-name="online_scrap_app">
+		<header/>
+		<body>
+			<trans-unit id="tx_onlinescrapapp_domain_model_subcategory" resname="tx_onlinescrapapp_domain_model_subcategory">
+				<source>Sub Category</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_subcategory.sub_category_id" resname="tx_onlinescrapapp_domain_model_subcategory.sub_category_id">
+				<source>Sub Category Id</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_subcategory.name" resname="tx_onlinescrapapp_domain_model_subcategory.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_bookingdetails" resname="tx_onlinescrapapp_domain_model_bookingdetails">
+				<source>Booking Details</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_bookingdetails.booking_id" resname="tx_onlinescrapapp_domain_model_bookingdetails.booking_id">
+				<source>Booking Id</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_bookingdetails.quantity" resname="tx_onlinescrapapp_domain_model_bookingdetails.quantity">
+				<source>Quantity</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_bookingdetails.subcategory" resname="tx_onlinescrapapp_domain_model_bookingdetails.subcategory">
+				<source>Subcategory</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_bookings" resname="tx_onlinescrapapp_domain_model_bookings">
+				<source>Bookings</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_bookings.customer_id" resname="tx_onlinescrapapp_domain_model_bookings.customer_id">
+				<source>Customer Id</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_bookings.booking_time" resname="tx_onlinescrapapp_domain_model_bookings.booking_time">
+				<source>Booking Time</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_bookings.date_time" resname="tx_onlinescrapapp_domain_model_bookings.date_time">
+				<source>Date Time</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_bookings.visit_id" resname="tx_onlinescrapapp_domain_model_bookings.visit_id">
+				<source>Visit Id</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_bookings.order_summary" resname="tx_onlinescrapapp_domain_model_bookings.order_summary">
+				<source>Order Summary</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_bookings.comments" resname="tx_onlinescrapapp_domain_model_bookings.comments">
+				<source>Comments</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_bookings.status" resname="tx_onlinescrapapp_domain_model_bookings.status">
+				<source>Status</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_bookings.feedback" resname="tx_onlinescrapapp_domain_model_bookings.feedback">
+				<source>Feedback</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_bookings.scrap_collector" resname="tx_onlinescrapapp_domain_model_bookings.scrap_collector">
+				<source>Scrap Collector</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_bookings.booking_details" resname="tx_onlinescrapapp_domain_model_bookings.booking_details">
+				<source>Booking Details</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_bookings.locality" resname="tx_onlinescrapapp_domain_model_bookings.locality">
+				<source>Locality</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_category" resname="tx_onlinescrapapp_domain_model_category">
+				<source>Category</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_category.category_id" resname="tx_onlinescrapapp_domain_model_category.category_id">
+				<source>Category Id</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_category.name" resname="tx_onlinescrapapp_domain_model_category.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_category.subcategory" resname="tx_onlinescrapapp_domain_model_category.subcategory">
+				<source>Subcategory</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_customeraddress" resname="tx_onlinescrapapp_domain_model_customeraddress">
+				<source>Customer Address</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_customeraddress.customer_id" resname="tx_onlinescrapapp_domain_model_customeraddress.customer_id">
+				<source>Customer Id</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_customeraddress.phone" resname="tx_onlinescrapapp_domain_model_customeraddress.phone">
+				<source>Phone</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_customeraddress.building" resname="tx_onlinescrapapp_domain_model_customeraddress.building">
+				<source>Building</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_customeraddress.street" resname="tx_onlinescrapapp_domain_model_customeraddress.street">
+				<source>Street</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_customeraddress.locality" resname="tx_onlinescrapapp_domain_model_customeraddress.locality">
+				<source>Locality</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_customeraddress.pincode" resname="tx_onlinescrapapp_domain_model_customeraddress.pincode">
+				<source>Pincode</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_customeraddress.city" resname="tx_onlinescrapapp_domain_model_customeraddress.city">
+				<source>City</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_customeraddress.state" resname="tx_onlinescrapapp_domain_model_customeraddress.state">
+				<source>State</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_customeraddress.country" resname="tx_onlinescrapapp_domain_model_customeraddress.country">
+				<source>Country</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_customeraddress.address" resname="tx_onlinescrapapp_domain_model_customeraddress.address">
+				<source>Address</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_locality" resname="tx_onlinescrapapp_domain_model_locality">
+				<source>Locality</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_locality.name" resname="tx_onlinescrapapp_domain_model_locality.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_locality.status" resname="tx_onlinescrapapp_domain_model_locality.status">
+				<source>Status</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_locality.locality_id" resname="tx_onlinescrapapp_domain_model_locality.locality_id">
+				<source>Locality Id</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_scrapcollector" resname="tx_onlinescrapapp_domain_model_scrapcollector">
+				<source>Scrap Collector</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_scrapcollector.collector_id" resname="tx_onlinescrapapp_domain_model_scrapcollector.collector_id">
+				<source>Collector Id</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_scrapcollector.name" resname="tx_onlinescrapapp_domain_model_scrapcollector.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_scrapcollector.phone_number" resname="tx_onlinescrapapp_domain_model_scrapcollector.phone_number">
+				<source>Phone Number</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_scrapcollector.email_id" resname="tx_onlinescrapapp_domain_model_scrapcollector.email_id">
+				<source>Email Id</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_scrapcollector.social_security_number" resname="tx_onlinescrapapp_domain_model_scrapcollector.social_security_number">
+				<source>Social Security Number</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_scrapcollector.gender" resname="tx_onlinescrapapp_domain_model_scrapcollector.gender">
+				<source>Gender</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_scrapcollector.birth_date" resname="tx_onlinescrapapp_domain_model_scrapcollector.birth_date">
+				<source>Birth Date</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_scrapcollector.account_number" resname="tx_onlinescrapapp_domain_model_scrapcollector.account_number">
+				<source>Account Number</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_scrapcollector.bank_name" resname="tx_onlinescrapapp_domain_model_scrapcollector.bank_name">
+				<source>Bank Name</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_scrapcollector.uniform_size" resname="tx_onlinescrapapp_domain_model_scrapcollector.uniform_size">
+				<source>Uniform Size</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_scrapcollector.cap" resname="tx_onlinescrapapp_domain_model_scrapcollector.cap">
+				<source>Cap</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_scrapcollector.issue_date" resname="tx_onlinescrapapp_domain_model_scrapcollector.issue_date">
+				<source>Issue Date</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_scrapcollector.id_expiry" resname="tx_onlinescrapapp_domain_model_scrapcollector.id_expiry">
+				<source>Id Expiry</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_scrapcollector.status" resname="tx_onlinescrapapp_domain_model_scrapcollector.status">
+				<source>Status</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_scrapcollector.rating" resname="tx_onlinescrapapp_domain_model_scrapcollector.rating">
+				<source>Rating</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_scrapcollector.locality" resname="tx_onlinescrapapp_domain_model_scrapcollector.locality">
+				<source>Locality</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_customer" resname="tx_onlinescrapapp_domain_model_customer">
+				<source>Customer</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_customer.customer_id" resname="tx_onlinescrapapp_domain_model_customer.customer_id">
+				<source>Customer Id</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_customer.name" resname="tx_onlinescrapapp_domain_model_customer.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_customer.email" resname="tx_onlinescrapapp_domain_model_customer.email">
+				<source>Email</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_customer.password" resname="tx_onlinescrapapp_domain_model_customer.password">
+				<source>Password</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_customer.login_type" resname="tx_onlinescrapapp_domain_model_customer.login_type">
+				<source>Login Type</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_customer.status" resname="tx_onlinescrapapp_domain_model_customer.status">
+				<source>Status</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_customer.registration_key" resname="tx_onlinescrapapp_domain_model_customer.registration_key">
+				<source>Registration Key</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_customer.customer_address" resname="tx_onlinescrapapp_domain_model_customer.customer_address">
+				<source>Customer Address</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_facts" resname="tx_onlinescrapapp_domain_model_facts">
+				<source>Facts</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_facts.info" resname="tx_onlinescrapapp_domain_model_facts.info">
+				<source>Info</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_facts.rank" resname="tx_onlinescrapapp_domain_model_facts.rank">
+				<source>Rank</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_facts.fact_id" resname="tx_onlinescrapapp_domain_model_facts.fact_id">
+				<source>Fact Id</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_collections" resname="tx_onlinescrapapp_domain_model_collections">
+				<source>Collections</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_collections.quantity" resname="tx_onlinescrapapp_domain_model_collections.quantity">
+				<source>Quantity</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_collections.amount" resname="tx_onlinescrapapp_domain_model_collections.amount">
+				<source>Amount</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_collections.booking_details" resname="tx_onlinescrapapp_domain_model_collections.booking_details">
+				<source>Booking Details</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_collections.category" resname="tx_onlinescrapapp_domain_model_collections.category">
+				<source>Category</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_collections.sub_category" resname="tx_onlinescrapapp_domain_model_collections.sub_category">
+				<source>Sub Category</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

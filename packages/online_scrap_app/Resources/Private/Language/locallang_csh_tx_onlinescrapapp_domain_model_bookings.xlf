@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:online_scrap_app/Resources/Private/Language/locallang_csh" date="2020-01-07T01:47:05Z" product-name="online_scrap_app">
+		<header/>
+		<body>
+			<trans-unit id="customer_id.description" resname="customer_id.description">
+				<source>customerId</source>
+			</trans-unit>
+			<trans-unit id="booking_time.description" resname="booking_time.description">
+				<source>bookingTime</source>
+			</trans-unit>
+			<trans-unit id="date_time.description" resname="date_time.description">
+				<source>dateTime</source>
+			</trans-unit>
+			<trans-unit id="visit_id.description" resname="visit_id.description">
+				<source>visitId</source>
+			</trans-unit>
+			<trans-unit id="order_summary.description" resname="order_summary.description">
+				<source>orderSummary</source>
+			</trans-unit>
+			<trans-unit id="comments.description" resname="comments.description">
+				<source>comments</source>
+			</trans-unit>
+			<trans-unit id="status.description" resname="status.description">
+				<source>status</source>
+			</trans-unit>
+			<trans-unit id="feedback.description" resname="feedback.description">
+				<source>feedback</source>
+			</trans-unit>
+			<trans-unit id="scrap_collector.description" resname="scrap_collector.description">
+				<source>scrapCollector</source>
+			</trans-unit>
+			<trans-unit id="booking_details.description" resname="booking_details.description">
+				<source>bookingDetails</source>
+			</trans-unit>
+			<trans-unit id="locality.description" resname="locality.description">
+				<source>locality</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
