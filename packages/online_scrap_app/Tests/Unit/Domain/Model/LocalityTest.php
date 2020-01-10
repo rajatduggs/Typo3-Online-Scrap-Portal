@@ -52,31 +52,6 @@ class LocalityTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
     /**
      * @test
      */
-    public function getStatusReturnsInitialValueForInt()
-    {
-        self::assertSame(
-            0,
-            $this->subject->getStatus()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setStatusForIntSetsStatus()
-    {
-        $this->subject->setStatus(12);
-
-        self::assertAttributeEquals(
-            12,
-            'status',
-            $this->subject
-        );
-    }
-
-    /**
-     * @test
-     */
     public function getLocalityIdReturnsInitialValueForString()
     {
         self::assertSame(

@@ -19,19 +19,13 @@ Otherwise your changes will be overwritten the next time you save the extension 
 
     <table  class="tx_onlinescrapapp" >
         <tr>
-            <th><f:translate key="tx_onlinescrapapp_domain_model_category.category_id" /></th>
             <th><f:translate key="tx_onlinescrapapp_domain_model_category.name" /></th>
             <th> </th>
+            <th><f:>Sub Category</f:></th>
             <th> </th>
+            <th> </th>
+            <th><f:>Quantity</f:></th>
         </tr>
-
-
-            <tr>
-
-                <td><f:link.action action="show" arguments="{locality : locality}">{locality.status}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{locality : locality}">{locality.localityId}</f:link.action></td>
-            </tr>
-
 
 
         <f:for each="{categories}" as="category">
@@ -39,19 +33,27 @@ Otherwise your changes will be overwritten the next time you save the extension 
                 <td><f:link.action action="list"  controller="SubCategory" arguments="{subCategory : category.subCategory}">{category.name}</f:link.action>
                     <f:for each="{category.subcategory}" as="subcat">
                         <br/>
-                        <f:form.radio name="myRadioButton" value="{subcat.name}" />
-                        <f:link.action action="show"  controller="SubCategory" arguments="{subCategory : subcat}">{subcat.name}</f:link.action>
-                    </f:for>
-                </td>
-                <!--<td><f:link.action action="show" arguments="{category : category}">{category.name}</f:link.action></td>
-                <td><f:link.action action="edit" arguments="{category : category}">Edit</f:link.action></td>
-                <td><f:link.action action="delete" arguments="{category : category}">Delete</f:link.action></td>-->
-            </tr>
+                <th><f:form.radio name="myRadioButton" value="{subcat.name}" /></th>
+                <th>  <f:link.action action="show"  controller="SubCategory" arguments="{subCategory : subcat}">{subcat.name}</f:link.action></th>
+                <th><f:form.textfield name="myTextBox" placeholder="Quantity" size="10" value="0" type="text" maxlength="4"/>
+
+                </th>
+                <th>    <f:link.action action="test" pluginName="CollectionData"  pageUid="21" controller="Collections" arguments="{category: category,subCategory: subcat,quantity:myTextBox}">Add to Cart</f:link.action></th>
+        </f:for>
+        </td>
+
+        <!--<td><f:link.action action="show" arguments="{category : category}">{category.name}</f:link.action></td>
+        <td><f:link.action action="edit" arguments="{category : category}">Edit</f:link.action></td>
+        <td><f:link.action action="delete" arguments="{category : category}">Delete</f:link.action></td>-->
+        </tr>
         </f:for>
 
-        <f:form.button>Add to Cart</f:form.button>
+
     </table>
 
-    <f:link.action action="new">New Category</f:link.action>
+    <f:link.action action="show" controller="Collections" arguments="{category: category,subCategory:subcat,quantity:myRadioButton}">Add to Cart</f:link.action>
+    <f:form.button>View Cart</f:form.button>
+
+    <!--<f:link.action action="new">New Category</f:link.action>-->
 </f:section>
 </html>

@@ -43,43 +43,18 @@ class Customer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $email = '';
 
     /**
-     * password
-     * 
-     * @var string
-     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
-     */
-    protected $password = '';
-
-    /**
-     * loginType
-     * 
-     * @var string
-     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
-     */
-    protected $loginType = '';
-
-    /**
-     * status
-     * 
-     * @var int
-     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
-     */
-    protected $status = 0;
-
-    /**
-     * registrationKey
-     * 
-     * @var string
-     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
-     */
-    protected $registrationKey = '';
-
-    /**
      * customerAddress
      * 
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RajatDuggal\OnlineScrapApp\Domain\Model\CustomerAddress>
      */
     protected $customerAddress = null;
+
+    /**
+     * user
+     * 
+     * @var \TYPO3\CMS\Extbase\Domain\Model\FrontendUser
+     */
+    protected $user = null;
 
     /**
      * __construct
@@ -168,90 +143,6 @@ class Customer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Returns the password
-     * 
-     * @return string $password
-     */
-    public function getPassword()
-    {
-        return $this->password;
-    }
-
-    /**
-     * Sets the password
-     * 
-     * @param string $password
-     * @return void
-     */
-    public function setPassword($password)
-    {
-        $this->password = $password;
-    }
-
-    /**
-     * Returns the loginType
-     * 
-     * @return string $loginType
-     */
-    public function getLoginType()
-    {
-        return $this->loginType;
-    }
-
-    /**
-     * Sets the loginType
-     * 
-     * @param string $loginType
-     * @return void
-     */
-    public function setLoginType($loginType)
-    {
-        $this->loginType = $loginType;
-    }
-
-    /**
-     * Returns the status
-     * 
-     * @return int $status
-     */
-    public function getStatus()
-    {
-        return $this->status;
-    }
-
-    /**
-     * Sets the status
-     * 
-     * @param int $status
-     * @return void
-     */
-    public function setStatus($status)
-    {
-        $this->status = $status;
-    }
-
-    /**
-     * Returns the registrationKey
-     * 
-     * @return string $registrationKey
-     */
-    public function getRegistrationKey()
-    {
-        return $this->registrationKey;
-    }
-
-    /**
-     * Sets the registrationKey
-     * 
-     * @param string $registrationKey
-     * @return void
-     */
-    public function setRegistrationKey($registrationKey)
-    {
-        $this->registrationKey = $registrationKey;
-    }
-
-    /**
      * Adds a CustomerAddress
      * 
      * @param \RajatDuggal\OnlineScrapApp\Domain\Model\CustomerAddress $customerAddres
@@ -292,5 +183,26 @@ class Customer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setCustomerAddress(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $customerAddress)
     {
         $this->customerAddress = $customerAddress;
+    }
+
+    /**
+     * Returns the user
+     * 
+     * @return \TYPO3\CMS\Extbase\Domain\Model\FrontendUser $user
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Sets the user
+     * 
+     * @param \TYPO3\CMS\Extbase\Domain\Model\FrontendUser $user
+     * @return void
+     */
+    public function setUser(\TYPO3\CMS\Extbase\Domain\Model\FrontendUser $user)
+    {
+        $this->user = $user;
     }
 }

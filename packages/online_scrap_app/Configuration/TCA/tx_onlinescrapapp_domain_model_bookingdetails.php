@@ -20,10 +20,10 @@ return [
         'iconfile' => 'EXT:online_scrap_app/Resources/Public/Icons/tx_onlinescrapapp_domain_model_bookingdetails.gif'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, booking_id, quantity, subcategory',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, booking_id, quantity, category',
     ],
     'types' => [
-        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, booking_id, quantity, subcategory, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
+        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, booking_id, quantity, category, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -134,14 +134,14 @@ return [
                 'eval' => 'int,required'
             ]
         ],
-        'subcategory' => [
+        'category' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:online_scrap_app/Resources/Private/Language/locallang_db.xlf:tx_onlinescrapapp_domain_model_bookingdetails.subcategory',
+            'label' => 'LLL:EXT:online_scrap_app/Resources/Private/Language/locallang_db.xlf:tx_onlinescrapapp_domain_model_bookingdetails.category',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',
-                'foreign_table' => 'tx_onlinescrapapp_domain_model_subcategory',
-                'MM' => 'tx_onlinescrapapp_bookingdetails_subcategory_mm',
+                'foreign_table' => 'tx_onlinescrapapp_domain_model_category',
+                'MM' => 'tx_onlinescrapapp_bookingdetails_category_mm',
                 'size' => 10,
                 'autoSizeMax' => 30,
                 'maxitems' => 9999,

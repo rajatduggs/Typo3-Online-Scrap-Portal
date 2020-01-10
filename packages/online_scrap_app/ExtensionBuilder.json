@@ -126,7 +126,7 @@
                             "lazyLoading": false,
                             "propertyIsExcludeField": true,
                             "relationDescription": "",
-                            "relationName": "subcategory",
+                            "relationName": "category",
                             "relationType": "manyToMany",
                             "relationWire": "[wired]",
                             "renderType": "selectMultipleSideBySide",
@@ -208,7 +208,7 @@
                             "propertyDescription": "",
                             "propertyIsExcludeField": true,
                             "propertyIsL10nModeExclude": false,
-                            "propertyIsRequired": true,
+                            "propertyIsRequired": false,
                             "propertyName": "visitId",
                             "propertyType": "String",
                             "uid": "464891052682"
@@ -243,19 +243,8 @@
                             "propertyIsL10nModeExclude": false,
                             "propertyIsRequired": true,
                             "propertyName": "status",
-                            "propertyType": "Integer",
-                            "uid": "441912585633"
-                        },
-                        {
-                            "allowedFileTypes": "",
-                            "maxItems": "1",
-                            "propertyDescription": "",
-                            "propertyIsExcludeField": true,
-                            "propertyIsL10nModeExclude": false,
-                            "propertyIsRequired": true,
-                            "propertyName": "feedback",
                             "propertyType": "String",
-                            "uid": "728410829794"
+                            "uid": "441912585633"
                         }
                     ]
                 },
@@ -434,39 +423,6 @@
                             "propertyIsExcludeField": true,
                             "propertyIsL10nModeExclude": false,
                             "propertyIsRequired": true,
-                            "propertyName": "building",
-                            "propertyType": "String",
-                            "uid": "368115586098"
-                        },
-                        {
-                            "allowedFileTypes": "",
-                            "maxItems": "1",
-                            "propertyDescription": "",
-                            "propertyIsExcludeField": true,
-                            "propertyIsL10nModeExclude": false,
-                            "propertyIsRequired": true,
-                            "propertyName": "street",
-                            "propertyType": "String",
-                            "uid": "496255132199"
-                        },
-                        {
-                            "allowedFileTypes": "",
-                            "maxItems": "1",
-                            "propertyDescription": "",
-                            "propertyIsExcludeField": true,
-                            "propertyIsL10nModeExclude": false,
-                            "propertyIsRequired": true,
-                            "propertyName": "locality",
-                            "propertyType": "String",
-                            "uid": "1081739192815"
-                        },
-                        {
-                            "allowedFileTypes": "",
-                            "maxItems": "1",
-                            "propertyDescription": "",
-                            "propertyIsExcludeField": true,
-                            "propertyIsL10nModeExclude": false,
-                            "propertyIsRequired": true,
                             "propertyName": "pincode",
                             "propertyType": "Integer",
                             "uid": "1020982229883"
@@ -489,28 +445,6 @@
                             "propertyIsExcludeField": true,
                             "propertyIsL10nModeExclude": false,
                             "propertyIsRequired": true,
-                            "propertyName": "state",
-                            "propertyType": "String",
-                            "uid": "1015818256058"
-                        },
-                        {
-                            "allowedFileTypes": "",
-                            "maxItems": "1",
-                            "propertyDescription": "",
-                            "propertyIsExcludeField": true,
-                            "propertyIsL10nModeExclude": false,
-                            "propertyIsRequired": true,
-                            "propertyName": "country",
-                            "propertyType": "String",
-                            "uid": "1011737079104"
-                        },
-                        {
-                            "allowedFileTypes": "",
-                            "maxItems": "1",
-                            "propertyDescription": "",
-                            "propertyIsExcludeField": true,
-                            "propertyIsL10nModeExclude": false,
-                            "propertyIsRequired": true,
                             "propertyName": "address",
                             "propertyType": "String",
                             "uid": "893001806509"
@@ -518,7 +452,19 @@
                     ]
                 },
                 "relationGroup": {
-                    "relations": []
+                    "relations": [
+                        {
+                            "foreignRelationClass": "",
+                            "lazyLoading": false,
+                            "propertyIsExcludeField": true,
+                            "relationDescription": "",
+                            "relationName": "locality",
+                            "relationType": "zeroToOne",
+                            "relationWire": "[wired]",
+                            "renderType": "selectMultipleSideBySide",
+                            "uid": "604588353659"
+                        }
+                    ]
                 }
             }
         },
@@ -565,17 +511,6 @@
                             "propertyName": "name",
                             "propertyType": "String",
                             "uid": "553433751368"
-                        },
-                        {
-                            "allowedFileTypes": "",
-                            "maxItems": "1",
-                            "propertyDescription": "",
-                            "propertyIsExcludeField": true,
-                            "propertyIsL10nModeExclude": false,
-                            "propertyIsRequired": true,
-                            "propertyName": "status",
-                            "propertyType": "Integer",
-                            "uid": "592950746228"
                         },
                         {
                             "allowedFileTypes": "",
@@ -733,7 +668,7 @@
                             "propertyDescription": "",
                             "propertyIsExcludeField": true,
                             "propertyIsL10nModeExclude": false,
-                            "propertyIsRequired": true,
+                            "propertyIsRequired": false,
                             "propertyName": "uniformSize",
                             "propertyType": "String",
                             "uid": "490797543020"
@@ -744,7 +679,7 @@
                             "propertyDescription": "",
                             "propertyIsExcludeField": true,
                             "propertyIsL10nModeExclude": false,
-                            "propertyIsRequired": true,
+                            "propertyIsRequired": false,
                             "propertyName": "cap",
                             "propertyType": "String",
                             "uid": "377985539743"
@@ -877,50 +812,6 @@
                             "propertyName": "email",
                             "propertyType": "Email",
                             "uid": "542446138919"
-                        },
-                        {
-                            "allowedFileTypes": "",
-                            "maxItems": "1",
-                            "propertyDescription": "",
-                            "propertyIsExcludeField": true,
-                            "propertyIsL10nModeExclude": false,
-                            "propertyIsRequired": true,
-                            "propertyName": "password",
-                            "propertyType": "Password",
-                            "uid": "349084619163"
-                        },
-                        {
-                            "allowedFileTypes": "",
-                            "maxItems": "1",
-                            "propertyDescription": "",
-                            "propertyIsExcludeField": true,
-                            "propertyIsL10nModeExclude": false,
-                            "propertyIsRequired": true,
-                            "propertyName": "loginType",
-                            "propertyType": "String",
-                            "uid": "1080753088283"
-                        },
-                        {
-                            "allowedFileTypes": "",
-                            "maxItems": "1",
-                            "propertyDescription": "",
-                            "propertyIsExcludeField": true,
-                            "propertyIsL10nModeExclude": false,
-                            "propertyIsRequired": true,
-                            "propertyName": "status",
-                            "propertyType": "Integer",
-                            "uid": "1085833735060"
-                        },
-                        {
-                            "allowedFileTypes": "",
-                            "maxItems": "1",
-                            "propertyDescription": "",
-                            "propertyIsExcludeField": true,
-                            "propertyIsL10nModeExclude": false,
-                            "propertyIsRequired": true,
-                            "propertyName": "registrationKey",
-                            "propertyType": "String",
-                            "uid": "426153718317"
                         }
                     ]
                 },
@@ -936,6 +827,17 @@
                             "relationWire": "[wired]",
                             "renderType": "selectMultipleSideBySide",
                             "uid": "688834655798"
+                        },
+                        {
+                            "foreignRelationClass": "\\TYPO3\\CMS\\Extbase\\Domain\\Model\\FrontendUser",
+                            "lazyLoading": false,
+                            "propertyIsExcludeField": true,
+                            "relationDescription": "",
+                            "relationName": "user",
+                            "relationType": "zeroToOne",
+                            "relationWire": "[wired]",
+                            "renderType": "selectMultipleSideBySide",
+                            "uid": "1433003344651"
                         }
                     ]
                 }
@@ -1017,8 +919,8 @@
         {
             "config": {
                 "position": [
-                    10,
-                    343
+                    56,
+                    361
                 ]
             },
             "name": "New Model Object",
@@ -1064,7 +966,7 @@
                             "propertyDescription": "",
                             "propertyIsExcludeField": true,
                             "propertyIsL10nModeExclude": false,
-                            "propertyIsRequired": true,
+                            "propertyIsRequired": false,
                             "propertyName": "amount",
                             "propertyType": "String",
                             "uid": "615574986656"
@@ -1078,7 +980,7 @@
                             "lazyLoading": false,
                             "propertyIsExcludeField": true,
                             "relationDescription": "",
-                            "relationName": "bookingDetails",
+                            "relationName": "bookings",
                             "relationType": "manyToMany",
                             "relationWire": "[wired]",
                             "renderType": "selectMultipleSideBySide",
@@ -1100,11 +1002,22 @@
                             "lazyLoading": false,
                             "propertyIsExcludeField": true,
                             "relationDescription": "",
-                            "relationName": "subCategory",
+                            "relationName": "customer",
                             "relationType": "manyToMany",
                             "relationWire": "[wired]",
                             "renderType": "selectMultipleSideBySide",
-                            "uid": "34036327157"
+                            "uid": "591940433743"
+                        },
+                        {
+                            "foreignRelationClass": "",
+                            "lazyLoading": false,
+                            "propertyIsExcludeField": true,
+                            "relationDescription": "",
+                            "relationName": "subcategory",
+                            "relationType": "manyToMany",
+                            "relationWire": "[wired]",
+                            "renderType": "selectMultipleSideBySide",
+                            "uid": "472270733070"
                         }
                     ]
                 }
@@ -1192,18 +1105,6 @@
         {
             "src": {
                 "moduleId": 9,
-                "terminal": "relationWire_0",
-                "uid": "1027755798012"
-            },
-            "tgt": {
-                "moduleId": 1,
-                "terminal": "SOURCES",
-                "uid": "982223280181"
-            }
-        },
-        {
-            "src": {
-                "moduleId": 9,
                 "terminal": "relationWire_1",
                 "uid": "561554373206"
             },
@@ -1215,33 +1116,9 @@
         },
         {
             "src": {
-                "moduleId": 9,
-                "terminal": "relationWire_2",
-                "uid": "34036327157"
-            },
-            "tgt": {
-                "moduleId": 0,
-                "terminal": "SOURCES",
-                "uid": "209617005715"
-            }
-        },
-        {
-            "src": {
                 "moduleId": 3,
                 "terminal": "relationWire_0",
                 "uid": "805690617169"
-            },
-            "tgt": {
-                "moduleId": 0,
-                "terminal": "SOURCES",
-                "uid": "209617005715"
-            }
-        },
-        {
-            "src": {
-                "moduleId": 1,
-                "terminal": "relationWire_0",
-                "uid": "399781594206"
             },
             "tgt": {
                 "moduleId": 0,
@@ -1272,11 +1149,71 @@
                 "terminal": "SOURCES",
                 "uid": "610858065155"
             }
+        },
+        {
+            "src": {
+                "moduleId": 4,
+                "terminal": "relationWire_0",
+                "uid": "604588353659"
+            },
+            "tgt": {
+                "moduleId": 5,
+                "terminal": "SOURCES",
+                "uid": "610858065155"
+            }
+        },
+        {
+            "src": {
+                "moduleId": 1,
+                "terminal": "relationWire_0",
+                "uid": "399781594206"
+            },
+            "tgt": {
+                "moduleId": 3,
+                "terminal": "SOURCES",
+                "uid": "926753494847"
+            }
+        },
+        {
+            "src": {
+                "moduleId": 9,
+                "terminal": "relationWire_2",
+                "uid": "591940433743"
+            },
+            "tgt": {
+                "moduleId": 7,
+                "terminal": "SOURCES",
+                "uid": "257332762979"
+            }
+        },
+        {
+            "src": {
+                "moduleId": 9,
+                "terminal": "relationWire_0",
+                "uid": "1027755798012"
+            },
+            "tgt": {
+                "moduleId": 2,
+                "terminal": "SOURCES",
+                "uid": "189979600993"
+            }
+        },
+        {
+            "src": {
+                "moduleId": 9,
+                "terminal": "relationWire_3",
+                "uid": "472270733070"
+            },
+            "tgt": {
+                "moduleId": 0,
+                "terminal": "SOURCES",
+                "uid": "209617005715"
+            }
         }
     ],
     "storagePath": "\/var\/www\/html\/packages\/",
     "log": {
-        "last_modified": "2020-01-07 01:47",
+        "last_modified": "2020-01-10 01:50",
         "extension_builder_version": "9.10.2",
         "be_user": " (1)"
     }

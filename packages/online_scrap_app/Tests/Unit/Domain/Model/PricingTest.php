@@ -27,49 +27,24 @@ class PricingTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
     /**
      * @test
      */
-    public function getNameReturnsInitialValueForString()
-    {
-        self::assertSame(
-            '',
-            $this->subject->getName()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setNameForStringSetsName()
-    {
-        $this->subject->setName('Conceived at T3CON10');
-
-        self::assertAttributeEquals(
-            'Conceived at T3CON10',
-            'name',
-            $this->subject
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function getPriceReturnsInitialValueForInt()
+    public function getAmountReturnsInitialValueForInt()
     {
         self::assertSame(
             0,
-            $this->subject->getPrice()
+            $this->subject->getAmount()
         );
     }
 
     /**
      * @test
      */
-    public function setPriceForIntSetsPrice()
+    public function setAmountForIntSetsAmount()
     {
-        $this->subject->setPrice(12);
+        $this->subject->setAmount(12);
 
         self::assertAttributeEquals(
             12,
-            'price',
+            'amount',
             $this->subject
         );
     }

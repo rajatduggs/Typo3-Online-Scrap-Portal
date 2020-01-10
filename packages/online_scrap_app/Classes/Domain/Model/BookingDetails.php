@@ -35,11 +35,11 @@ class BookingDetails extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $quantity = 0;
 
     /**
-     * subcategory
+     * category
      * 
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RajatDuggal\OnlineScrapApp\Domain\Model\SubCategory>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RajatDuggal\OnlineScrapApp\Domain\Model\Category>
      */
-    protected $subcategory = null;
+    protected $category = null;
 
     /**
      * Returns the bookingId
@@ -103,49 +103,49 @@ class BookingDetails extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected function initStorageObjects()
     {
-        $this->subcategory = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->category = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
     }
 
     /**
      * Adds a SubCategory
      * 
-     * @param \RajatDuggal\OnlineScrapApp\Domain\Model\SubCategory $subcategory
+     * @param \RajatDuggal\OnlineScrapApp\Domain\Model\Category $category
      * @return void
      */
-    public function addSubcategory(\RajatDuggal\OnlineScrapApp\Domain\Model\SubCategory $subcategory)
+    public function addCategory(\RajatDuggal\OnlineScrapApp\Domain\Model\Category $category)
     {
-        $this->subcategory->attach($subcategory);
+        $this->category->attach($category);
     }
 
     /**
      * Removes a SubCategory
      * 
-     * @param \RajatDuggal\OnlineScrapApp\Domain\Model\SubCategory $subcategoryToRemove The SubCategory to be removed
+     * @param \RajatDuggal\OnlineScrapApp\Domain\Model\Category $categoryToRemove The Category to be removed
      * @return void
      */
-    public function removeSubcategory(\RajatDuggal\OnlineScrapApp\Domain\Model\SubCategory $subcategoryToRemove)
+    public function removeCategory(\RajatDuggal\OnlineScrapApp\Domain\Model\Category $categoryToRemove)
     {
-        $this->subcategory->detach($subcategoryToRemove);
+        $this->category->detach($categoryToRemove);
     }
 
     /**
-     * Returns the subcategory
+     * Returns the category
      * 
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RajatDuggal\OnlineScrapApp\Domain\Model\SubCategory> $subcategory
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RajatDuggal\OnlineScrapApp\Domain\Model\Category> category
      */
-    public function getSubcategory()
+    public function getCategory()
     {
-        return $this->subcategory;
+        return $this->category;
     }
 
     /**
-     * Sets the subcategory
+     * Sets the category
      * 
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RajatDuggal\OnlineScrapApp\Domain\Model\SubCategory> $subcategory
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RajatDuggal\OnlineScrapApp\Domain\Model\Category> $category
      * @return void
      */
-    public function setSubcategory(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $subcategory)
+    public function setCategory(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $category)
     {
-        $this->subcategory = $subcategory;
+        $this->category = $category;
     }
 }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "93bc51f306a9a54d9b43e28d9e7a85c0",
+    "content-hash": "7e8d37bf4e1f583d90a376281d8eefff",
     "packages": [
         {
             "name": "algo26-matthias/idna-convert",
@@ -1099,6 +1099,43 @@
                 "php"
             ],
             "time": "2019-11-08T13:50:10+00:00"
+        },
+        {
+            "name": "oliver-hader/session-service",
+            "version": "v1.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ohader/session-service.git",
+                "reference": "91261eb4694066bffa8e6c2257f7579a75fa8591"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ohader/session-service/zipball/91261eb4694066bffa8e6c2257f7579a75fa8591",
+                "reference": "91261eb4694066bffa8e6c2257f7579a75fa8591",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": "^7.2",
+                "typo3/cms-core": "^9.5"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "extension-key": "session_service"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "OliverHader\\SessionService\\": "Classes"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "description": "TYPO3 Extbase session & frontend user service",
+            "time": "2019-12-09T21:45:40+00:00"
         },
         {
             "name": "psr/cache",

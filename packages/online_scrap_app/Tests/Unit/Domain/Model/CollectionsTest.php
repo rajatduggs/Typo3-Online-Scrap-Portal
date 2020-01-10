@@ -77,28 +77,28 @@ class CollectionsTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
     /**
      * @test
      */
-    public function getBookingDetailsReturnsInitialValueForBookingDetails()
+    public function getBookingsReturnsInitialValueForBookings()
     {
         $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         self::assertEquals(
             $newObjectStorage,
-            $this->subject->getBookingDetails()
+            $this->subject->getBookings()
         );
     }
 
     /**
      * @test
      */
-    public function setBookingDetailsForObjectStorageContainingBookingDetailsSetsBookingDetails()
+    public function setBookingsForObjectStorageContainingBookingsSetsBookings()
     {
-        $bookingDetail = new \RajatDuggal\OnlineScrapApp\Domain\Model\BookingDetails();
-        $objectStorageHoldingExactlyOneBookingDetails = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $objectStorageHoldingExactlyOneBookingDetails->attach($bookingDetail);
-        $this->subject->setBookingDetails($objectStorageHoldingExactlyOneBookingDetails);
+        $booking = new \RajatDuggal\OnlineScrapApp\Domain\Model\Bookings();
+        $objectStorageHoldingExactlyOneBookings = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $objectStorageHoldingExactlyOneBookings->attach($booking);
+        $this->subject->setBookings($objectStorageHoldingExactlyOneBookings);
 
         self::assertAttributeEquals(
-            $objectStorageHoldingExactlyOneBookingDetails,
-            'bookingDetails',
+            $objectStorageHoldingExactlyOneBookings,
+            'bookings',
             $this->subject
         );
     }
@@ -106,35 +106,35 @@ class CollectionsTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
     /**
      * @test
      */
-    public function addBookingDetailToObjectStorageHoldingBookingDetails()
+    public function addBookingToObjectStorageHoldingBookings()
     {
-        $bookingDetail = new \RajatDuggal\OnlineScrapApp\Domain\Model\BookingDetails();
-        $bookingDetailsObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+        $booking = new \RajatDuggal\OnlineScrapApp\Domain\Model\Bookings();
+        $bookingsObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
             ->setMethods(['attach'])
             ->disableOriginalConstructor()
             ->getMock();
 
-        $bookingDetailsObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($bookingDetail));
-        $this->inject($this->subject, 'bookingDetails', $bookingDetailsObjectStorageMock);
+        $bookingsObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($booking));
+        $this->inject($this->subject, 'bookings', $bookingsObjectStorageMock);
 
-        $this->subject->addBookingDetail($bookingDetail);
+        $this->subject->addBooking($booking);
     }
 
     /**
      * @test
      */
-    public function removeBookingDetailFromObjectStorageHoldingBookingDetails()
+    public function removeBookingFromObjectStorageHoldingBookings()
     {
-        $bookingDetail = new \RajatDuggal\OnlineScrapApp\Domain\Model\BookingDetails();
-        $bookingDetailsObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+        $booking = new \RajatDuggal\OnlineScrapApp\Domain\Model\Bookings();
+        $bookingsObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
             ->setMethods(['detach'])
             ->disableOriginalConstructor()
             ->getMock();
 
-        $bookingDetailsObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($bookingDetail));
-        $this->inject($this->subject, 'bookingDetails', $bookingDetailsObjectStorageMock);
+        $bookingsObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($booking));
+        $this->inject($this->subject, 'bookings', $bookingsObjectStorageMock);
 
-        $this->subject->removeBookingDetail($bookingDetail);
+        $this->subject->removeBooking($booking);
     }
 
     /**
@@ -203,28 +203,28 @@ class CollectionsTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
     /**
      * @test
      */
-    public function getSubCategoryReturnsInitialValueForSubCategory()
+    public function getCustomerReturnsInitialValueForCustomer()
     {
         $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         self::assertEquals(
             $newObjectStorage,
-            $this->subject->getSubCategory()
+            $this->subject->getCustomer()
         );
     }
 
     /**
      * @test
      */
-    public function setSubCategoryForObjectStorageContainingSubCategorySetsSubCategory()
+    public function setCustomerForObjectStorageContainingCustomerSetsCustomer()
     {
-        $subCategory = new \RajatDuggal\OnlineScrapApp\Domain\Model\SubCategory();
-        $objectStorageHoldingExactlyOneSubCategory = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $objectStorageHoldingExactlyOneSubCategory->attach($subCategory);
-        $this->subject->setSubCategory($objectStorageHoldingExactlyOneSubCategory);
+        $customer = new \RajatDuggal\OnlineScrapApp\Domain\Model\Customer();
+        $objectStorageHoldingExactlyOneCustomer = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $objectStorageHoldingExactlyOneCustomer->attach($customer);
+        $this->subject->setCustomer($objectStorageHoldingExactlyOneCustomer);
 
         self::assertAttributeEquals(
-            $objectStorageHoldingExactlyOneSubCategory,
-            'subCategory',
+            $objectStorageHoldingExactlyOneCustomer,
+            'customer',
             $this->subject
         );
     }
@@ -232,34 +232,97 @@ class CollectionsTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
     /**
      * @test
      */
-    public function addSubCategoryToObjectStorageHoldingSubCategory()
+    public function addCustomerToObjectStorageHoldingCustomer()
     {
-        $subCategory = new \RajatDuggal\OnlineScrapApp\Domain\Model\SubCategory();
-        $subCategoryObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+        $customer = new \RajatDuggal\OnlineScrapApp\Domain\Model\Customer();
+        $customerObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
             ->setMethods(['attach'])
             ->disableOriginalConstructor()
             ->getMock();
 
-        $subCategoryObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($subCategory));
-        $this->inject($this->subject, 'subCategory', $subCategoryObjectStorageMock);
+        $customerObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($customer));
+        $this->inject($this->subject, 'customer', $customerObjectStorageMock);
 
-        $this->subject->addSubCategory($subCategory);
+        $this->subject->addCustomer($customer);
     }
 
     /**
      * @test
      */
-    public function removeSubCategoryFromObjectStorageHoldingSubCategory()
+    public function removeCustomerFromObjectStorageHoldingCustomer()
     {
-        $subCategory = new \RajatDuggal\OnlineScrapApp\Domain\Model\SubCategory();
-        $subCategoryObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+        $customer = new \RajatDuggal\OnlineScrapApp\Domain\Model\Customer();
+        $customerObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
             ->setMethods(['detach'])
             ->disableOriginalConstructor()
             ->getMock();
 
-        $subCategoryObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($subCategory));
-        $this->inject($this->subject, 'subCategory', $subCategoryObjectStorageMock);
+        $customerObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($customer));
+        $this->inject($this->subject, 'customer', $customerObjectStorageMock);
 
-        $this->subject->removeSubCategory($subCategory);
+        $this->subject->removeCustomer($customer);
+    }
+
+    /**
+     * @test
+     */
+    public function getSubcategoryReturnsInitialValueForSubCategory()
+    {
+        $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        self::assertEquals(
+            $newObjectStorage,
+            $this->subject->getSubcategory()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setSubcategoryForObjectStorageContainingSubCategorySetsSubcategory()
+    {
+        $subcategory = new \RajatDuggal\OnlineScrapApp\Domain\Model\SubCategory();
+        $objectStorageHoldingExactlyOneSubcategory = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $objectStorageHoldingExactlyOneSubcategory->attach($subcategory);
+        $this->subject->setSubcategory($objectStorageHoldingExactlyOneSubcategory);
+
+        self::assertAttributeEquals(
+            $objectStorageHoldingExactlyOneSubcategory,
+            'subcategory',
+            $this->subject
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function addSubcategoryToObjectStorageHoldingSubcategory()
+    {
+        $subcategory = new \RajatDuggal\OnlineScrapApp\Domain\Model\SubCategory();
+        $subcategoryObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+            ->setMethods(['attach'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $subcategoryObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($subcategory));
+        $this->inject($this->subject, 'subcategory', $subcategoryObjectStorageMock);
+
+        $this->subject->addSubcategory($subcategory);
+    }
+
+    /**
+     * @test
+     */
+    public function removeSubcategoryFromObjectStorageHoldingSubcategory()
+    {
+        $subcategory = new \RajatDuggal\OnlineScrapApp\Domain\Model\SubCategory();
+        $subcategoryObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+            ->setMethods(['detach'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $subcategoryObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($subcategory));
+        $this->inject($this->subject, 'subcategory', $subcategoryObjectStorageMock);
+
+        $this->subject->removeSubcategory($subcategory);
     }
 }

@@ -16,14 +16,14 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => 'customer_id,visit_id,order_summary,comments,feedback',
+        'searchFields' => 'customer_id,visit_id,order_summary,comments,status',
         'iconfile' => 'EXT:online_scrap_app/Resources/Public/Icons/tx_onlinescrapapp_domain_model_bookings.gif'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, customer_id, booking_time, date_time, visit_id, order_summary, comments, status, feedback, scrap_collector, booking_details, locality',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, customer_id, booking_time, date_time, visit_id, order_summary, comments, status, scrap_collector, booking_details, locality',
     ],
     'types' => [
-        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, customer_id, booking_time, date_time, visit_id, order_summary, comments, status, feedback, scrap_collector, booking_details, locality, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
+        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, customer_id, booking_time, date_time, visit_id, order_summary, comments, status, scrap_collector, booking_details, locality, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -155,7 +155,7 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim,required'
+                'eval' => 'trim'
             ],
         ],
         'order_summary' => [
@@ -179,15 +179,6 @@ return [
         'status' => [
             'exclude' => true,
             'label' => 'LLL:EXT:online_scrap_app/Resources/Private/Language/locallang_db.xlf:tx_onlinescrapapp_domain_model_bookings.status',
-            'config' => [
-                'type' => 'input',
-                'size' => 4,
-                'eval' => 'int,required'
-            ]
-        ],
-        'feedback' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:online_scrap_app/Resources/Private/Language/locallang_db.xlf:tx_onlinescrapapp_domain_model_bookings.feedback',
             'config' => [
                 'type' => 'input',
                 'size' => 30,

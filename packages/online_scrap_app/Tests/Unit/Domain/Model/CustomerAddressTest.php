@@ -77,81 +77,6 @@ class CustomerAddressTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
     /**
      * @test
      */
-    public function getBuildingReturnsInitialValueForString()
-    {
-        self::assertSame(
-            '',
-            $this->subject->getBuilding()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setBuildingForStringSetsBuilding()
-    {
-        $this->subject->setBuilding('Conceived at T3CON10');
-
-        self::assertAttributeEquals(
-            'Conceived at T3CON10',
-            'building',
-            $this->subject
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function getStreetReturnsInitialValueForString()
-    {
-        self::assertSame(
-            '',
-            $this->subject->getStreet()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setStreetForStringSetsStreet()
-    {
-        $this->subject->setStreet('Conceived at T3CON10');
-
-        self::assertAttributeEquals(
-            'Conceived at T3CON10',
-            'street',
-            $this->subject
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function getLocalityReturnsInitialValueForString()
-    {
-        self::assertSame(
-            '',
-            $this->subject->getLocality()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setLocalityForStringSetsLocality()
-    {
-        $this->subject->setLocality('Conceived at T3CON10');
-
-        self::assertAttributeEquals(
-            'Conceived at T3CON10',
-            'locality',
-            $this->subject
-        );
-    }
-
-    /**
-     * @test
-     */
     public function getPincodeReturnsInitialValueForInt()
     {
         self::assertSame(
@@ -202,56 +127,6 @@ class CustomerAddressTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
     /**
      * @test
      */
-    public function getStateReturnsInitialValueForString()
-    {
-        self::assertSame(
-            '',
-            $this->subject->getState()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setStateForStringSetsState()
-    {
-        $this->subject->setState('Conceived at T3CON10');
-
-        self::assertAttributeEquals(
-            'Conceived at T3CON10',
-            'state',
-            $this->subject
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function getCountryReturnsInitialValueForString()
-    {
-        self::assertSame(
-            '',
-            $this->subject->getCountry()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setCountryForStringSetsCountry()
-    {
-        $this->subject->setCountry('Conceived at T3CON10');
-
-        self::assertAttributeEquals(
-            'Conceived at T3CON10',
-            'country',
-            $this->subject
-        );
-    }
-
-    /**
-     * @test
-     */
     public function getAddressReturnsInitialValueForString()
     {
         self::assertSame(
@@ -270,6 +145,32 @@ class CustomerAddressTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
         self::assertAttributeEquals(
             'Conceived at T3CON10',
             'address',
+            $this->subject
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function getLocalityReturnsInitialValueForLocality()
+    {
+        self::assertEquals(
+            null,
+            $this->subject->getLocality()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setLocalityForLocalitySetsLocality()
+    {
+        $localityFixture = new \RajatDuggal\OnlineScrapApp\Domain\Model\Locality();
+        $this->subject->setLocality($localityFixture);
+
+        self::assertAttributeEquals(
+            $localityFixture,
+            'locality',
             $this->subject
         );
     }

@@ -16,14 +16,14 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => 'customer_id,phone,building,street,locality,city,state,country,address',
+        'searchFields' => 'customer_id,phone,city,address',
         'iconfile' => 'EXT:online_scrap_app/Resources/Public/Icons/tx_onlinescrapapp_domain_model_customeraddress.gif'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, customer_id, phone, building, street, locality, pincode, city, state, country, address',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, customer_id, phone, pincode, city, address, locality',
     ],
     'types' => [
-        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, customer_id, phone, building, street, locality, pincode, city, state, country, address, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
+        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, customer_id, phone, pincode, city, address, locality, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -134,33 +134,6 @@ return [
                 'eval' => 'trim,required'
             ],
         ],
-        'building' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:online_scrap_app/Resources/Private/Language/locallang_db.xlf:tx_onlinescrapapp_domain_model_customeraddress.building',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim,required'
-            ],
-        ],
-        'street' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:online_scrap_app/Resources/Private/Language/locallang_db.xlf:tx_onlinescrapapp_domain_model_customeraddress.street',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim,required'
-            ],
-        ],
-        'locality' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:online_scrap_app/Resources/Private/Language/locallang_db.xlf:tx_onlinescrapapp_domain_model_customeraddress.locality',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim,required'
-            ],
-        ],
         'pincode' => [
             'exclude' => true,
             'label' => 'LLL:EXT:online_scrap_app/Resources/Private/Language/locallang_db.xlf:tx_onlinescrapapp_domain_model_customeraddress.pincode',
@@ -179,24 +152,6 @@ return [
                 'eval' => 'trim,required'
             ],
         ],
-        'state' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:online_scrap_app/Resources/Private/Language/locallang_db.xlf:tx_onlinescrapapp_domain_model_customeraddress.state',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim,required'
-            ],
-        ],
-        'country' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:online_scrap_app/Resources/Private/Language/locallang_db.xlf:tx_onlinescrapapp_domain_model_customeraddress.country',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim,required'
-            ],
-        ],
         'address' => [
             'exclude' => true,
             'label' => 'LLL:EXT:online_scrap_app/Resources/Private/Language/locallang_db.xlf:tx_onlinescrapapp_domain_model_customeraddress.address',
@@ -205,6 +160,32 @@ return [
                 'size' => 30,
                 'eval' => 'trim,required'
             ],
+        ],
+        'locality' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:online_scrap_app/Resources/Private/Language/locallang_db.xlf:tx_onlinescrapapp_domain_model_customeraddress.locality',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectMultipleSideBySide',
+                'foreign_table' => 'tx_onlinescrapapp_domain_model_locality',
+                'default' => 0,
+                'size' => 10,
+                'autoSizeMax' => 30,
+                'maxitems' => 1,
+                'multiple' => 0,
+                'fieldControl' => [
+                    'editPopup' => [
+                        'disabled' => false,
+                    ],
+                    'addRecord' => [
+                        'disabled' => false,
+                    ],
+                    'listModule' => [
+                        'disabled' => true,
+                    ],
+                ],
+            ],
+
         ],
     
     ],

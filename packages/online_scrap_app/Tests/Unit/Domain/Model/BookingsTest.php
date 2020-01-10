@@ -179,10 +179,10 @@ class BookingsTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
     /**
      * @test
      */
-    public function getStatusReturnsInitialValueForInt()
+    public function getStatusReturnsInitialValueForString()
     {
         self::assertSame(
-            0,
+            '',
             $this->subject->getStatus()
         );
     }
@@ -190,38 +190,13 @@ class BookingsTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
     /**
      * @test
      */
-    public function setStatusForIntSetsStatus()
+    public function setStatusForStringSetsStatus()
     {
-        $this->subject->setStatus(12);
-
-        self::assertAttributeEquals(
-            12,
-            'status',
-            $this->subject
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function getFeedbackReturnsInitialValueForString()
-    {
-        self::assertSame(
-            '',
-            $this->subject->getFeedback()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setFeedbackForStringSetsFeedback()
-    {
-        $this->subject->setFeedback('Conceived at T3CON10');
+        $this->subject->setStatus('Conceived at T3CON10');
 
         self::assertAttributeEquals(
             'Conceived at T3CON10',
-            'feedback',
+            'status',
             $this->subject
         );
     }

@@ -102,106 +102,6 @@ class CustomerTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
     /**
      * @test
      */
-    public function getPasswordReturnsInitialValueForString()
-    {
-        self::assertSame(
-            '',
-            $this->subject->getPassword()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setPasswordForStringSetsPassword()
-    {
-        $this->subject->setPassword('Conceived at T3CON10');
-
-        self::assertAttributeEquals(
-            'Conceived at T3CON10',
-            'password',
-            $this->subject
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function getLoginTypeReturnsInitialValueForString()
-    {
-        self::assertSame(
-            '',
-            $this->subject->getLoginType()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setLoginTypeForStringSetsLoginType()
-    {
-        $this->subject->setLoginType('Conceived at T3CON10');
-
-        self::assertAttributeEquals(
-            'Conceived at T3CON10',
-            'loginType',
-            $this->subject
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function getStatusReturnsInitialValueForInt()
-    {
-        self::assertSame(
-            0,
-            $this->subject->getStatus()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setStatusForIntSetsStatus()
-    {
-        $this->subject->setStatus(12);
-
-        self::assertAttributeEquals(
-            12,
-            'status',
-            $this->subject
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function getRegistrationKeyReturnsInitialValueForString()
-    {
-        self::assertSame(
-            '',
-            $this->subject->getRegistrationKey()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setRegistrationKeyForStringSetsRegistrationKey()
-    {
-        $this->subject->setRegistrationKey('Conceived at T3CON10');
-
-        self::assertAttributeEquals(
-            'Conceived at T3CON10',
-            'registrationKey',
-            $this->subject
-        );
-    }
-
-    /**
-     * @test
-     */
     public function getCustomerAddressReturnsInitialValueForCustomerAddress()
     {
         $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
@@ -260,5 +160,19 @@ class CustomerTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
         $this->inject($this->subject, 'customerAddress', $customerAddressObjectStorageMock);
 
         $this->subject->removeCustomerAddres($customerAddres);
+    }
+
+    /**
+     * @test
+     */
+    public function getUserReturnsInitialValueForFrontendUser()
+    {
+    }
+
+    /**
+     * @test
+     */
+    public function setUserForFrontendUserSetsUser()
+    {
     }
 }

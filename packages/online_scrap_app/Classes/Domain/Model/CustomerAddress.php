@@ -35,30 +35,6 @@ class CustomerAddress extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $phone = '';
 
     /**
-     * building
-     * 
-     * @var string
-     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
-     */
-    protected $building = '';
-
-    /**
-     * street
-     * 
-     * @var string
-     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
-     */
-    protected $street = '';
-
-    /**
-     * locality
-     * 
-     * @var string
-     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
-     */
-    protected $locality = '';
-
-    /**
      * pincode
      * 
      * @var int
@@ -75,28 +51,19 @@ class CustomerAddress extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $city = '';
 
     /**
-     * state
-     * 
-     * @var string
-     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
-     */
-    protected $state = '';
-
-    /**
-     * country
-     * 
-     * @var string
-     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
-     */
-    protected $country = '';
-
-    /**
      * address
      * 
      * @var string
      * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $address = '';
+
+    /**
+     * locality
+     * 
+     * @var \RajatDuggal\OnlineScrapApp\Domain\Model\Locality
+     */
+    protected $locality = null;
 
     /**
      * Returns the customerId
@@ -138,69 +105,6 @@ class CustomerAddress extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setPhone($phone)
     {
         $this->phone = $phone;
-    }
-
-    /**
-     * Returns the building
-     * 
-     * @return string $building
-     */
-    public function getBuilding()
-    {
-        return $this->building;
-    }
-
-    /**
-     * Sets the building
-     * 
-     * @param string $building
-     * @return void
-     */
-    public function setBuilding($building)
-    {
-        $this->building = $building;
-    }
-
-    /**
-     * Returns the street
-     * 
-     * @return string $street
-     */
-    public function getStreet()
-    {
-        return $this->street;
-    }
-
-    /**
-     * Sets the street
-     * 
-     * @param string $street
-     * @return void
-     */
-    public function setStreet($street)
-    {
-        $this->street = $street;
-    }
-
-    /**
-     * Returns the locality
-     * 
-     * @return string $locality
-     */
-    public function getLocality()
-    {
-        return $this->locality;
-    }
-
-    /**
-     * Sets the locality
-     * 
-     * @param string $locality
-     * @return void
-     */
-    public function setLocality($locality)
-    {
-        $this->locality = $locality;
     }
 
     /**
@@ -246,48 +150,6 @@ class CustomerAddress extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Returns the state
-     * 
-     * @return string $state
-     */
-    public function getState()
-    {
-        return $this->state;
-    }
-
-    /**
-     * Sets the state
-     * 
-     * @param string $state
-     * @return void
-     */
-    public function setState($state)
-    {
-        $this->state = $state;
-    }
-
-    /**
-     * Returns the country
-     * 
-     * @return string $country
-     */
-    public function getCountry()
-    {
-        return $this->country;
-    }
-
-    /**
-     * Sets the country
-     * 
-     * @param string $country
-     * @return void
-     */
-    public function setCountry($country)
-    {
-        $this->country = $country;
-    }
-
-    /**
      * Returns the address
      * 
      * @return string $address
@@ -306,5 +168,26 @@ class CustomerAddress extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setAddress($address)
     {
         $this->address = $address;
+    }
+
+    /**
+     * Returns the locality
+     * 
+     * @return \RajatDuggal\OnlineScrapApp\Domain\Model\Locality $locality
+     */
+    public function getLocality()
+    {
+        return $this->locality;
+    }
+
+    /**
+     * Sets the locality
+     * 
+     * @param \RajatDuggal\OnlineScrapApp\Domain\Model\Locality $locality
+     * @return void
+     */
+    public function setLocality(\RajatDuggal\OnlineScrapApp\Domain\Model\Locality $locality)
+    {
+        $this->locality = $locality;
     }
 }

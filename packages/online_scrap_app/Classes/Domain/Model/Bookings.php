@@ -69,18 +69,10 @@ class Bookings extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * status
      * 
-     * @var int
-     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
-     */
-    protected $status = 0;
-
-    /**
-     * feedback
-     * 
      * @var string
      * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
-    protected $feedback = '';
+    protected $status = 0;
 
     /**
      * scrapCollector
@@ -230,48 +222,6 @@ class Bookings extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Returns the status
-     * 
-     * @return int $status
-     */
-    public function getStatus()
-    {
-        return $this->status;
-    }
-
-    /**
-     * Sets the status
-     * 
-     * @param int $status
-     * @return void
-     */
-    public function setStatus($status)
-    {
-        $this->status = $status;
-    }
-
-    /**
-     * Returns the feedback
-     * 
-     * @return string $feedback
-     */
-    public function getFeedback()
-    {
-        return $this->feedback;
-    }
-
-    /**
-     * Sets the feedback
-     * 
-     * @param string $feedback
-     * @return void
-     */
-    public function setFeedback($feedback)
-    {
-        $this->feedback = $feedback;
-    }
-
-    /**
      * Returns the bookingDetails
      * 
      * @return \RajatDuggal\OnlineScrapApp\Domain\Model\BookingDetails bookingDetails
@@ -332,5 +282,26 @@ class Bookings extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setLocality(\RajatDuggal\OnlineScrapApp\Domain\Model\Locality $locality)
     {
         $this->locality = $locality;
+    }
+
+    /**
+     * Returns the status
+     * 
+     * @return string status
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Sets the status
+     * 
+     * @param int $status
+     * @return void
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
     }
 }

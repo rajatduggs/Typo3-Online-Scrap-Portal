@@ -21,14 +21,18 @@ Otherwise your changes will be overwritten the next time you save the extension 
         <tr>
             <th><f:translate key="tx_onlinescrapapp_domain_model_collections.quantity" /></th>
             <th><f:translate key="tx_onlinescrapapp_domain_model_collections.amount" /></th>
+            <th><f:translate key="tx_onlinescrapapp_domain_model_collections.category" /></th>
+            <th><f:translate key="tx_onlinescrapapp_domain_model_collections.category.subcategory" /></th>
+
             <th> </th>
             <th> </th>
         </tr>
 
-        <f:for each="{collectionss}" as="collections">
+        <f:for each="{collections}" as="collections">
             <tr>
                 <td><f:link.action action="show" arguments="{collections : collections}">{collections.quantity}</f:link.action></td>
                 <td><f:link.action action="show" arguments="{collections : collections}">{collections.amount}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{collections : collections}">{collections.category.name}</f:link.action></td>
                 <td><f:link.action action="edit" arguments="{collections : collections}">Edit</f:link.action></td>
                 <td><f:link.action action="delete" arguments="{collections : collections}">Delete</f:link.action></td>
             </tr>

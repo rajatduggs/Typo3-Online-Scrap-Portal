@@ -16,14 +16,14 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => 'customer_id,name,email,login_type,registration_key',
+        'searchFields' => 'customer_id,name,email',
         'iconfile' => 'EXT:online_scrap_app/Resources/Public/Icons/tx_onlinescrapapp_domain_model_customer.gif'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, customer_id, name, email, password, login_type, status, registration_key, customer_address',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, customer_id, name, email, customer_address, user',
     ],
     'types' => [
-        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, customer_id, name, email, password, login_type, status, registration_key, customer_address, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
+        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, customer_id, name, email, customer_address, user, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -143,42 +143,6 @@ return [
                 'eval' => 'nospace,email,required'
             ]
         ],
-        'password' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:online_scrap_app/Resources/Private/Language/locallang_db.xlf:tx_onlinescrapapp_domain_model_customer.password',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'nospace,password,required'
-            ]
-        ],
-        'login_type' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:online_scrap_app/Resources/Private/Language/locallang_db.xlf:tx_onlinescrapapp_domain_model_customer.login_type',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim,required'
-            ],
-        ],
-        'status' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:online_scrap_app/Resources/Private/Language/locallang_db.xlf:tx_onlinescrapapp_domain_model_customer.status',
-            'config' => [
-                'type' => 'input',
-                'size' => 4,
-                'eval' => 'int,required'
-            ]
-        ],
-        'registration_key' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:online_scrap_app/Resources/Private/Language/locallang_db.xlf:tx_onlinescrapapp_domain_model_customer.registration_key',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim,required'
-            ],
-        ],
         'customer_address' => [
             'exclude' => true,
             'label' => 'LLL:EXT:online_scrap_app/Resources/Private/Language/locallang_db.xlf:tx_onlinescrapapp_domain_model_customer.customer_address',
@@ -204,6 +168,32 @@ return [
                 ],
             ],
             
+        ],
+        'user' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:online_scrap_app/Resources/Private/Language/locallang_db.xlf:tx_onlinescrapapp_domain_model_customer.user',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectMultipleSideBySide',
+                'foreign_table' => 'fe_users',
+                'default' => 0,
+                'size' => 10,
+                'autoSizeMax' => 30,
+                'maxitems' => 1,
+                'multiple' => 0,
+                'fieldControl' => [
+                    'editPopup' => [
+                        'disabled' => false,
+                    ],
+                    'addRecord' => [
+                        'disabled' => false,
+                    ],
+                    'listModule' => [
+                        'disabled' => true,
+                    ],
+                ],
+            ],
+
         ],
     
     ],

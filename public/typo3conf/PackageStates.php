@@ -107,6 +107,9 @@ return [
         'online_scrap_app' => [
             'packagePath' => 'typo3conf/ext/online_scrap_app/',
         ],
+        'session_service' => [
+            'packagePath' => 'typo3conf/ext/session_service/',
+        ],
     ],
     'version' => 5,
 ];

@@ -206,7 +206,7 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim,required'
+                'eval' => 'trim'
             ],
         ],
         'cap' => [
@@ -215,7 +215,7 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim,required'
+                'eval' => 'trim'
             ],
         ],
         'issue_date' => [

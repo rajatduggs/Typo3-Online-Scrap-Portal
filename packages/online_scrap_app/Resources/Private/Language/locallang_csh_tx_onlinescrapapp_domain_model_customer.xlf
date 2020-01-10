@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="EXT:online_scrap_app/Resources/Private/Language/locallang_csh" date="2020-01-07T01:47:05Z" product-name="online_scrap_app">
+	<file source-language="en" datatype="plaintext" original="EXT:online_scrap_app/Resources/Private/Language/locallang_csh" date="2020-01-10T13:50:36Z" product-name="online_scrap_app">
 		<header/>
 		<body>
 			<trans-unit id="customer_id.description" resname="customer_id.description">
@@ -12,20 +12,11 @@
 			<trans-unit id="email.description" resname="email.description">
 				<source>email</source>
 			</trans-unit>
-			<trans-unit id="password.description" resname="password.description">
-				<source>password</source>
-			</trans-unit>
-			<trans-unit id="login_type.description" resname="login_type.description">
-				<source>loginType</source>
-			</trans-unit>
-			<trans-unit id="status.description" resname="status.description">
-				<source>status</source>
-			</trans-unit>
-			<trans-unit id="registration_key.description" resname="registration_key.description">
-				<source>registrationKey</source>
-			</trans-unit>
 			<trans-unit id="customer_address.description" resname="customer_address.description">
 				<source>customerAddress</source>
+			</trans-unit>
+			<trans-unit id="user.description" resname="user.description">
+				<source>user</source>
 			</trans-unit>
 		</body>
 	</file>

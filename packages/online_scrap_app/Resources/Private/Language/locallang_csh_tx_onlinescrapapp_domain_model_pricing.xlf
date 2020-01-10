@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="EXT:online_scrap_app/Resources/Private/Language/locallang_csh" date="2020-01-06T18:39:46Z" product-name="online_scrap_app">
+	<file source-language="en" datatype="plaintext" original="EXT:online_scrap_app/Resources/Private/Language/locallang_csh" date="2020-01-10T10:35:37Z" product-name="online_scrap_app">
 		<header/>
 		<body>
-			<trans-unit id="name.description" resname="name.description">
-				<source>name</source>
-			</trans-unit>
-			<trans-unit id="price.description" resname="price.description">
-				<source>price</source>
+			<trans-unit id="amount.description" resname="amount.description">
+				<source>amount</source>
 			</trans-unit>
 		</body>
 	</file>

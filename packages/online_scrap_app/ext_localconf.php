@@ -34,6 +34,37 @@ call_user_func(
                 'Collections' => 'create, update, delete'
             ]
         );
+        \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+            'RajatDuggal.OnlineScrapApp',
+            'CollectionData',
+            [
+                'Collections' => 'list, show, new, create, edit, update, delete,test',
+                'Locality' => 'list, show, new, create, edit, update, delete',
+                'SubCategory' => 'list, show, new, create, edit, update, delete',
+                'BookingDetails' => 'list, show, new, create, edit, update, delete',
+                'Bookings' => 'list, show, new, create, edit, update, delete',
+                'Category' => 'list, show, new, create, edit, update, delete,selectCategory',
+                'CustomerAddress' => 'list, show, new, create, edit, update, delete',
+                'ScrapCollector' => 'list, show, new, create, edit, update, delete',
+                'Customer' => 'list, show, new, create, edit, update, delete',
+                'Facts' => 'list, show, new, create, edit, update, delete',
+
+            ],
+            // non-cacheable actions
+            [
+                'SubCategory' => 'create, update, delete',
+                'BookingDetails' => 'create, update, delete',
+                'Bookings' => 'create, update, delete',
+                'Category' => 'create, update, delete,selectCategory',
+                'CustomerAddress' => 'create, update, delete',
+                'Locality' => 'create, update, delete',
+                'ScrapCollector' => 'create, update, delete',
+                'Customer' => 'create, update, delete',
+                'Facts' => 'create, update, delete',
+                'Collections' => 'create, update, delete'
+            ]
+        );
+
 
         \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
             'RajatDuggal.OnlineScrapApp',
@@ -166,18 +197,27 @@ call_user_func(
                                 list_type = onlinescrapapp_customeraddress
                             }
                         }
+                        collectiondata {   
+                            iconIdentifier = online_scrap_app-plugin-collectiondata
+                            title =  List of Collection
+                            description = Renders Collection of information
+                            tt_content_defValues {
+                                CType = list
+                                list_type = onlinescrapapp_collectiondata
+                            }
+                        }
                     }
                     show = *
                 }
            }'
         );
-		$iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Imaging\IconRegistry::class);
-		
-			$iconRegistry->registerIcon(
-				'online_scrap_app-plugin-onlinescrapfrontend',
-				\TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
-				['source' => 'EXT:online_scrap_app/Resources/Public/Icons/user_plugin_onlinescrapfrontend.svg']
-			);
-		
+        $iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Imaging\IconRegistry::class);
+
+        $iconRegistry->registerIcon(
+            'online_scrap_app-plugin-onlinescrapfrontend',
+            \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
+            ['source' => 'EXT:online_scrap_app/Resources/Public/Icons/user_plugin_onlinescrapfrontend.svg']
+        );
+
     }
 );

@@ -33,6 +33,21 @@ class Pricing extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $price = 0;
 
     /**
+     * amount
+     * 
+     * @var int
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     */
+    protected $amount = 0;
+
+    /**
+     * category
+     * 
+     * @var \RajatDuggal\OnlineScrapApp\Domain\Model\Category
+     */
+    protected $category = null;
+
+    /**
      * Returns the name
      * 
      * @return string $name
@@ -72,5 +87,47 @@ class Pricing extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setPrice($price)
     {
         $this->price = $price;
+    }
+
+    /**
+     * Returns the amount
+     * 
+     * @return int $amount
+     */
+    public function getAmount()
+    {
+        return $this->amount;
+    }
+
+    /**
+     * Sets the amount
+     * 
+     * @param int $amount
+     * @return void
+     */
+    public function setAmount($amount)
+    {
+        $this->amount = $amount;
+    }
+
+    /**
+     * Returns the category
+     * 
+     * @return \RajatDuggal\OnlineScrapApp\Domain\Model\Category $category
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * Sets the category
+     * 
+     * @param \RajatDuggal\OnlineScrapApp\Domain\Model\Category $category
+     * @return void
+     */
+    public function setCategory(\RajatDuggal\OnlineScrapApp\Domain\Model\Category $category)
+    {
+        $this->category = $category;
     }
 }

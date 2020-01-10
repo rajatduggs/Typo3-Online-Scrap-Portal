@@ -77,28 +77,28 @@ class BookingDetailsTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
     /**
      * @test
      */
-    public function getSubcategoryReturnsInitialValueForSubCategory()
+    public function getCategoryReturnsInitialValueForCategory()
     {
         $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         self::assertEquals(
             $newObjectStorage,
-            $this->subject->getSubcategory()
+            $this->subject->getCategory()
         );
     }
 
     /**
      * @test
      */
-    public function setSubcategoryForObjectStorageContainingSubCategorySetsSubcategory()
+    public function setCategoryForObjectStorageContainingCategorySetsCategory()
     {
-        $subcategory = new \RajatDuggal\OnlineScrapApp\Domain\Model\SubCategory();
-        $objectStorageHoldingExactlyOneSubcategory = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $objectStorageHoldingExactlyOneSubcategory->attach($subcategory);
-        $this->subject->setSubcategory($objectStorageHoldingExactlyOneSubcategory);
+        $category = new \RajatDuggal\OnlineScrapApp\Domain\Model\Category();
+        $objectStorageHoldingExactlyOneCategory = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $objectStorageHoldingExactlyOneCategory->attach($category);
+        $this->subject->setCategory($objectStorageHoldingExactlyOneCategory);
 
         self::assertAttributeEquals(
-            $objectStorageHoldingExactlyOneSubcategory,
-            'subcategory',
+            $objectStorageHoldingExactlyOneCategory,
+            'category',
             $this->subject
         );
     }
@@ -106,34 +106,34 @@ class BookingDetailsTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
     /**
      * @test
      */
-    public function addSubcategoryToObjectStorageHoldingSubcategory()
+    public function addCategoryToObjectStorageHoldingCategory()
     {
-        $subcategory = new \RajatDuggal\OnlineScrapApp\Domain\Model\SubCategory();
-        $subcategoryObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+        $category = new \RajatDuggal\OnlineScrapApp\Domain\Model\Category();
+        $categoryObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
             ->setMethods(['attach'])
             ->disableOriginalConstructor()
             ->getMock();
 
-        $subcategoryObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($subcategory));
-        $this->inject($this->subject, 'subcategory', $subcategoryObjectStorageMock);
+        $categoryObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($category));
+        $this->inject($this->subject, 'category', $categoryObjectStorageMock);
 
-        $this->subject->addSubcategory($subcategory);
+        $this->subject->addCategory($category);
     }
 
     /**
      * @test
      */
-    public function removeSubcategoryFromObjectStorageHoldingSubcategory()
+    public function removeCategoryFromObjectStorageHoldingCategory()
     {
-        $subcategory = new \RajatDuggal\OnlineScrapApp\Domain\Model\SubCategory();
-        $subcategoryObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+        $category = new \RajatDuggal\OnlineScrapApp\Domain\Model\Category();
+        $categoryObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
             ->setMethods(['detach'])
             ->disableOriginalConstructor()
             ->getMock();
 
-        $subcategoryObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($subcategory));
-        $this->inject($this->subject, 'subcategory', $subcategoryObjectStorageMock);
+        $categoryObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($category));
+        $this->inject($this->subject, 'category', $categoryObjectStorageMock);
 
-        $this->subject->removeSubcategory($subcategory);
+        $this->subject->removeCategory($category);
     }
 }

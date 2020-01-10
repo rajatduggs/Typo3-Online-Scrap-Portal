@@ -2,6 +2,9 @@
 namespace RajatDuggal\OnlineScrapApp\Controller;
 
 
+use RajatDuggal\OnlineScrapApp\Domain\Model\Category;
+use RajatDuggal\OnlineScrapApp\Domain\Model\SubCategory;
+
 /***
  *
  * This file is part of the "Online Scrap App" Extension for TYPO3 CMS.
@@ -57,11 +60,18 @@ class CollectionsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 
     /**
      * action new
-     * 
+     *
+     * @param Category $category
+     * @param SubCategory $subCategory
+     * @param int $quantity
      * @return void
      */
-    public function newAction()
+    public function testAction(Category $category,SubCategory $subcat,int $quantity)
     {
+        $this->view->assign('category',$category);
+        $this->view->assign('subcategory',$subcat);
+        $this->view->assign('quantity',$quantity);
+
     }
 
     /**
