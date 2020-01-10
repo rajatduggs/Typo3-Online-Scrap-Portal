@@ -2,6 +2,8 @@
 namespace RajatDuggal\OnlineScrapApp\Controller;
 
 
+use RajatDuggal\OnlineScrapApp\Domain\Repository\ScrapCollectorRepository;
+
 /***
  *
  * This file is part of the "Online Scrap App" Extension for TYPO3 CMS.
@@ -21,14 +23,14 @@ class ScrapCollectorController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
     /**
      * scrapCollectorRepository
      * 
-     * @var \RajatDuggal\OnlineScrapApp\Domain\Repository\ScrapCollectorRepository
+     * @var ScrapCollectorRepository
      */
     protected $scrapCollectorRepository = null;
 
     /**
-     * @param \RajatDuggal\OnlineScrapApp\Domain\Repository\ScrapCollectorRepository $scrapCollectorRepository
+     * @param ScrapCollectorRepository $scrapCollectorRepository
      */
-    public function injectScrapCollectorRepository(\RajatDuggal\OnlineScrapApp\Domain\Repository\ScrapCollectorRepository $scrapCollectorRepository)
+    public function injectScrapCollectorRepository(ScrapCollectorRepository $scrapCollectorRepository)
     {
         $this->scrapCollectorRepository = $scrapCollectorRepository;
     }

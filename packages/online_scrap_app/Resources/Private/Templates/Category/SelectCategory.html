@@ -37,12 +37,10 @@ Otherwise your changes will be overwritten the next time you save the extension 
                 <th>  <f:link.action action="show"  controller="SubCategory" arguments="{subCategory : subcat}">{subcat.name}</f:link.action></th>
 
 
-                </th>
-
         </f:for>
         </td>
         <th><f:form.textfield name="myTextBox" placeholder="Quantity" size="10" value="0" type="text" maxlength="4"/>
-        <th>    <f:link.action  action="test" pluginName="CollectionData"  pageUid="21" controller="Collections" arguments="{category: category,subCategory: myRadioButton,quantity:myTextBox}">Add to Cart</f:link.action></th>
+        <th>    <f:link.action  action="test" pluginName="CollectionData"  pageUid="21" controller="Collections" arguments="{category: category,subCategory:'english',quantity:'12'}">Add to Cart</f:link.action></th>
         <!--<td><f:link.action action="show" arguments="{category : category}">{category.name}</f:link.action></td>
         <td><f:link.action action="edit" arguments="{category : category}">Edit</f:link.action></td>
         <td><f:link.action action="delete" arguments="{category : category}">Delete</f:link.action></td>-->

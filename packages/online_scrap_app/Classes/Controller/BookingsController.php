@@ -2,6 +2,9 @@
 namespace RajatDuggal\OnlineScrapApp\Controller;
 
 
+use RajatDuggal\OnlineScrapApp\Domain\Repository\BookingsRepository;
+use RajatDuggal\OnlineScrapApp\Domain\Repository\ScrapCollectorRepository;
+
 /***
  *
  * This file is part of the "Online Scrap App" Extension for TYPO3 CMS.
@@ -21,14 +24,25 @@ class BookingsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
     /**
      * bookingsRepository
      * 
-     * @var \RajatDuggal\OnlineScrapApp\Domain\Repository\BookingsRepository
+     * @var BookingsRepository
      */
     protected $bookingsRepository = null;
 
+    protected $scrapCollectorRepository=null;
+
     /**
-     * @param \RajatDuggal\OnlineScrapApp\Domain\Repository\BookingsRepository $bookingsRepository
+     * @param ScrapCollectorRepository $scrapCollectorRepository
      */
-    public function injectBookingsRepository(\RajatDuggal\OnlineScrapApp\Domain\Repository\BookingsRepository $bookingsRepository)
+    public function injectScrapCollectorRepository(ScrapCollectorRepository $scrapCollectorRepository)
+    {
+        $this->scrapCollectorRepository = $scrapCollectorRepository;
+    }
+
+
+    /**
+     * @param BookingsRepository $bookingsRepository
+     */
+    public function injectBookingsRepository(BookingsRepository $bookingsRepository)
     {
         $this->bookingsRepository = $bookingsRepository;
     }
@@ -86,7 +100,27 @@ class BookingsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
      */
     public function editAction(\RajatDuggal\OnlineScrapApp\Domain\Model\Bookings $bookings)
     {
+        $scrapCollectors = $this->scrapCollectorRepository->findAll();
+        $this->view->assign('scrapCollectors', $scrapCollectors);
         $this->view->assign('bookings', $bookings);
+    }
+
+    /**
+     * @param \RajatDuggal\OnlineScrapApp\Domain\Model\Bookings $bookings
+     * @param \RajatDuggal\OnlineScrapApp\Domain\Model\ScrapCollector $scrapCollector
+     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
+     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\UnknownObjectException
+     */
+    public function changeAction(\RajatDuggal\OnlineScrapApp\Domain\Model\Bookings $bookings, \RajatDuggal\OnlineScrapApp\Domain\Model\ScrapCollector $scrapCollector)
+    {
+
+        //$this->addFlashMessage('The object was updated. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/typo3cms/extensions/extension_builder/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
+
+        $bookings->setScrapCollector($scrapCollector);
+        $this->bookingsRepository->update($bookings);
+        $this->redirect('list');
     }
 
     /**

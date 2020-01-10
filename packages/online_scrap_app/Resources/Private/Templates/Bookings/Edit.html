@@ -21,7 +21,25 @@ Otherwise your changes will be overwritten the next time you save the extension 
 
     <f:form action="update" name="bookings" object="{bookings}" >
     <f:render partial="Bookings/FormFields" arguments="{bookings:bookings}" />
-    <f:form.submit value="Save" />
+
+        <f:if condition="{bookings.scrapCollector.name}">
+            <f:then>
+                <f:form.submit value="Save" />
+            </f:then>
+            <f:else>
+
+                <h3>Select Scrap Collector from Below List to Update booking</h3>
+
+                <f:for each="{scrapCollectors}" as="scrapCollectors">
+
+                    <f:link.action action="change" controller="Bookings" arguments="{bookings:bookings,scrapCollector:scrapCollectors}">{scrapCollectors.name}</f:link.action>
+                    <br/>
+                    <f:link.action action="change" controller="Bookings" arguments="{bookings:bookings,scrapCollector:scrapCollectors}">{scrapCollectors.locality.name}</f:link.action>
+                </f:for>
+
+            </f:else>
+        </f:if>
+
     </f:form>
 </f:section>
 </html>

@@ -17,15 +17,20 @@ Otherwise your changes will be overwritten the next time you save the extension 
     <h1>Single View for Collections</h1>
 
     <f:if condition="{category}">
-        {category}
+        {category.name}
     </f:if>
 
+    <f:if condition="{category}">
+        {category.categoryId}
+    </f:if>
+
+<br/>
     <f:if condition="{subCategory}">
         {subCategory}
     </f:if>
-
+    <br/>
     <f:if condition="{quantity}">
-        {quanitity}
+        {quantity}
     </f:if>
 </f:section>
 </html>

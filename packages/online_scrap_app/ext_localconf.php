@@ -12,7 +12,7 @@ call_user_func(
                 'Locality' => 'list, show, new, create, edit, update, delete',
                 'SubCategory' => 'list, show, new, create, edit, update, delete',
                 'BookingDetails' => 'list, show, new, create, edit, update, delete',
-                'Bookings' => 'list, show, new, create, edit, update, delete',
+                'Bookings' => 'list, show, new, create, edit, update, delete,change',
                 'Category' => 'list, show, new, create, edit, update, delete,selectCategory',
                 'CustomerAddress' => 'list, show, new, create, edit, update, delete',
                 'ScrapCollector' => 'list, show, new, create, edit, update, delete',
@@ -71,7 +71,7 @@ call_user_func(
             'AllBookings',
             [
 
-                'Bookings' => 'list, show, new, create, edit, update, delete',
+                'Bookings' => 'list, show, new, create, edit, update, delete,change',
                 'BookingDetails' => 'list, show, new, create, edit, update, delete',
                 'Category' => 'list, show, new, create, edit, update, delete',
                 'CustomerAddress' => 'list, show, new, create, edit, update, delete',

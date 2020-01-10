@@ -59,14 +59,14 @@ class CollectionsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
     }
 
     /**
-     * action new
+     * action test
      *
      * @param Category $category
-     * @param SubCategory $subCategory
+     * @param string $subCategory
      * @param int $quantity
      * @return void
      */
-    public function testAction(Category $category,SubCategory $subCategory,int $quantity)
+    public function testAction(Category $category,string $subCategory=null,int $quantity)
     {
         $this->view->assign('category',$category);
         $this->view->assign('subcategory',$subCategory);
