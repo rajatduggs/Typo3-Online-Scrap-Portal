@@ -62,15 +62,19 @@ class CollectionsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
      * action test
      *
      * @param Category $category
-     * @param string $subCategory
+     * @param SubCategory $subCategory
      * @param int $quantity
      * @return void
      */
-    public function testAction(Category $category,string $subCategory=null,int $quantity)
+    public function testAction(Category $category, SubCategory $subCategory = null, int $quantity = 1)
     {
-        $this->view->assign('category',$category);
-        $this->view->assign('subcategory',$subCategory);
-        $this->view->assign('quantity',$quantity);
+        // having type hints to models, like Category or SubCategory will
+        // trigger automatically resolving for submitted `uid` (integer) values
+        // @see https://docs.typo3.org/m/typo3/book-extbasefluid/master/en-us/7-Controllers/1-Creating-Controllers-and-Actions.html#flow-pattern-display-a-single-domain-object
+
+        $this->view->assign('category', $category);
+        $this->view->assign('subcategory', $subCategory);
+        $this->view->assign('quantity', $quantity);
 
     }
 
