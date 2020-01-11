@@ -18,30 +18,61 @@ Otherwise your changes will be overwritten the next time you save the extension 
     <f:flashMessages />
 
     <f:for each="{categories}" as="category">
-        <div class="row mt-3">
-            <div class="col-3">
-                <f:link.action action="list" controller="SubCategory" arguments="{subCategory : category.subCategory}">{category.name}</f:link.action>
-            </div>
-            <div class="col-3">
-                <f:for each="{category.subcategory}" as="subcat">
-                    <f:comment>
-                        <!-- @note: use <div> instead of <br> to have "line-breaks" (blocks) -->
-                    </f:comment>
+        <f:comment><!--
+            + <f:form /> is calling correpsonding controller-action pair when sent back to server
+            + values of attribte "name" in form elements (input field, radio element, ...) need
+              to be the same as parameter names of receiving controller-action, e.g.
+
+                  <f:form.hidden name="category" value="{category.uid}" />
+                  <f:form.radio name="subCategory" value="{subcat.uid}" />
+                  <f:form.textfield name="quantity" placeholder="Quantity" size="10" value="0" type="text" maxlength="4"/>
+
+              and
+
+                  public function testAction($category, $subCategory = null, $quantity = 1) { // ignoring types at this point
+
+            + referencing entities works by their identified (e.g. {category.uid} or some cases {category} directly)
+            + using {category.name} is just a scalar value, but cannot be resolved back to its original entity (since not unique)
+
+        --></f:comment>
+        <f:form controller="Collections" action="test" pluginName="CollectionData" pageUid="21">
+            <div class="row mt-3">
+                <div class="col-3">
+                    <f:link.action action="list" controller="SubCategory" arguments="{subCategory : category.subCategory}">{category.name}</f:link.action>
+                </div>
+                <div class="col-3">
+                    <f:form.hidden name="category" value="{category.uid}" />
+                    <f:for each="{category.subcategory}" as="subcat">
+                        <f:comment>
+                            <!-- @note: use <div> instead of <br> to have "line-breaks" (blocks) -->
+                        </f:comment>
+                        <div>
+                            <f:form.radio name="subCategory" value="{subcat.uid}" />
+                            <f:link.action action="show" controller="SubCategory" arguments="{subCategory : subcat}">{subcat.name}</f:link.action>
+                        </div>
+                    </f:for>
+                </div>
+                <div class="col-3">
                     <div>
-                        <f:form.radio name="myRadioButton" value="{subcat.name}" />
-                        <f:link.action action="show"  controller="SubCategory" arguments="{subCategory : subcat}">{subcat.name}</f:link.action>
+                        <f:form.textfield name="quantity" placeholder="Quantity" size="10" value="0" type="text" maxlength="4"/>
                     </div>
-                </f:for>
-            </div>
-            <div class="col-3">
-                <div>
-                    <f:form.textfield name="myTextBox" placeholder="Quantity" size="10" value="0" type="text" maxlength="4"/>
+                    <div>
+                        <f:comment><!--
+                            could be a plain <button> as well, since it does not contain any value assignments,
+                            but is just used to actually send the surrounding <form> element...
+                        --></f:comment>
+                        <f:form.button class="btn btn-success">Add to Cart</f:form.button>
+
+                        <f:comment><!--
+                            Using a link here does not work, since it does not take the dynamically selected value of the radio button
+                            (or as alternative you'd have to create static links for all possible combinations - please, don't do it ;-)
+
+                            <f:link.action  action="test" pluginName="CollectionData"  pageUid="21" controller="Collections" arguments="{category: category,subCategory:'english',quantity:'12'}">Add to Cart</f:link.action>
+                        --></f:comment>
+                    </div>
                 </div>
-                <div>
-                    <f:link.action  action="test" pluginName="CollectionData"  pageUid="21" controller="Collections" arguments="{category: category,subCategory:'english',quantity:'12'}">Add to Cart</f:link.action>
-                </div>
             </div>
-        </div>
+        </f:form>
     </f:for>
 
     <!--<f:link.action action="show" controller="Collections" arguments="{category: category,subCategory:subcat,quantity:myRadioButton}">Add to Cart</f:link.action>-->
