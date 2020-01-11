@@ -17,40 +17,38 @@ Otherwise your changes will be overwritten the next time you save the extension 
 
     <f:flashMessages />
 
-    <table  class="tx_onlinescrapapp" >
-        <tr>
-            <th><f:translate key="tx_onlinescrapapp_domain_model_category.name" /></th>
-            <th> </th>
-            <th><f:>Sub Category</f:></th>
-            <th> </th>
-            <th> </th>
-            <th><f:>Quantity</f:></th>
-        </tr>
-
-
-        <f:for each="{categories}" as="category">
-            <tr>
-                <td><f:link.action action="list"  controller="SubCategory" arguments="{subCategory : category.subCategory}">{category.name}</f:link.action>
-                    <f:for each="{category.subcategory}" as="subcat">
-                        <br/>
-                <th><f:form.radio name="myRadioButton" value="{subcat.name}" /></th>
-                <th>  <f:link.action action="show"  controller="SubCategory" arguments="{subCategory : subcat}">{subcat.name}</f:link.action></th>
-
-
-        </f:for>
-        </td>
-        <th><f:form.textfield name="myTextBox" placeholder="Quantity" size="10" value="0" type="text" maxlength="4"/>
-        <th>    <f:link.action  action="test" pluginName="CollectionData"  pageUid="21" controller="Collections" arguments="{category: category,subCategory:'english',quantity:'12'}">Add to Cart</f:link.action></th>
-        <!--<td><f:link.action action="show" arguments="{category : category}">{category.name}</f:link.action></td>
-        <td><f:link.action action="edit" arguments="{category : category}">Edit</f:link.action></td>
-        <td><f:link.action action="delete" arguments="{category : category}">Delete</f:link.action></td>-->
-        </tr>
-        </f:for>
-
-
-    </table>
+    <f:for each="{categories}" as="category">
+        <div class="row mt-3">
+            <div class="col-3">
+                <f:link.action action="list" controller="SubCategory" arguments="{subCategory : category.subCategory}">{category.name}</f:link.action>
+            </div>
+            <div class="col-3">
+                <f:for each="{category.subcategory}" as="subcat">
+                    <f:comment>
+                        <!-- @note: use <div> instead of <br> to have "line-breaks" (blocks) -->
+                    </f:comment>
+                    <div>
+                        <f:form.radio name="myRadioButton" value="{subcat.name}" />
+                        <f:link.action action="show"  controller="SubCategory" arguments="{subCategory : subcat}">{subcat.name}</f:link.action>
+                    </div>
+                </f:for>
+            </div>
+            <div class="col-3">
+                <div>
+                    <f:form.textfield name="myTextBox" placeholder="Quantity" size="10" value="0" type="text" maxlength="4"/>
+                </div>
+                <div>
+                    <f:link.action  action="test" pluginName="CollectionData"  pageUid="21" controller="Collections" arguments="{category: category,subCategory:'english',quantity:'12'}">Add to Cart</f:link.action>
+                </div>
+            </div>
+        </div>
+    </f:for>
 
     <!--<f:link.action action="show" controller="Collections" arguments="{category: category,subCategory:subcat,quantity:myRadioButton}">Add to Cart</f:link.action>-->
+    <f:comment><!--
+        @todo: View Cart should use a link that points to corresponding
+        target controller, action and maybe pageUid (target page)
+    --></f:comment>
     <f:form.button>View Cart</f:form.button>
 
     <!--<f:link.action action="new">New Category</f:link.action>-->
