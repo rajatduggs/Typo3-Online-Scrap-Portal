@@ -12,31 +12,110 @@ in /Configuration/ExtensionBuilder/settings.yaml:
 
 Otherwise your changes will be overwritten the next time you save the extension in the extension builder
 
-<f:section name="content">
-    <h1>Listing for Locality</h1>
+<f:section name="content" >
+    <h3>Select Locality</h3>
 
     <f:flashMessages />
 
     <table  class="tx_onlinescrapapp" >
-        <tr>
+      <!--  <tr>
             <th><f:translate key="tx_onlinescrapapp_domain_model_locality.name" /></th>
-            <th><f:translate key="tx_onlinescrapapp_domain_model_locality.status" /></th>
-            <th><f:translate key="tx_onlinescrapapp_domain_model_locality.locality_id" /></th>
+         &lt;!&ndash;   <th><f:translate key="tx_onlinescrapapp_domain_model_locality.status" /></th>
+            <th><f:translate key="tx_onlinescrapapp_domain_model_locality.locality_id" /></th>&ndash;&gt;
             <th> </th>
             <th> </th>
-        </tr>
+        </tr>-->
 
+        <div>
+            <ul  class="list-group">
+             <!--   <li class="list-group-item disabled">Select Locality</li>-->
         <f:for each="{localities}" as="locality">
-            <tr>
-                <td><f:link.action action="selectCategory" controller="Category" arguments="{locality:locality}" >{locality.name}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{locality : locality}">{locality.status}</f:link.action></td>
+
+                <li class="list-group-item list-group-item-action"><f:link.action action="selectCategory" controller="Category" arguments="{locality:locality}" >{locality.name}</f:link.action></li>
+         <!--       <td><f:link.action action="show" arguments="{locality : locality}">{locality.status}</f:link.action></td>
                 <td><f:link.action action="show" arguments="{locality : locality}">{locality.localityId}</f:link.action></td>
                 <td><f:link.action action="edit" arguments="{locality : locality}">Edit</f:link.action></td>
-                <td><f:link.action action="delete" arguments="{locality : locality}">Delete</f:link.action></td>
-            </tr>
+                <td><f:link.action action="delete" arguments="{locality : locality}">Delete</f:link.action></td>-->
+
         </f:for>
+            </ul>
+        </div>
     </table>
 
-    <f:link.action action="new">New Locality</f:link.action>
+<div><br/></div>
+    <div></div>
+    <div></div>
+
+    <div class="part2 steps" >
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <h1>Recycle your scrap in 3 simple steps</h1>
+                </div>
+            </div>
+
+            <div class="row">
+              <!--  <f:image src="EXT:online_scrap_app/Resources/Public/images/background2.jpg" width="100%" ></f:image>-->
+                <div class="col-md-3 col-sm-3 col-xs-6 steps-box text-center">
+
+                    <f:image src="EXT:online_scrap_app/Resources/Public/images/1.png" width="200" class="img-responsive" />
+                    <h5>Select what you want to recycle</h5>
+                </div>
+
+                <div class="col-md-3 col-sm-3 col-xs-6 steps-box text-center">
+                    <f:image src="EXT:online_scrap_app/Resources/Public/images/2.png" width="200" class="img-responsive" />
+                    <h5>Schedule Pickup</h5>
+                </div>
+
+                <div class="col-md-3 col-sm-3 col-xs-6 steps-box text-center">
+                    <f:image src="EXT:online_scrap_app/Resources/Public/images/3.png" width="200" class="img-responsive" />
+                    <h5>Get Your Money </h5>
+                </div>
+
+                <div class="col-md-3 col-sm-3 col-xs-6 steps-box text-center">
+                    <f:image src="EXT:online_scrap_app/Resources/Public/images/4.png" width="200" class="img-responsive" />
+                    <h5>Thank You!!</h5>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="why">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <h1>Why Raddiwale ?</h1><br/>
+                </div>
+            </div>
+
+            <div class="row" style="background: #0b2e13;color: white">
+                <div class="col-md-6 col-xs-12 why-box text-left">
+                    <f:image src="EXT:online_scrap_app/Resources/Public/images/best_market_value.png" width="75" class="pull-left"/>
+                    <h5>BEST MARKET PRICE</h5>
+                    <p>Our service providers adhere to strict transparent prices that have been given by us after studying the market carefully.</p>
+                </div>
+
+                <div class="col-md-6 col-xs-12 why-box text-left">
+                    <f:image src="EXT:online_scrap_app/Resources/Public/images/verified.png" width="75" class="pull-left"/>
+                    <h5>BACKGROUND VERIFIED</h5>
+                    <p>All of our service partners go through a mandatory background check by credible agencies to ensure clean records.</p>
+                </div>
+
+                <div class="col-md-6 col-xs-12 why-box text-left">
+                    <f:image src="EXT:online_scrap_app/Resources/Public/images/time.png" width="75" class="pull-left"/>
+                    <h5>RIGHT ON TIME</h5>
+                    <p>We understood time is money, so we commit to provide good service in time.</p>
+                </div>
+
+                <div class="col-md-6 col-xs-12 why-box text-left">
+                    <f:image src="EXT:online_scrap_app/Resources/Public/images/GoGreen.png" width="75" class="pull-left"/>
+                    <h5>GO GREEN GO CLEAN</h5>
+                    <p>With us, you are contributing in saving this planet.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+  <!--  <f:link.action action="new">New Locality</f:link.action>-->
 </f:section>
 </html>

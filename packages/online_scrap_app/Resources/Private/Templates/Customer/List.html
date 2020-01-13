@@ -22,23 +22,21 @@ Otherwise your changes will be overwritten the next time you save the extension 
             <th><f:translate key="tx_onlinescrapapp_domain_model_customer.customer_id" /></th>
             <th><f:translate key="tx_onlinescrapapp_domain_model_customer.name" /></th>
             <th><f:translate key="tx_onlinescrapapp_domain_model_customer.email" /></th>
-            <th><f:translate key="tx_onlinescrapapp_domain_model_customer.password" /></th>
-            <th><f:translate key="tx_onlinescrapapp_domain_model_customer.login_type" /></th>
-            <th><f:translate key="tx_onlinescrapapp_domain_model_customer.status" /></th>
-            <th><f:translate key="tx_onlinescrapapp_domain_model_customer.registration_key" /></th>
+            <th><f:translate key="tx_onlinescrapapp_domain_model_customer.customerAddress.phone" /></th>
             <th> </th>
             <th> </th>
         </tr>
 
         <f:for each="{customers}" as="customer">
             <tr>
-                <td><f:link.action action="show" arguments="{customer : customer}">{customer.customerId}</f:link.action></td>
+                <td> <f:link.action  action="show" pluginName="CustomAddress" controller="CustomAddress" arguments="{customerAddress: customer.customAddress}">Test</f:link.action></td>
+                <td><f:link.action action="show" controller="CustomAddress" arguments="{customer : customer.customerAddress}">{customer.customerId}</f:link.action></td>
                 <td><f:link.action action="show" arguments="{customer : customer}">{customer.name}</f:link.action></td>
                 <td><f:link.action action="show" arguments="{customer : customer}">{customer.email}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{customer : customer}">{customer.password}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{customer : customer}">{customer.loginType}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{customer : customer}">{customer.status}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{customer : customer}">{customer.registrationKey}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{customer : customer}">{customer.customerAddress.phone}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{customer : customer}">{customer.customerAddress.pincode}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{customer : customer}">{customer.customerAddress.city}</f:link.action></td>
+                <td><f:link.action action="show" arguments="{customer : customer}">{customer.customerAddress.locality.name}</f:link.action></td>
                 <td><f:link.action action="edit" arguments="{customer : customer}">Edit</f:link.action></td>
                 <td><f:link.action action="delete" arguments="{customer : customer}">Delete</f:link.action></td>
             </tr>

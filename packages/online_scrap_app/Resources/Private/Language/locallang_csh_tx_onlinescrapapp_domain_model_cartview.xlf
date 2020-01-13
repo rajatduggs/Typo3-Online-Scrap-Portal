@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:online_scrap_app/Resources/Private/Language/locallang_csh" date="2020-01-11T16:00:31Z" product-name="online_scrap_app">
+		<header/>
+		<body>
+			<trans-unit id="category.description" resname="category.description">
+				<source>category</source>
+			</trans-unit>
+			<trans-unit id="sub_category.description" resname="sub_category.description">
+				<source>subCategory</source>
+			</trans-unit>
+			<trans-unit id="quantity.description" resname="quantity.description">
+				<source>quantity</source>
+			</trans-unit>
+			<trans-unit id="locality.description" resname="locality.description">
+				<source>locality</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

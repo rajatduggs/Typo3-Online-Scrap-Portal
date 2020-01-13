@@ -1,7 +1,6 @@
 <?php
 namespace RajatDuggal\OnlineScrapApp\Controller;
 
-
 use RajatDuggal\OnlineScrapApp\Domain\Repository\BookingsRepository;
 use RajatDuggal\OnlineScrapApp\Domain\Repository\ScrapCollectorRepository;
 
@@ -27,8 +26,7 @@ class BookingsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
      * @var BookingsRepository
      */
     protected $bookingsRepository = null;
-
-    protected $scrapCollectorRepository=null;
+    protected $scrapCollectorRepository = null;
 
     /**
      * @param ScrapCollectorRepository $scrapCollectorRepository
@@ -37,7 +35,6 @@ class BookingsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
     {
         $this->scrapCollectorRepository = $scrapCollectorRepository;
     }
-
 
     /**
      * @param BookingsRepository $bookingsRepository
@@ -117,7 +114,6 @@ class BookingsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
     {
 
         //$this->addFlashMessage('The object was updated. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/typo3cms/extensions/extension_builder/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
-
         $bookings->setScrapCollector($scrapCollector);
         $this->bookingsRepository->update($bookings);
         $this->redirect('list');

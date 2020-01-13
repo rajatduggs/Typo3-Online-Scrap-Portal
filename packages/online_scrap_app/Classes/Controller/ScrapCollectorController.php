@@ -1,7 +1,6 @@
 <?php
 namespace RajatDuggal\OnlineScrapApp\Controller;
 
-
 use RajatDuggal\OnlineScrapApp\Domain\Repository\ScrapCollectorRepository;
 
 /***

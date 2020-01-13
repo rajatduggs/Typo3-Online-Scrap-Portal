@@ -17,8 +17,9 @@ call_user_func(
                 'CustomerAddress' => 'list, show, new, create, edit, update, delete',
                 'ScrapCollector' => 'list, show, new, create, edit, update, delete',
                 'Customer' => 'list, show, new, create, edit, update, delete',
-                'Facts' => 'list, show, new, create, edit, update, delete',
+                'CartView' => 'list, show, new, create, edit, update, delete,temp',
                 'Collections' => 'list, show, new, create, edit, update, delete'
+
             ],
             // non-cacheable actions
             [
@@ -30,7 +31,7 @@ call_user_func(
                 'Locality' => 'create, update, delete',
                 'ScrapCollector' => 'create, update, delete',
                 'Customer' => 'create, update, delete',
-                'Facts' => 'create, update, delete',
+                'CartView' => 'list, show, new, create, edit, update, delete',
                 'Collections' => 'create, update, delete'
             ]
         );
@@ -47,7 +48,7 @@ call_user_func(
                 'CustomerAddress' => 'list, show, new, create, edit, update, delete',
                 'ScrapCollector' => 'list, show, new, create, edit, update, delete',
                 'Customer' => 'list, show, new, create, edit, update, delete',
-                'Facts' => 'list, show, new, create, edit, update, delete',
+
 
             ],
             // non-cacheable actions
@@ -60,7 +61,6 @@ call_user_func(
                 'Locality' => 'create, update, delete',
                 'ScrapCollector' => 'create, update, delete',
                 'Customer' => 'create, update, delete',
-                'Facts' => 'create, update, delete',
                 'Collections' => 'create, update, delete'
             ]
         );
@@ -77,7 +77,6 @@ call_user_func(
                 'CustomerAddress' => 'list, show, new, create, edit, update, delete',
                 'ScrapCollector' => 'list, show, new, create, edit, update, delete',
                 'Customer' => 'list, show, new, create, edit, update, delete',
-                'Facts' => 'list, show, new, create, edit, update, delete',
                 'Collections' => 'list, show, new, create, edit, update, delete'
             ],
             // non-cacheable actions
@@ -98,7 +97,6 @@ call_user_func(
                 'Category' => 'list, show, new, create, edit, update, delete',
                 'CustomerAddress' => 'list, show, new, create, edit, update, delete',
                 'Customer' => 'list, show, new, create, edit, update, delete',
-                'Facts' => 'list, show, new, create, edit, update, delete',
                 'Collections' => 'list, show, new, create, edit, update, delete'
             ],
             // non-cacheable actions
@@ -115,8 +113,9 @@ call_user_func(
             'Customer',
             [
 
-                'Customer' => 'list, show, new, create, edit, update, delete',
-                'Facts' => 'list, show, new, create, edit, update, delete',
+                'Customer' => 'list,show, new, create, edit, update, delete',
+                'CustomerAddress' => 'list, show, new, create, edit, update, delete',
+
                 'Collections' => 'list, show, new, create, edit, update, delete'
             ],
             // non-cacheable actions
@@ -134,7 +133,24 @@ call_user_func(
             [
                 'CustomerAddress' => 'list, new, show, create, edit, update, delete',
                 'Customer' => 'list, show, new, create, edit, update, delete',
-                'Facts' => 'list, show, new, create, edit, update, delete',
+                'Collections' => 'list, show, new, create, edit, update, delete'
+            ],
+            // non-cacheable actions
+            [
+                'BookingDetails' => 'create, update, delete',
+                'Bookings' => 'create, update, delete',
+                'ScrapCollector' => 'create, update, delete',
+
+            ]
+        );
+
+        \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+            'RajatDuggal.OnlineScrapApp',
+            'CartView',
+            [
+                'CartView' => 'temp,list, show, new, create, edit, update, delete',
+                'CustomerAddress' => 'list, new, show, create, edit, update, delete',
+                'Customer' => 'list, show, new, create, edit, update, delete',
                 'Collections' => 'list, show, new, create, edit, update, delete'
             ],
             // non-cacheable actions
@@ -204,6 +220,15 @@ call_user_func(
                             tt_content_defValues {
                                 CType = list
                                 list_type = onlinescrapapp_collectiondata
+                            }
+                        }
+                        cartview {   
+                            iconIdentifier = online_scrap_app-plugin-cartview
+                            title =  List of Cart elements
+                            description = Renders Cart data
+                            tt_content_defValues {
+                                CType = list
+                                list_type = onlinescrapapp_cartview
                             }
                         }
                     }

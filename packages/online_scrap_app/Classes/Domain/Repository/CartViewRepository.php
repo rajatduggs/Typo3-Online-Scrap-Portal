@@ -15,6 +15,6 @@ namespace RajatDuggal\OnlineScrapApp\Domain\Repository;
 /**
  * The repository for Facts
  */
-class FactsRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
+class CartViewRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
 }

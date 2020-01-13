@@ -36,6 +36,12 @@ call_user_func(
             'CustomerAddress'
         );
 
+        \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+            'RajatDuggal.OnlineScrapApp',
+            'CartView',
+            'CartView'
+        );
+
 
         \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile('online_scrap_app', 'Configuration/TypoScript', 'Online Scrap App');
 
@@ -63,11 +69,13 @@ call_user_func(
         \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_onlinescrapapp_domain_model_customer', 'EXT:online_scrap_app/Resources/Private/Language/locallang_csh_tx_onlinescrapapp_domain_model_customer.xlf');
         \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_onlinescrapapp_domain_model_customer');
 
-        \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_onlinescrapapp_domain_model_facts', 'EXT:online_scrap_app/Resources/Private/Language/locallang_csh_tx_onlinescrapapp_domain_model_facts.xlf');
-        \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_onlinescrapapp_domain_model_facts');
+        \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_onlinescrapapp_domain_model_cartview`', 'EXT:online_scrap_app/Resources/Private/Language/locallang_csh_tx_onlinescrapapp_domain_model_cartview.xlf');
+        \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_onlinescrapapp_domain_model_cartview');
 
         \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_onlinescrapapp_domain_model_collections', 'EXT:online_scrap_app/Resources/Private/Language/locallang_csh_tx_onlinescrapapp_domain_model_collections.xlf');
         \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_onlinescrapapp_domain_model_collections');
+
+
 
     }
 );

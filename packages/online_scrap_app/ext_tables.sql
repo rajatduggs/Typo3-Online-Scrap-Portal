@@ -110,13 +110,14 @@ CREATE TABLE tx_onlinescrapapp_domain_model_customer (
 );
 
 #
-# Table structure for table 'tx_onlinescrapapp_domain_model_facts'
+# Table structure for table 'tx_onlinescrapapp_domain_model_cartview'
 #
-CREATE TABLE tx_onlinescrapapp_domain_model_facts (
+CREATE TABLE tx_onlinescrapapp_domain_model_cartview (
 
-	info text,
-	rank int(11) DEFAULT '0' NOT NULL,
-	fact_id varchar(255) DEFAULT '' NOT NULL
+	category varchar(255) DEFAULT '' NOT NULL,
+	sub_category varchar(255) DEFAULT '' NOT NULL,
+	quantity int(11) DEFAULT '0' NOT NULL,
+	locality varchar(255) DEFAULT '' NOT NULL
 
 );
 

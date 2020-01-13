@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="EXT:online_scrap_app/Resources/Private/Language/locallang_db" date="2020-01-10T13:50:36Z" product-name="online_scrap_app">
+	<file source-language="en" datatype="plaintext" original="EXT:online_scrap_app/Resources/Private/Language/locallang_db" date="2020-01-11T16:00:31Z" product-name="online_scrap_app">
 		<header/>
 		<body>
 			<trans-unit id="tx_onlinescrapapp_domain_model_subcategory" resname="tx_onlinescrapapp_domain_model_subcategory">
@@ -168,17 +168,20 @@
 			<trans-unit id="tx_onlinescrapapp_domain_model_customer.user" resname="tx_onlinescrapapp_domain_model_customer.user">
 				<source>User</source>
 			</trans-unit>
-			<trans-unit id="tx_onlinescrapapp_domain_model_facts" resname="tx_onlinescrapapp_domain_model_facts">
-				<source>Facts</source>
+			<trans-unit id="tx_onlinescrapapp_domain_model_cartview" resname="tx_onlinescrapapp_domain_model_cartview">
+				<source>Cart View</source>
 			</trans-unit>
-			<trans-unit id="tx_onlinescrapapp_domain_model_facts.info" resname="tx_onlinescrapapp_domain_model_facts.info">
-				<source>Info</source>
+			<trans-unit id="tx_onlinescrapapp_domain_model_cartview.category" resname="tx_onlinescrapapp_domain_model_cartview.category">
+				<source>Category</source>
 			</trans-unit>
-			<trans-unit id="tx_onlinescrapapp_domain_model_facts.rank" resname="tx_onlinescrapapp_domain_model_facts.rank">
-				<source>Rank</source>
+			<trans-unit id="tx_onlinescrapapp_domain_model_cartview.sub_category" resname="tx_onlinescrapapp_domain_model_cartview.sub_category">
+				<source>Sub Category</source>
 			</trans-unit>
-			<trans-unit id="tx_onlinescrapapp_domain_model_facts.fact_id" resname="tx_onlinescrapapp_domain_model_facts.fact_id">
-				<source>Fact Id</source>
+			<trans-unit id="tx_onlinescrapapp_domain_model_cartview.quantity" resname="tx_onlinescrapapp_domain_model_cartview.quantity">
+				<source>Quantity</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_cartview.locality" resname="tx_onlinescrapapp_domain_model_cartview.locality">
+				<source>Locality</source>
 			</trans-unit>
 			<trans-unit id="tx_onlinescrapapp_domain_model_collections" resname="tx_onlinescrapapp_domain_model_collections">
 				<source>Collections</source>

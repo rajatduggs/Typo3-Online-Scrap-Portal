@@ -1,7 +1,6 @@
 <?php
 namespace RajatDuggal\OnlineScrapApp\Controller;
 
-
 use RajatDuggal\OnlineScrapApp\Domain\Model\Category;
 use RajatDuggal\OnlineScrapApp\Domain\Model\SubCategory;
 
@@ -60,7 +59,7 @@ class CollectionsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 
     /**
      * action test
-     *
+     * 
      * @param Category $category
      * @param SubCategory $subCategory
      * @param int $quantity
@@ -68,14 +67,15 @@ class CollectionsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
      */
     public function testAction(Category $category, SubCategory $subCategory = null, int $quantity = 1)
     {
+
         // having type hints to models, like Category or SubCategory will
         // trigger automatically resolving for submitted `uid` (integer) values
         // @see https://docs.typo3.org/m/typo3/book-extbasefluid/master/en-us/7-Controllers/1-Creating-Controllers-and-Actions.html#flow-pattern-display-a-single-domain-object
-
+        $testName = $subCategory->getName();
+        $this->view->assign('testName', $testName);
         $this->view->assign('category', $category);
         $this->view->assign('subcategory', $subCategory);
         $this->view->assign('quantity', $quantity);
-
     }
 
     /**
@@ -127,5 +127,14 @@ class CollectionsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
         $this->addFlashMessage('The object was deleted. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/typo3cms/extensions/extension_builder/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
         $this->collectionsRepository->remove($collections);
         $this->redirect('list');
+    }
+
+    /**
+     * action new
+     * 
+     * @return void
+     */
+    public function newAction()
+    {
     }
 }
