@@ -13,6 +13,8 @@ in /Configuration/ExtensionBuilder/settings.yaml:
 Otherwise your changes will be overwritten the next time you save the extension in the extension builder
 
 <f:section name="content" >
+    <div style="background-image: url('{f:uri.image(src: 'EXT:online_scrap_app/Resources/Public/images/home-bg.jpg')}');color: white">
+
     <h3>Select Locality</h3>
 
     <f:flashMessages />
@@ -31,7 +33,9 @@ Otherwise your changes will be overwritten the next time you save the extension 
              <!--   <li class="list-group-item disabled">Select Locality</li>-->
         <f:for each="{localities}" as="locality">
 
-                <li class="list-group-item list-group-item-action"><f:link.action action="selectCategory" controller="Category" arguments="{locality:locality}" >{locality.name}</f:link.action></li>
+                <li class="list-group-item list-group-item-action">
+                    <f:link.action action="selectCategory" controller="Category"  pluginName="AddToCart" pageUid="22" arguments="{locality:locality}" >{locality.name}</f:link.action>
+                </li>
          <!--       <td><f:link.action action="show" arguments="{locality : locality}">{locality.status}</f:link.action></td>
                 <td><f:link.action action="show" arguments="{locality : locality}">{locality.localityId}</f:link.action></td>
                 <td><f:link.action action="edit" arguments="{locality : locality}">Edit</f:link.action></td>
@@ -42,11 +46,13 @@ Otherwise your changes will be overwritten the next time you save the extension 
         </div>
     </table>
 
+    </div>
+
 <div><br/></div>
     <div></div>
     <div></div>
 
-    <div class="part2 steps" >
+    <div class="part2 steps" style="background-image: url('{f:uri.image(src: 'EXT:online_scrap_app/Resources/Public/images/background2.jpg')}');color: white">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xs-12 text-center">
@@ -81,7 +87,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
         </div>
     </div>
 
-    <div class="why">
+    <div class="why" style="background: #9ec165">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 text-center">
@@ -89,7 +95,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
                 </div>
             </div>
 
-            <div class="row" style="background: #0b2e13;color: white">
+            <div class="row" style="background: #9ec165;color: white">
                 <div class="col-md-6 col-xs-12 why-box text-left">
                     <f:image src="EXT:online_scrap_app/Resources/Public/images/best_market_value.png" width="75" class="pull-left"/>
                     <h5>BEST MARKET PRICE</h5>

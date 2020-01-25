@@ -1,6 +1,7 @@
 <?php
 namespace RajatDuggal\OnlineScrapApp\Controller;
 
+use RajatDuggal\OnlineScrapApp\Domain\Model\Locality;
 
 /***
  *
@@ -45,9 +46,9 @@ class CategoryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
     }
 
     /**
-     * @param \RajatDuggal\OnlineScrapApp\Domain\Model\Locality $locality
+     * @param Locality $locality
      */
-    public function selectCategoryAction(\RajatDuggal\OnlineScrapApp\Domain\Model\Locality $locality)
+    public function selectCategoryAction(Locality $locality)
     {
         $categories = $this->categoryRepository->findAll();
         $this->view->assign('locality', $locality);

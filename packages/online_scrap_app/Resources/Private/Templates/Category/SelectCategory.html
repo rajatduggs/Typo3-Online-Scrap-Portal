@@ -13,10 +13,14 @@ List.html: keep
 Otherwise your changes will be overwritten the next time you save the extension in the extension builder
 
 <f:section name="content">
-    <h1>Select for Category</h1>
+    <h1>Select for Category 1</h1>
 
     <f:flashMessages />
 
+
+    <f:if condition="{locality}">
+        {locality.name}
+    </f:if>
     <f:for each="{categories}" as="category">
         <f:comment><!--
             + <f:form /> is calling correpsonding controller-action pair when sent back to server
@@ -47,6 +51,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
                         </div>
                     </f:for>
                 </div>
+                <f:form.hidden name="locality" value="{locality.uid}" />
                 <div class="col-3">
                     <div>
                         <f:form.textfield name="quantity" placeholder="Quantity" size="10" value="0" type="text" maxlength="4" class="border border-success"/>

@@ -3,6 +3,7 @@ namespace RajatDuggal\OnlineScrapApp\Controller;
 
 use RajatDuggal\OnlineScrapApp\Domain\Model\CartView;
 use RajatDuggal\OnlineScrapApp\Domain\Model\Category;
+use RajatDuggal\OnlineScrapApp\Domain\Model\Locality;
 use RajatDuggal\OnlineScrapApp\Domain\Model\SubCategory;
 use RajatDuggal\OnlineScrapApp\Domain\Repository\CartViewRepository;
 use TYPO3\CMS\Extbase\Mvc\Exception\StopActionException;
@@ -32,7 +33,6 @@ class CartViewController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
      */
     protected $cartViewRepository = null;
 
-
     /**
      * @param CartViewRepository $cartViewRepository
      */
@@ -40,7 +40,6 @@ class CartViewController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
     {
         $this->cartViewRepository = $cartViewRepository;
     }
-
 
     /**
      * action list
@@ -77,11 +76,11 @@ class CartViewController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 
     /**
      * action create
-     *
-     * @param CartView $newCartView
-     * @return void
+     * 
+     * @param \RajatDuggal\OnlineScrapApp\Domain\Model\CartView $newCartView
      * @throws StopActionException
      * @throws UnsupportedRequestTypeException
+     * @return void
      */
     public function createAction(\RajatDuggal\OnlineScrapApp\Domain\Model\CartView $newCartView)
     {
@@ -92,24 +91,50 @@ class CartViewController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 
     /**
      * action temp
-     *
+     * 
      * @param Category $category
      * @param SubCategory $subCategory
      * @param int $quantity
-     * @return void
+     * @param Locality $locality
      * @throws IllegalObjectTypeException
      * @throws StopActionException
      * @throws UnsupportedRequestTypeException
+     * @return void
      */
-    public function tempAction(Category $category, SubCategory $subCategory = null, int $quantity = 1)
+    public function tempAction(Category $category = null, SubCategory $subCategory = null, int $quantity = 1, Locality $locality = null)
     {
-        $newCartView = new CartView();
-        $newCartView->setCategory($category);
-        $newCartView->setSubCategory($subCategory);
-        $newCartView->setQuantity($quantity);
-       // $this->addFlashMessage('The object was created. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/typo3cms/extensions/extension_builder/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
-        $this->cartViewRepository->add($newCartView);
-        $this->redirect('temp');
+
+        // having type hints to models, like Category or SubCategory will
+        // trigger automatically resolving for submitted `uid` (integer) values
+        // @see https://docs.typo3.org/m/typo3/book-extbasefluid/master/en-us/7-Controllers/1-Creating-Controllers-and-Actions.html#flow-pattern-display-a-single-domain-object
+        $cartView = $this->cartViewRepository->findAll();
+        $this->view->assign('locality', $locality);
+        if (null != $category && null != $subCategory && $quantity != null) {
+            $newCartView = new CartView();
+            $newCartView->setCategory($category->getName());
+            $newCartView->setSubCategory($subCategory->getName());
+            $newCartView->setQuantity($quantity);
+            $newCartView->setLocality($locality);
+
+            // $container = new CartContainer();
+            // $container->addCartView($newCartView);
+            $this->cartViewRepository->add($newCartView);
+            $testName = $subCategory->getName();
+            $this->view->assign('testName', $testName);
+            $this->view->assign('category', $category);
+            $this->view->assign('subcategory', $subCategory);
+            $this->view->assign('quantity', $quantity);
+            $this->view->assign('cartView', $cartView);
+            $this->redirect('temp', null, null, ['locality' => $locality]);
+
+            //$this->redirect('selectCategory', 'Category', 'AddToCart', ['locality' => $newCartView->getLocality()],'22');
+        } elseif ($cartView != null) {
+            $cartView = $this->cartViewRepository->findAll();
+            $this->view->assign('cartView', $cartView);
+            $this->view->assign('locality', $locality);
+        }
+
+        // $this->redirect('temp');
     }
 
     /**
@@ -126,13 +151,13 @@ class CartViewController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 
     /**
      * action update
-     *
-     * @param CartView $cartView
-     * @return void
+     * 
+     * @param \RajatDuggal\OnlineScrapApp\Domain\Model\CartView $cartView
      * @throws IllegalObjectTypeException
      * @throws StopActionException
      * @throws UnsupportedRequestTypeException
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\UnknownObjectException
+     * @return void
      */
     public function updateAction(\RajatDuggal\OnlineScrapApp\Domain\Model\CartView $cartView)
     {
@@ -140,6 +165,7 @@ class CartViewController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
         $this->cartViewRepository->update($cartView);
         $this->redirect('list');
     }
+
     /**
      * action delete
      * 
@@ -148,10 +174,11 @@ class CartViewController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
      */
     public function deleteAction(\RajatDuggal\OnlineScrapApp\Domain\Model\CartView $cartView)
     {
-        $this->addFlashMessage('The object was deleted. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/typo3cms/extensions/extension_builder/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
+
+        //$this->addFlashMessage('The object was deleted. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/typo3cms/extensions/extension_builder/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
         $this->cartViewRepository->remove($cartView);
-        $this->redirect('list');
+
+        //$this->redirect('temp');
+        $this->redirect('temp', null, null, ['locality' => $cartView->getLocality()]);
     }
-
-
 }

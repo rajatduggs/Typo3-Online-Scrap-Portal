@@ -1,6 +1,9 @@
 <?php
 namespace RajatDuggal\OnlineScrapApp\Controller;
 
+use OliverHader\SessionService\SubjectResolver;
+use RajatDuggal\OnlineScrapApp\Domain\Model\CartView;
+use RajatDuggal\OnlineScrapApp\Domain\Model\Customer;
 use RajatDuggal\OnlineScrapApp\Domain\Repository\BookingsRepository;
 use RajatDuggal\OnlineScrapApp\Domain\Repository\ScrapCollectorRepository;
 
@@ -69,10 +72,16 @@ class BookingsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
     /**
      * action new
      * 
+     * @param CartView $cartView
      * @return void
      */
-    public function newAction()
+    public function newbookingAction()
     {
+        $customer = SubjectResolver::get()->forClassName(Customer::class)->forPropertyName('user')->resolve();
+        $this->view->assign('customer', $customer);
+        var_dump($customer);
+
+        //$this->redirect('newbooking');
     }
 
     /**
@@ -143,5 +152,14 @@ class BookingsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
         $this->addFlashMessage('The object was deleted. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/typo3cms/extensions/extension_builder/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
         $this->bookingsRepository->remove($bookings);
         $this->redirect('list');
+    }
+
+    /**
+     * action new
+     * 
+     * @return void
+     */
+    public function newAction()
+    {
     }
 }

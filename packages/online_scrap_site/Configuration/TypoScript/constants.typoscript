@@ -9,7 +9,7 @@
 ############
 page {
     logo {
-        file = EXT:online_scrap_site/Resources/Public/Images/logo.svg
+        file = EXT:online_scrap_site/Resources/Public/Images/logo-small.png
         fileInverted = EXT:online_scrap_site/Resources/Public/Images/logo-inverted.svg
         height = 52
         width = 192

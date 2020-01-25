@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="EXT:online_scrap_app/Resources/Private/Language/locallang_csh" date="2020-01-11T14:01:05Z" product-name="online_scrap_app">
+	<file source-language="en" datatype="plaintext" original="EXT:online_scrap_app/Resources/Private/Language/locallang_csh" date="2020-01-24T11:59:01Z" product-name="online_scrap_app">
 		<header/>
 		<body>
-			<trans-unit id="info.description" resname="info.description">
-				<source>info</source>
+			<trans-unit id="text.description" resname="text.description">
+				<source>text</source>
 			</trans-unit>
-			<trans-unit id="rank.description" resname="rank.description">
-				<source>rank</source>
-			</trans-unit>
-			<trans-unit id="fact_id.description" resname="fact_id.description">
-				<source>factId</source>
+			<trans-unit id="ranking.description" resname="ranking.description">
+				<source>ranking</source>
 			</trans-unit>
 		</body>
 	</file>

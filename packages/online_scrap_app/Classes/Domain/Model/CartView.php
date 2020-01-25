@@ -47,7 +47,7 @@ class CartView extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * 
      * @var string
      */
-    protected $locality = '';
+    protected $locality = null;
 
     /**
      * Returns the category
@@ -94,7 +94,7 @@ class CartView extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Returns the locality
      * 
-     * @return string $locality
+     * @return \RajatDuggal\OnlineScrapApp\Domain\Model\Locality $locality
      */
     public function getLocality()
     {
@@ -104,10 +104,10 @@ class CartView extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the locality
      * 
-     * @param string $locality
+     * @param \RajatDuggal\OnlineScrapApp\Domain\Model\Locality $locality
      * @return void
      */
-    public function setLocality($locality)
+    public function setLocality(\RajatDuggal\OnlineScrapApp\Domain\Model\Locality $locality)
     {
         $this->locality = $locality;
     }

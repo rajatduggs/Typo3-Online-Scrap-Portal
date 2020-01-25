@@ -158,10 +158,55 @@ call_user_func(
                 'BookingDetails' => 'create, update, delete',
                 'Bookings' => 'create, update, delete',
                 'ScrapCollector' => 'create, update, delete',
+                'CartView' => 'temp,list, show, new, create, edit, update, delete',
 
             ]
         );
 
+        \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+            'RajatDuggal.OnlineScrapApp',
+            'AddToCart',
+            [
+                'Category' => 'selectCategory,list, show, new, create, edit, update, delete',
+                'Locality' => 'list, show, new, create, edit, update, delete',
+                'SubCategory' => 'list, show, new, create, edit, update, delete',
+                'BookingDetails' => 'list, show, new, create, edit, update, delete',
+                'Bookings' => 'list, show, new, create, edit, update, delete,change',
+
+                'CustomerAddress' => 'list, show, new, create, edit, update, delete',
+                'ScrapCollector' => 'list, show, new, create, edit, update, delete',
+                'Customer' => 'list, show, new, create, edit, update, delete',
+                'CartView' => 'list, show, new, create, edit, update, delete,temp',
+                'Collections' => 'list, show, new, create, edit, update, delete'
+
+            ],
+            // non-cacheable actions
+            [
+
+            ]
+        );
+
+        \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+            'RajatDuggal.OnlineScrapApp',
+            'CustomerBooking',
+            [
+
+                'Bookings' => 'newbooking,list, show, new, create, edit, update, delete,change',
+                'BookingDetails' => 'list, show, new, create, edit, update, delete',
+                'Category' => 'list, show, new, create, edit, update, delete',
+                'CustomerAddress' => 'list, show, new, create, edit, update, delete',
+                'ScrapCollector' => 'list, show, new, create, edit, update, delete',
+                'Customer' => 'list, show, new, create, edit, update, delete',
+                'Collections' => 'list, show, new, create, edit, update, delete'
+            ],
+            // non-cacheable actions
+            [
+                'BookingDetails' => 'create, update, delete',
+                'Bookings' => 'create, update, delete',
+                'ScrapCollector' => 'create, update, delete',
+
+            ]
+        );
 
         // wizards
         \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig(
@@ -231,6 +276,26 @@ call_user_func(
                                 list_type = onlinescrapapp_cartview
                             }
                         }
+                        
+                        addtocart {   
+                            iconIdentifier = online_scrap_app-plugin-addtocart
+                            title =  Select Cart Elements
+                            description = Add to Cart
+                            tt_content_defValues {
+                                CType = list
+                                list_type = onlinescrapapp_addtocart
+                            }
+                        }
+                         customerbooking {   
+                            iconIdentifier = online_scrap_app-plugin-customerbooking
+                            title =  New Customer Booking
+                            description = New Customer Booking
+                            tt_content_defValues {
+                                CType = list
+                                list_type = onlinescrapapp_customerbooking
+                            }
+                        }
+                        
                     }
                     show = *
                 }
