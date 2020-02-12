@@ -25,14 +25,14 @@ CREATE TABLE tx_onlinescrapapp_domain_model_bookingdetails (
 CREATE TABLE tx_onlinescrapapp_domain_model_bookings (
 
 	customer_id varchar(255) DEFAULT '' NOT NULL,
-	booking_time date DEFAULT NULL,
-	date_time datetime DEFAULT NULL,
+	booking_time varchar(255) DEFAULT '' NOT NULL,
 	visit_id varchar(255) DEFAULT '' NOT NULL,
 	order_summary varchar(255) DEFAULT '' NOT NULL,
 	comments varchar(255) DEFAULT '' NOT NULL,
 	status varchar(255) DEFAULT '' NOT NULL,
+	booking_id varchar(255) DEFAULT '' NOT NULL,
 	scrap_collector int(11) unsigned DEFAULT '0',
-	booking_details int(11) unsigned DEFAULT '0',
+	booking_details int(11) unsigned DEFAULT '0' NOT NULL,
 	locality int(11) unsigned DEFAULT '0'
 
 );
@@ -114,10 +114,10 @@ CREATE TABLE tx_onlinescrapapp_domain_model_customer (
 #
 CREATE TABLE tx_onlinescrapapp_domain_model_cartview (
 
-	category varchar(255) DEFAULT '' NOT NULL,
-	sub_category varchar(255) DEFAULT '' NOT NULL,
 	quantity int(11) DEFAULT '0' NOT NULL,
-	locality varchar(255) DEFAULT '' NOT NULL
+	category int(11) unsigned DEFAULT '0' NOT NULL,
+	subcategory int(11) unsigned DEFAULT '0' NOT NULL,
+	locality int(11) unsigned DEFAULT '0' NOT NULL
 
 );
 
@@ -128,6 +128,7 @@ CREATE TABLE tx_onlinescrapapp_domain_model_collections (
 
 	quantity int(11) DEFAULT '0' NOT NULL,
 	amount varchar(255) DEFAULT '' NOT NULL,
+	customer_id varchar(255) DEFAULT '' NOT NULL,
 	bookings int(11) unsigned DEFAULT '0' NOT NULL,
 	category int(11) unsigned DEFAULT '0' NOT NULL,
 	customer int(11) unsigned DEFAULT '0' NOT NULL,
@@ -150,9 +151,65 @@ CREATE TABLE tx_onlinescrapapp_bookingdetails_category_mm (
 );
 
 #
+# Table structure for table 'tx_onlinescrapapp_bookings_bookingdetails_mm'
+#
+CREATE TABLE tx_onlinescrapapp_bookings_bookingdetails_mm (
+	uid_local int(11) unsigned DEFAULT '0' NOT NULL,
+	uid_foreign int(11) unsigned DEFAULT '0' NOT NULL,
+	sorting int(11) unsigned DEFAULT '0' NOT NULL,
+	sorting_foreign int(11) unsigned DEFAULT '0' NOT NULL,
+
+	PRIMARY KEY (uid_local,uid_foreign),
+	KEY uid_local (uid_local),
+	KEY uid_foreign (uid_foreign)
+);
+
+#
 # Table structure for table 'tx_onlinescrapapp_customer_customeraddress_mm'
 #
 CREATE TABLE tx_onlinescrapapp_customer_customeraddress_mm (
+	uid_local int(11) unsigned DEFAULT '0' NOT NULL,
+	uid_foreign int(11) unsigned DEFAULT '0' NOT NULL,
+	sorting int(11) unsigned DEFAULT '0' NOT NULL,
+	sorting_foreign int(11) unsigned DEFAULT '0' NOT NULL,
+
+	PRIMARY KEY (uid_local,uid_foreign),
+	KEY uid_local (uid_local),
+	KEY uid_foreign (uid_foreign)
+);
+
+#
+# Table structure for table 'tx_onlinescrapapp_cartview_category_mm'
+#
+CREATE TABLE tx_onlinescrapapp_cartview_category_mm (
+	uid_local int(11) unsigned DEFAULT '0' NOT NULL,
+	uid_foreign int(11) unsigned DEFAULT '0' NOT NULL,
+	sorting int(11) unsigned DEFAULT '0' NOT NULL,
+	sorting_foreign int(11) unsigned DEFAULT '0' NOT NULL,
+
+	PRIMARY KEY (uid_local,uid_foreign),
+	KEY uid_local (uid_local),
+	KEY uid_foreign (uid_foreign)
+);
+
+#
+# Table structure for table 'tx_onlinescrapapp_cartview_subcategory_mm'
+#
+CREATE TABLE tx_onlinescrapapp_cartview_subcategory_mm (
+	uid_local int(11) unsigned DEFAULT '0' NOT NULL,
+	uid_foreign int(11) unsigned DEFAULT '0' NOT NULL,
+	sorting int(11) unsigned DEFAULT '0' NOT NULL,
+	sorting_foreign int(11) unsigned DEFAULT '0' NOT NULL,
+
+	PRIMARY KEY (uid_local,uid_foreign),
+	KEY uid_local (uid_local),
+	KEY uid_foreign (uid_foreign)
+);
+
+#
+# Table structure for table 'tx_onlinescrapapp_cartview_locality_mm'
+#
+CREATE TABLE tx_onlinescrapapp_cartview_locality_mm (
 	uid_local int(11) unsigned DEFAULT '0' NOT NULL,
 	uid_foreign int(11) unsigned DEFAULT '0' NOT NULL,
 	sorting int(11) unsigned DEFAULT '0' NOT NULL,

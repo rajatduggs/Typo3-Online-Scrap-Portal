@@ -13,7 +13,9 @@ in /Configuration/ExtensionBuilder/settings.yaml:
 Otherwise your changes will be overwritten the next time you save the extension in the extension builder
 
 <f:section name="content">
-    <h1>Listing for Bookings</h1>
+
+    <f:debug>{_all}</f:debug>
+    <h1>Listing for Customer Bookings</h1>
 
     <f:flashMessages />
 
@@ -46,7 +48,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
 
                 <td><f:link.action action="show" arguments="{bookings : bookings}">{bookings.locality.name}</f:link.action></td>
 
-                <td><f:link.action action="show" pluginName="Onlinescrapfrontend"  pageUid="18" controller="scrapCollector" arguments="{scrapCollector : bookings.scrapCollector}">{bookings.scrapCollector.name}</f:link.action></td>
+                <td><f:link.action action="show" pluginName="Onlinescrapfrontend"  pageUid="{settings.pages.scrapcollector}"  controller="scrapCollector" arguments="{scrapCollector : bookings.scrapCollector}">{bookings.scrapCollector.name}</f:link.action></td>
                 <td><f:link.action action="edit" arguments="{bookings : bookings}">Edit</f:link.action></td>
                 <td><f:link.action action="delete" arguments="{bookings : bookings}">Delete</f:link.action></td>
             </tr>

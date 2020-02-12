@@ -175,7 +175,7 @@
                             "propertyDescription": "",
                             "propertyIsExcludeField": true,
                             "propertyIsL10nModeExclude": false,
-                            "propertyIsRequired": true,
+                            "propertyIsRequired": false,
                             "propertyName": "customerId",
                             "propertyType": "String",
                             "uid": "1177099532883"
@@ -188,19 +188,8 @@
                             "propertyIsL10nModeExclude": false,
                             "propertyIsRequired": true,
                             "propertyName": "bookingTime",
-                            "propertyType": "NativeDate",
+                            "propertyType": "String",
                             "uid": "467131973064"
-                        },
-                        {
-                            "allowedFileTypes": "",
-                            "maxItems": "1",
-                            "propertyDescription": "",
-                            "propertyIsExcludeField": true,
-                            "propertyIsL10nModeExclude": false,
-                            "propertyIsRequired": true,
-                            "propertyName": "dateTime",
-                            "propertyType": "NativeDateTime",
-                            "uid": "983564429280"
                         },
                         {
                             "allowedFileTypes": "",
@@ -241,10 +230,21 @@
                             "propertyDescription": "",
                             "propertyIsExcludeField": true,
                             "propertyIsL10nModeExclude": false,
-                            "propertyIsRequired": true,
+                            "propertyIsRequired": false,
                             "propertyName": "status",
                             "propertyType": "String",
                             "uid": "441912585633"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "bookingId",
+                            "propertyType": "String",
+                            "uid": "1325905162111"
                         }
                     ]
                 },
@@ -267,9 +267,9 @@
                             "propertyIsExcludeField": true,
                             "relationDescription": "",
                             "relationName": "bookingDetails",
-                            "relationType": "zeroToOne",
+                            "relationType": "manyToMany",
                             "relationWire": "[wired]",
-                            "renderType": "selectSingle",
+                            "renderType": "selectMultipleSideBySide",
                             "uid": "889872510053"
                         },
                         {
@@ -846,8 +846,8 @@
         {
             "config": {
                 "position": [
-                    918,
-                    17
+                    909,
+                    34
                 ]
             },
             "name": "New Model Object",
@@ -883,47 +883,48 @@
                             "propertyIsExcludeField": true,
                             "propertyIsL10nModeExclude": false,
                             "propertyIsRequired": true,
-                            "propertyName": "category",
-                            "propertyType": "String",
-                            "uid": "1296972975739"
-                        },
-                        {
-                            "allowedFileTypes": "",
-                            "maxItems": "1",
-                            "propertyDescription": "",
-                            "propertyIsExcludeField": true,
-                            "propertyIsL10nModeExclude": false,
-                            "propertyIsRequired": true,
-                            "propertyName": "subCategory",
-                            "propertyType": "String",
-                            "uid": "557518340978"
-                        },
-                        {
-                            "allowedFileTypes": "",
-                            "maxItems": "1",
-                            "propertyDescription": "",
-                            "propertyIsExcludeField": true,
-                            "propertyIsL10nModeExclude": false,
-                            "propertyIsRequired": true,
                             "propertyName": "quantity",
                             "propertyType": "Integer",
                             "uid": "387433754147"
-                        },
-                        {
-                            "allowedFileTypes": "",
-                            "maxItems": "1",
-                            "propertyDescription": "",
-                            "propertyIsExcludeField": true,
-                            "propertyIsL10nModeExclude": false,
-                            "propertyIsRequired": false,
-                            "propertyName": "locality",
-                            "propertyType": "String",
-                            "uid": "1310825546571"
                         }
                     ]
                 },
                 "relationGroup": {
-                    "relations": []
+                    "relations": [
+                        {
+                            "foreignRelationClass": "",
+                            "lazyLoading": false,
+                            "propertyIsExcludeField": true,
+                            "relationDescription": "",
+                            "relationName": "category",
+                            "relationType": "manyToMany",
+                            "relationWire": "[wired]",
+                            "renderType": "selectMultipleSideBySide",
+                            "uid": "867411469308"
+                        },
+                        {
+                            "foreignRelationClass": "",
+                            "lazyLoading": false,
+                            "propertyIsExcludeField": true,
+                            "relationDescription": "",
+                            "relationName": "subcategory",
+                            "relationType": "manyToMany",
+                            "relationWire": "[wired]",
+                            "renderType": "selectMultipleSideBySide",
+                            "uid": "1195535848390"
+                        },
+                        {
+                            "foreignRelationClass": "",
+                            "lazyLoading": false,
+                            "propertyIsExcludeField": true,
+                            "relationDescription": "",
+                            "relationName": "locality",
+                            "relationType": "manyToMany",
+                            "relationWire": "[wired]",
+                            "renderType": "selectMultipleSideBySide",
+                            "uid": "44177584056"
+                        }
+                    ]
                 }
             }
         },
@@ -981,6 +982,17 @@
                             "propertyName": "amount",
                             "propertyType": "String",
                             "uid": "615574986656"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "customerId",
+                            "propertyType": "String",
+                            "uid": "1199665350314"
                         }
                     ]
                 },
@@ -1220,11 +1232,47 @@
                 "terminal": "SOURCES",
                 "uid": "209617005715"
             }
+        },
+        {
+            "src": {
+                "moduleId": 8,
+                "terminal": "relationWire_2",
+                "uid": "44177584056"
+            },
+            "tgt": {
+                "moduleId": 5,
+                "terminal": "SOURCES",
+                "uid": "610858065155"
+            }
+        },
+        {
+            "src": {
+                "moduleId": 8,
+                "terminal": "relationWire_0",
+                "uid": "867411469308"
+            },
+            "tgt": {
+                "moduleId": 3,
+                "terminal": "SOURCES",
+                "uid": "926753494847"
+            }
+        },
+        {
+            "src": {
+                "moduleId": 8,
+                "terminal": "relationWire_1",
+                "uid": "1195535848390"
+            },
+            "tgt": {
+                "moduleId": 0,
+                "terminal": "SOURCES",
+                "uid": "209617005715"
+            }
         }
     ],
     "storagePath": "\/var\/www\/html\/packages\/",
     "log": {
-        "last_modified": "2020-01-11 04:00",
+        "last_modified": "2020-02-12 01:46",
         "extension_builder_version": "9.10.2",
         "be_user": " (1)"
     }

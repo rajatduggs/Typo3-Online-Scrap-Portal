@@ -16,14 +16,14 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => 'customer_id,visit_id,order_summary,comments,status',
+        'searchFields' => 'customer_id,booking_time,visit_id,order_summary,comments,status,booking_id',
         'iconfile' => 'EXT:online_scrap_app/Resources/Public/Icons/tx_onlinescrapapp_domain_model_bookings.gif'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, customer_id, booking_time, date_time, visit_id, order_summary, comments, status, scrap_collector, booking_details, locality',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, customer_id, booking_time, visit_id, order_summary, comments, status, booking_id, scrap_collector, booking_details, locality',
     ],
     'types' => [
-        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, customer_id, booking_time, date_time, visit_id, order_summary, comments, status, scrap_collector, booking_details, locality, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
+        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, customer_id, booking_time, visit_id, order_summary, comments, status, booking_id, scrap_collector, booking_details, locality, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -122,31 +122,16 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim,required'
+                'eval' => 'trim'
             ],
         ],
         'booking_time' => [
             'exclude' => true,
             'label' => 'LLL:EXT:online_scrap_app/Resources/Private/Language/locallang_db.xlf:tx_onlinescrapapp_domain_model_bookings.booking_time',
             'config' => [
-                'dbType' => 'date',
                 'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'size' => 7,
-                'eval' => 'date,required',
-                'default' => null,
-            ],
-        ],
-        'date_time' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:online_scrap_app/Resources/Private/Language/locallang_db.xlf:tx_onlinescrapapp_domain_model_bookings.date_time',
-            'config' => [
-                'dbType' => 'datetime',
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'size' => 12,
-                'eval' => 'datetime,required',
-                'default' => null,
+                'size' => 30,
+                'eval' => 'trim,required'
             ],
         ],
         'visit_id' => [
@@ -182,7 +167,16 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim,required'
+                'eval' => 'trim'
+            ],
+        ],
+        'booking_id' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:online_scrap_app/Resources/Private/Language/locallang_db.xlf:tx_onlinescrapapp_domain_model_bookings.booking_id',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim'
             ],
         ],
         'scrap_collector' => [
@@ -203,13 +197,26 @@ return [
             'label' => 'LLL:EXT:online_scrap_app/Resources/Private/Language/locallang_db.xlf:tx_onlinescrapapp_domain_model_bookings.booking_details',
             'config' => [
                 'type' => 'select',
-                'renderType' => 'selectSingle',
+                'renderType' => 'selectMultipleSideBySide',
                 'foreign_table' => 'tx_onlinescrapapp_domain_model_bookingdetails',
-                'default' => 0,
-                'minitems' => 0,
-                'maxitems' => 1,
+                'MM' => 'tx_onlinescrapapp_bookings_bookingdetails_mm',
+                'size' => 10,
+                'autoSizeMax' => 30,
+                'maxitems' => 9999,
+                'multiple' => 0,
+                'fieldControl' => [
+                    'editPopup' => [
+                        'disabled' => false,
+                    ],
+                    'addRecord' => [
+                        'disabled' => false,
+                    ],
+                    'listModule' => [
+                        'disabled' => true,
+                    ],
+                ],
             ],
-
+            
         ],
         'locality' => [
             'exclude' => true,

@@ -2,9 +2,13 @@
 namespace RajatDuggal\OnlineScrapApp\Controller;
 
 use OliverHader\SessionService\SubjectResolver;
+use RajatDuggal\OnlineScrapApp\Domain\Model\BookingDetails;
+use RajatDuggal\OnlineScrapApp\Domain\Model\Bookings;
 use RajatDuggal\OnlineScrapApp\Domain\Model\CartView;
+use RajatDuggal\OnlineScrapApp\Domain\Model\Category;
 use RajatDuggal\OnlineScrapApp\Domain\Model\Customer;
 use RajatDuggal\OnlineScrapApp\Domain\Repository\BookingsRepository;
+use RajatDuggal\OnlineScrapApp\Domain\Repository\CartViewRepository;
 use RajatDuggal\OnlineScrapApp\Domain\Repository\ScrapCollectorRepository;
 
 /***
@@ -24,12 +28,42 @@ class BookingsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 {
 
     /**
+     * cartViewRepository
+     * 
+     * @var CartViewRepository
+     */
+    protected $cartViewRepository = null;
+
+    /**
      * bookingsRepository
      * 
      * @var BookingsRepository
      */
     protected $bookingsRepository = null;
+
+    /**
+     * bookingDetailsRepository
+     * 
+     * @var \RajatDuggal\OnlineScrapApp\Domain\Repository\BookingDetailsRepository
+     */
+    protected $bookingDetailsRepository = null;
     protected $scrapCollectorRepository = null;
+
+    /**
+     * @param CartViewRepository $cartViewRepository
+     */
+    public function injectCartViewRepository(CartViewRepository $cartViewRepository)
+    {
+        $this->cartViewRepository = $cartViewRepository;
+    }
+
+    /**
+     * @param \RajatDuggal\OnlineScrapApp\Domain\Repository\BookingDetailsRepository $bookingDetailsRepository
+     */
+    public function injectBookingDetailsRepository(\RajatDuggal\OnlineScrapApp\Domain\Repository\BookingDetailsRepository $bookingDetailsRepository)
+    {
+        $this->bookingDetailsRepository = $bookingDetailsRepository;
+    }
 
     /**
      * @param ScrapCollectorRepository $scrapCollectorRepository
@@ -59,38 +93,104 @@ class BookingsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
     }
 
     /**
-     * action show
+     * action list
      * 
-     * @param \RajatDuggal\OnlineScrapApp\Domain\Model\Bookings $bookings
      * @return void
      */
-    public function showAction(\RajatDuggal\OnlineScrapApp\Domain\Model\Bookings $bookings)
+    public function customerBookingListAction()
+    {
+        $customer = SubjectResolver::get()->forClassName(Customer::class)->forPropertyName('user')->resolve();
+        $this->view->assign('customer', $customer);
+        $bookings = $this->bookingsRepository->findByCustomerId($customer->getCustomerId());
+        $this->view->assign('bookings', $bookings);
+
+        //$this->redirect('customerBookingList');
+    }
+
+    /**
+     * action show
+     * 
+     * @param Bookings $bookings
+     * @return void
+     */
+    public function showAction(Bookings $bookings)
     {
         $this->view->assign('bookings', $bookings);
     }
 
     /**
-     * action new
+     * action newBooking
      * 
-     * @param CartView $cartView
      * @return void
      */
     public function newbookingAction()
     {
-        $customer = SubjectResolver::get()->forClassName(Customer::class)->forPropertyName('user')->resolve();
-        $this->view->assign('customer', $customer);
-        var_dump($customer);
 
+        /* initializeAction();
+           $customer = SubjectResolver::get()->forClassName(Customer::class)->forPropertyName('user')->resolve();
+           $this->view->assign('customer', $customer);*/
         //$this->redirect('newbooking');
+    }
+
+    /**
+     * action createBooking
+     * 
+     * @param Bookings $newBookings
+     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
+     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
+     * @return void
+     */
+    public function createBookingAction(Bookings $newBookings)
+    {
+        $locality = null;
+        $customer = SubjectResolver::get()->forClassName(Customer::class)->forPropertyName('user')->resolve();
+
+        $cartView = $this->cartViewRepository->findAll();
+
+        //changing to date format from dd/mm/yyyy format to y-m-d
+        $time = strtotime($newBookings->getBookingTime());
+        $newFormat = date('Y-m-d', $time);
+        $newBookings->setBookingTime($newFormat);
+
+        // random booking id generation
+        $random=$this->genRandomString();
+        $customerId=$customer->getCustomerId();
+        $bookingId = $customerId . $random ;
+        $bookingId=trim($bookingId);
+        var_dump($bookingId);
+
+        // filling booking details with view cart parameter
+        $newbookingDetails = new BookingDetails();
+        foreach ($cartView as $cart) {
+            $category= new Category();
+            $category=$cart->getCategory();
+            $newbookingDetails->addCategory($category);
+            $newbookingDetails->setQuantity($cart->getQuantity());
+            $newbookingDetails->setBookingId($bookingId);
+            $this->bookingDetailsRepository->add($newbookingDetails);
+            $locality = $cart->getLocality();
+
+            $newbookingDetails = null;
+        }
+
+        //adding missing parameters in newBooking object
+        $newBookings->setStatus("NEW");
+        $newBookings->setLocality($locality);
+        $newBookings->setBookingId($bookingId);
+        $this->bookingsRepository->add($newBookings);
+        $this->view->assign('customer', $customer);
+
+         $this->redirect('customBookingList', 'Bookings', 'CustomerBookingList',[],'17');
+        $this->redirect('list');
     }
 
     /**
      * action create
      * 
-     * @param \RajatDuggal\OnlineScrapApp\Domain\Model\Bookings $newBookings
+     * @param Bookings $newBookings
      * @return void
      */
-    public function createAction(\RajatDuggal\OnlineScrapApp\Domain\Model\Bookings $newBookings)
+    public function createAction(Bookings $newBookings)
     {
         $this->addFlashMessage('The object was created. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/typo3cms/extensions/extension_builder/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
         $this->bookingsRepository->add($newBookings);
@@ -100,11 +200,11 @@ class BookingsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
     /**
      * action edit
      * 
-     * @param \RajatDuggal\OnlineScrapApp\Domain\Model\Bookings $bookings
+     * @param Bookings $bookings
      * @ignorevalidation $bookings
      * @return void
      */
-    public function editAction(\RajatDuggal\OnlineScrapApp\Domain\Model\Bookings $bookings)
+    public function editAction(Bookings $bookings)
     {
         $scrapCollectors = $this->scrapCollectorRepository->findAll();
         $this->view->assign('scrapCollectors', $scrapCollectors);
@@ -112,14 +212,14 @@ class BookingsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
     }
 
     /**
-     * @param \RajatDuggal\OnlineScrapApp\Domain\Model\Bookings $bookings
+     * @param Bookings $bookings
      * @param \RajatDuggal\OnlineScrapApp\Domain\Model\ScrapCollector $scrapCollector
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\UnknownObjectException
      */
-    public function changeAction(\RajatDuggal\OnlineScrapApp\Domain\Model\Bookings $bookings, \RajatDuggal\OnlineScrapApp\Domain\Model\ScrapCollector $scrapCollector)
+    public function changeAction(Bookings $bookings, \RajatDuggal\OnlineScrapApp\Domain\Model\ScrapCollector $scrapCollector)
     {
 
         //$this->addFlashMessage('The object was updated. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/typo3cms/extensions/extension_builder/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
@@ -131,10 +231,10 @@ class BookingsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
     /**
      * action update
      * 
-     * @param \RajatDuggal\OnlineScrapApp\Domain\Model\Bookings $bookings
+     * @param Bookings $bookings
      * @return void
      */
-    public function updateAction(\RajatDuggal\OnlineScrapApp\Domain\Model\Bookings $bookings)
+    public function updateAction(Bookings $bookings)
     {
         $this->addFlashMessage('The object was updated. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/typo3cms/extensions/extension_builder/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
         $this->bookingsRepository->update($bookings);
@@ -144,10 +244,10 @@ class BookingsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
     /**
      * action delete
      * 
-     * @param \RajatDuggal\OnlineScrapApp\Domain\Model\Bookings $bookings
+     * @param Bookings $bookings
      * @return void
      */
-    public function deleteAction(\RajatDuggal\OnlineScrapApp\Domain\Model\Bookings $bookings)
+    public function deleteAction(Bookings $bookings)
     {
         $this->addFlashMessage('The object was deleted. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/typo3cms/extensions/extension_builder/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
         $this->bookingsRepository->remove($bookings);
@@ -161,5 +261,12 @@ class BookingsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
      */
     public function newAction()
     {
+    }
+
+    public function genRandomString($length = 10)
+    {
+        if($length < 1)
+            $length = 1;
+        return substr(preg_replace("/[^A-Za-z0-9]/", '', base64_encode(openssl_random_pseudo_bytes($length * 2))), 0, $length);
     }
 }

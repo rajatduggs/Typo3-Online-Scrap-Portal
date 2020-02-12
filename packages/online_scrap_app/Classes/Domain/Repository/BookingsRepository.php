@@ -1,6 +1,7 @@
 <?php
 namespace RajatDuggal\OnlineScrapApp\Domain\Repository;
 
+use TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException;
 
 /***
  *
@@ -17,4 +18,21 @@ namespace RajatDuggal\OnlineScrapApp\Domain\Repository;
  */
 class BookingsRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
+
+    /*
+     * @param string $customerId
+     * @return Bookings
+     */
+    /**
+     * @param string $customerId
+     */
+    public function findByCustomerId(string $customerId)
+    {
+        $query = $this->createQuery();
+        try {
+            $query->matching($query->equals('customerId', $customerId));
+        } catch (InvalidQueryException $e) {
+        }
+        return $query->execute();
+    }
 }

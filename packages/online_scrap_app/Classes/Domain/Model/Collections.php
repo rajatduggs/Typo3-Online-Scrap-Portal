@@ -42,6 +42,13 @@ class Collections extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $amount = '';
 
     /**
+     * customerId
+     * 
+     * @var string
+     */
+    protected $customerId = '';
+
+    /**
      * bookings
      * 
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RajatDuggal\OnlineScrapApp\Domain\Model\Bookings>
@@ -350,5 +357,26 @@ class Collections extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setSubcategory(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $subcategory)
     {
         $this->subcategory = $subcategory;
+    }
+
+    /**
+     * Returns the customerId
+     * 
+     * @return string $customerId
+     */
+    public function getCustomerId()
+    {
+        return $this->customerId;
+    }
+
+    /**
+     * Sets the customerId
+     * 
+     * @param string $customerId
+     * @return void
+     */
+    public function setCustomerId($customerId)
+    {
+        $this->customerId = $customerId;
     }
 }

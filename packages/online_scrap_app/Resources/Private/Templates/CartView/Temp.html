@@ -1,80 +1,69 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
 <f:layout name="Default" />
 
-This template displays a NEW form for the current domain object.
-
-If you modify this template, do not forget to change the overwrite settings
-in /Configuration/ExtensionBuilder/settings.yaml:
-  Resources:
-    Private:
-      Templates:
-        New.html: keep
-
-Otherwise your changes will be overwritten the next time you save the extension in the extension builder
-
 <f:section name="content">
-    <h1>Single View Temp Cart View</h1>
-
-    <f:debug>{_all}</f:debug>9
-
-    <f:if condition="{category}">
-        {category.name}
-    </f:if>
-
-    <br/>
-    <f:if condition="{testName}">
-        {testName}
-    </f:if>
-    <br/>
-    <f:if condition="{quantity}">
-        {quantity}
-    </f:if>
+    <h2 style="padding-left: 40%">View Cart Elements</h2>
 
 
-    <table  class="tx_onlinescrapapp" >
-        <tr>
-            <th><f:translate key="tx_onlinescrapapp_domain_model_cartview.category" /></th>
-            <th><f:translate key="tx_onlinescrapapp_domain_model_cartview.sub_category" /></th>
-            <th><f:translate key="tx_onlinescrapapp_domain_model_cartview.quantity" /></th>
-            <th><f:translate key="tx_onlinescrapapp_domain_model_cartview.locality" /></th>
-            <th> </th>
-            <th> </th>
-        </tr>
-    <f:if condition="cartView!=null">
+    <f:debug>{_all}</f:debug>
+    <div style="padding-left: 10%;padding-top: 1%" class="container-fluid">
+
+    <f:if condition="{cartView==null}">
         <f:then>
-
-
-        <f:for each="{cartView}" as="cartView">
-            <tr>
-                <td><f:link.action action="show" arguments="{cartView : cartView}">{cartView.category}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{cartView : cartView}">{cartView.subCategory}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{cartView : cartView}">{cartView.quantity}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{cartView : cartView}">{cartView.locality.name}</f:link.action></td>
-                <td><f:link.action action="delete" arguments="{cartView : cartView}">Delete</f:link.action></td>
-            </tr>
-        </f:for>
+            <div class="row mt-3">
+                <div class="col-3">
+                <h3>Cart is Empty</h3>
+                </div>
+            </div>
 
     </f:then>
 
     <f:else>
-        <tr>
-            <td></td>
-                <td><p>Cart is Empty</p></td>
-        </tr>
+        <div class="row mt-3">
+            <div class="col-3"><h5><f:translate key="tx_onlinescrapapp_domain_model_cartview.category" /></h5></div>
+            <div class="col-3"><h5><f:translate key="tx_onlinescrapapp_domain_model_cartview.subcategory" /></h5></div>
+            <div class="col-3"><h5><f:translate key="tx_onlinescrapapp_domain_model_cartview.quantity" /></h5></div>
+            <div class="col-3"><h5><span>Remove</span></h5></div>
+
+        </div>
+        <f:for each="{cartView}" as="cartView" iteration="count">
+            <div class="row mt-3 border-top">
+                <f:for each="{cartView.category}" as="cat">
+                <div class="col-3"><f:link.action action="show" arguments="{cartView : cartView}">{cat.name}</f:link.action></div>
+                </f:for>
+                <f:for each="{cartView.subcategory}" as="subcat">
+                    <div class="col-3"><f:link.action action="show" arguments="{cartView : cartView}">{subcat.name}</f:link.action></div>
+                </f:for>
+                <div class="col-3"><f:link.action action="show" arguments="{cartView : cartView}">{cartView.quantity}</f:link.action></div>
+
+                <div class="col-3"><f:link.action action="delete" arguments="{cartView : cartView}">Delete</f:link.action></div>
+
+                <f:for each="{cartView.locality}" as="locality" >
+                    <f:if condition="{count.isLast}">
+                        <f:then>
+                            <div class="row">
+
+                                <div class="col-6" style="padding-left: 70%;padding-top: 14%">
+
+                            <f:link.action  class="btn btn-success" action="selectCategory" controller="Category"  pluginName="AddToCart" pageUid="{settings.pages.category}" arguments="{locality: locality}" >Back</f:link.action>
+                                </div>
+                        </f:then>
+                    </f:if>
+
+                </f:for>
+            </div>
+        </f:for>
+
+            <div class="col-6" style="padding-left: 25%;padding-top: 5%">
+
+                <f:link.action  class="btn btn-success" action="newbooking" controller="Bookings" pluginName="CustomerBooking" pageUid="{settings.pages.newbookings}"  arguments="{cartView:cartView}">Book  Appointment</f:link.action>
+
+            </div>
+    </div>
 
     </f:else>
     </f:if>
 
-        <tr>
-            <td>
-                <f:link.action action="selectCategory" controller="Category"  pluginName="AddToCart" pageUid="22" arguments="{locality:locality}" >Back</f:link.action>
-            </td>
-            <td></td>
-            <td>
-<f:link.action action="newbooking" controller="Bookings" pluginName="CustomerBooking" pageUid="23" arguments="{cartView:cartView}">Book  Appointment</f:link.action>
-
-            </td>
-        </tr>
-    </table>
+    </div>
 </f:section>
 </html>

@@ -24,7 +24,7 @@ class BookingDetails extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var string
      * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
-    protected $bookingId = '';
+    protected $bookingId = " ";
 
     /**
      * quantity
@@ -36,7 +36,7 @@ class BookingDetails extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * category
-     * 
+     *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RajatDuggal\OnlineScrapApp\Domain\Model\Category>
      */
     protected $category = null;
@@ -107,8 +107,8 @@ class BookingDetails extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Adds a SubCategory
-     * 
+     * Adds a Category
+     *
      * @param \RajatDuggal\OnlineScrapApp\Domain\Model\Category $category
      * @return void
      */

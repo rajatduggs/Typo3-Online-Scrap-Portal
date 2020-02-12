@@ -151,6 +151,7 @@ call_user_func(
                 'CartView' => 'temp,list, show, new, create, edit, update, delete',
                 'CustomerAddress' => 'list, new, show, create, edit, update, delete',
                 'Customer' => 'list, show, new, create, edit, update, delete',
+                'Bookings' => 'list, show, new, create, edit, update, delete',
                 'Collections' => 'list, show, new, create, edit, update, delete'
             ],
             // non-cacheable actions
@@ -191,7 +192,29 @@ call_user_func(
             'CustomerBooking',
             [
 
-                'Bookings' => 'newbooking,list, show, new, create, edit, update, delete,change',
+                'Bookings' => 'newbooking,createBooking,list, show, new, create, edit, update, delete,change',
+                'BookingDetails' => 'list, show, new, create, edit, update, delete',
+                'Category' => 'list, show, new, create, edit, update, delete',
+                'CustomerAddress' => 'list, show, new, create, edit, update, delete',
+                'ScrapCollector' => 'list, show, new, create, edit, update, delete',
+                'Customer' => 'list, show, new, create, edit, update, delete',
+                'Collections' => 'list, show, new, create, edit, update, delete'
+            ],
+            // non-cacheable actions
+            [
+                'BookingDetails' => 'create, update, delete',
+                'Bookings' => 'create, update, delete',
+                'ScrapCollector' => 'create, update, delete',
+
+            ]
+        );
+
+        \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+            'RajatDuggal.OnlineScrapApp',
+            'CustomerBookingList',
+            [
+
+                'Bookings' => 'customerBookingList,newbooking,createBooking,list, show, new, create, edit, update, delete,change',
                 'BookingDetails' => 'list, show, new, create, edit, update, delete',
                 'Category' => 'list, show, new, create, edit, update, delete',
                 'CustomerAddress' => 'list, show, new, create, edit, update, delete',
@@ -295,7 +318,15 @@ call_user_func(
                                 list_type = onlinescrapapp_customerbooking
                             }
                         }
-                        
+                          customerbookinglist {   
+                            iconIdentifier = online_scrap_app-plugin-customerbooking
+                            title =  List Customer Bookings
+                            description = List Customer Bookings
+                            tt_content_defValues {
+                                CType = list
+                                list_type = onlinescrapapp_customerbookinglist
+                            }
+                        }
                     }
                     show = *
                 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="EXT:online_scrap_app/Resources/Private/Language/locallang_csh" date="2020-01-24T11:59:01Z" product-name="online_scrap_app">
+	<file source-language="en" datatype="plaintext" original="EXT:online_scrap_app/Resources/Private/Language/locallang_csh" date="2020-02-12T13:46:19Z" product-name="online_scrap_app">
 		<header/>
 		<body>
 			<trans-unit id="name.description" resname="name.description">

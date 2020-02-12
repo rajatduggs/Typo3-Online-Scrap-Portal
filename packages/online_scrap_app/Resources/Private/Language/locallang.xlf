@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="EXT:online_scrap_app/Resources/Private/Language/locallang" date="2020-01-24T11:59:01Z" product-name="online_scrap_app">
+	<file source-language="en" datatype="plaintext" original="EXT:online_scrap_app/Resources/Private/Language/locallang" date="2020-02-12T13:46:19Z" product-name="online_scrap_app">
 		<header/>
 		<body>
 			<trans-unit id="tx_onlinescrapapp_domain_model_subcategory" resname="tx_onlinescrapapp_domain_model_subcategory">
@@ -33,9 +33,6 @@
 			<trans-unit id="tx_onlinescrapapp_domain_model_bookings.booking_time" resname="tx_onlinescrapapp_domain_model_bookings.booking_time">
 				<source>Booking Time</source>
 			</trans-unit>
-			<trans-unit id="tx_onlinescrapapp_domain_model_bookings.date_time" resname="tx_onlinescrapapp_domain_model_bookings.date_time">
-				<source>Date Time</source>
-			</trans-unit>
 			<trans-unit id="tx_onlinescrapapp_domain_model_bookings.visit_id" resname="tx_onlinescrapapp_domain_model_bookings.visit_id">
 				<source>Visit Id</source>
 			</trans-unit>
@@ -47,6 +44,9 @@
 			</trans-unit>
 			<trans-unit id="tx_onlinescrapapp_domain_model_bookings.status" resname="tx_onlinescrapapp_domain_model_bookings.status">
 				<source>Status</source>
+			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_bookings.booking_id" resname="tx_onlinescrapapp_domain_model_bookings.booking_id">
+				<source>Booking Id</source>
 			</trans-unit>
 			<trans-unit id="tx_onlinescrapapp_domain_model_bookings.scrap_collector" resname="tx_onlinescrapapp_domain_model_bookings.scrap_collector">
 				<source>Scrap Collector</source>
@@ -171,14 +171,14 @@
 			<trans-unit id="tx_onlinescrapapp_domain_model_cartview" resname="tx_onlinescrapapp_domain_model_cartview">
 				<source>Cart View</source>
 			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_cartview.quantity" resname="tx_onlinescrapapp_domain_model_cartview.quantity">
+				<source>Quantity</source>
+			</trans-unit>
 			<trans-unit id="tx_onlinescrapapp_domain_model_cartview.category" resname="tx_onlinescrapapp_domain_model_cartview.category">
 				<source>Category</source>
 			</trans-unit>
-			<trans-unit id="tx_onlinescrapapp_domain_model_cartview.sub_category" resname="tx_onlinescrapapp_domain_model_cartview.sub_category">
-				<source>Sub Category</source>
-			</trans-unit>
-			<trans-unit id="tx_onlinescrapapp_domain_model_cartview.quantity" resname="tx_onlinescrapapp_domain_model_cartview.quantity">
-				<source>Quantity</source>
+			<trans-unit id="tx_onlinescrapapp_domain_model_cartview.subcategory" resname="tx_onlinescrapapp_domain_model_cartview.subcategory">
+				<source>Subcategory</source>
 			</trans-unit>
 			<trans-unit id="tx_onlinescrapapp_domain_model_cartview.locality" resname="tx_onlinescrapapp_domain_model_cartview.locality">
 				<source>Locality</source>
@@ -192,6 +192,9 @@
 			<trans-unit id="tx_onlinescrapapp_domain_model_collections.amount" resname="tx_onlinescrapapp_domain_model_collections.amount">
 				<source>Amount</source>
 			</trans-unit>
+			<trans-unit id="tx_onlinescrapapp_domain_model_collections.customer_id" resname="tx_onlinescrapapp_domain_model_collections.customer_id">
+				<source>Customer Id</source>
+			</trans-unit>
 			<trans-unit id="tx_onlinescrapapp_domain_model_collections.bookings" resname="tx_onlinescrapapp_domain_model_collections.bookings">
 				<source>Bookings</source>
 			</trans-unit>
@@ -203,15 +206,6 @@
 			</trans-unit>
 			<trans-unit id="tx_onlinescrapapp_domain_model_collections.subcategory" resname="tx_onlinescrapapp_domain_model_collections.subcategory">
 				<source>Subcategory</source>
-			</trans-unit>
-			<trans-unit id="tx_onlinescrapapp_domain_model_facts" resname="tx_onlinescrapapp_domain_model_facts">
-				<source>Facts</source>
-			</trans-unit>
-			<trans-unit id="tx_onlinescrapapp_domain_model_facts.text" resname="tx_onlinescrapapp_domain_model_facts.text">
-				<source>Text</source>
-			</trans-unit>
-			<trans-unit id="tx_onlinescrapapp_domain_model_facts.ranking" resname="tx_onlinescrapapp_domain_model_facts.ranking">
-				<source>Ranking</source>
 			</trans-unit>
 		</body>
 	</file>

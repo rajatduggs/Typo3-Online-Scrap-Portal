@@ -52,10 +52,10 @@ class BookingsTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
     /**
      * @test
      */
-    public function getBookingTimeReturnsInitialValueForDateTime()
+    public function getBookingTimeReturnsInitialValueForString()
     {
-        self::assertEquals(
-            null,
+        self::assertSame(
+            '',
             $this->subject->getBookingTime()
         );
     }
@@ -63,40 +63,13 @@ class BookingsTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
     /**
      * @test
      */
-    public function setBookingTimeForDateTimeSetsBookingTime()
+    public function setBookingTimeForStringSetsBookingTime()
     {
-        $dateTimeFixture = new \DateTime();
-        $this->subject->setBookingTime($dateTimeFixture);
+        $this->subject->setBookingTime('Conceived at T3CON10');
 
         self::assertAttributeEquals(
-            $dateTimeFixture,
+            'Conceived at T3CON10',
             'bookingTime',
-            $this->subject
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function getDateTimeReturnsInitialValueForDateTime()
-    {
-        self::assertEquals(
-            null,
-            $this->subject->getDateTime()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setDateTimeForDateTimeSetsDateTime()
-    {
-        $dateTimeFixture = new \DateTime();
-        $this->subject->setDateTime($dateTimeFixture);
-
-        self::assertAttributeEquals(
-            $dateTimeFixture,
-            'dateTime',
             $this->subject
         );
     }
@@ -204,6 +177,31 @@ class BookingsTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
     /**
      * @test
      */
+    public function getBookingIdReturnsInitialValueForString()
+    {
+        self::assertSame(
+            '',
+            $this->subject->getBookingId()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setBookingIdForStringSetsBookingId()
+    {
+        $this->subject->setBookingId('Conceived at T3CON10');
+
+        self::assertAttributeEquals(
+            'Conceived at T3CON10',
+            'bookingId',
+            $this->subject
+        );
+    }
+
+    /**
+     * @test
+     */
     public function getScrapCollectorReturnsInitialValueForScrapCollector()
     {
         self::assertEquals(
@@ -232,8 +230,9 @@ class BookingsTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
      */
     public function getBookingDetailsReturnsInitialValueForBookingDetails()
     {
+        $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         self::assertEquals(
-            null,
+            $newObjectStorage,
             $this->subject->getBookingDetails()
         );
     }
@@ -241,16 +240,52 @@ class BookingsTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
     /**
      * @test
      */
-    public function setBookingDetailsForBookingDetailsSetsBookingDetails()
+    public function setBookingDetailsForObjectStorageContainingBookingDetailsSetsBookingDetails()
     {
-        $bookingDetailsFixture = new \RajatDuggal\OnlineScrapApp\Domain\Model\BookingDetails();
-        $this->subject->setBookingDetails($bookingDetailsFixture);
+        $bookingDetail = new \RajatDuggal\OnlineScrapApp\Domain\Model\BookingDetails();
+        $objectStorageHoldingExactlyOneBookingDetails = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $objectStorageHoldingExactlyOneBookingDetails->attach($bookingDetail);
+        $this->subject->setBookingDetails($objectStorageHoldingExactlyOneBookingDetails);
 
         self::assertAttributeEquals(
-            $bookingDetailsFixture,
+            $objectStorageHoldingExactlyOneBookingDetails,
             'bookingDetails',
             $this->subject
         );
+    }
+
+    /**
+     * @test
+     */
+    public function addBookingDetailToObjectStorageHoldingBookingDetails()
+    {
+        $bookingDetail = new \RajatDuggal\OnlineScrapApp\Domain\Model\BookingDetails();
+        $bookingDetailsObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+            ->setMethods(['attach'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $bookingDetailsObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($bookingDetail));
+        $this->inject($this->subject, 'bookingDetails', $bookingDetailsObjectStorageMock);
+
+        $this->subject->addBookingDetail($bookingDetail);
+    }
+
+    /**
+     * @test
+     */
+    public function removeBookingDetailFromObjectStorageHoldingBookingDetails()
+    {
+        $bookingDetail = new \RajatDuggal\OnlineScrapApp\Domain\Model\BookingDetails();
+        $bookingDetailsObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+            ->setMethods(['detach'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $bookingDetailsObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($bookingDetail));
+        $this->inject($this->subject, 'bookingDetails', $bookingDetailsObjectStorageMock);
+
+        $this->subject->removeBookingDetail($bookingDetail);
     }
 
     /**

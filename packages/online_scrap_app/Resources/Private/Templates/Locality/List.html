@@ -13,7 +13,7 @@ in /Configuration/ExtensionBuilder/settings.yaml:
 Otherwise your changes will be overwritten the next time you save the extension in the extension builder
 
 <f:section name="content" >
-    <div style="background-image: url('{f:uri.image(src: 'EXT:online_scrap_app/Resources/Public/images/home-bg.jpg')}');color: white">
+    <div >
 
     <h3>Select Locality</h3>
 
@@ -34,12 +34,8 @@ Otherwise your changes will be overwritten the next time you save the extension 
         <f:for each="{localities}" as="locality">
 
                 <li class="list-group-item list-group-item-action">
-                    <f:link.action action="selectCategory" controller="Category"  pluginName="AddToCart" pageUid="22" arguments="{locality:locality}" >{locality.name}</f:link.action>
+                    <f:link.action action="selectCategory" controller="Category"  pluginName="AddToCart" pageUid="{settings.pages.category}" arguments="{locality:locality}" >{locality.name}</f:link.action>
                 </li>
-         <!--       <td><f:link.action action="show" arguments="{locality : locality}">{locality.status}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{locality : locality}">{locality.localityId}</f:link.action></td>
-                <td><f:link.action action="edit" arguments="{locality : locality}">Edit</f:link.action></td>
-                <td><f:link.action action="delete" arguments="{locality : locality}">Delete</f:link.action></td>-->
 
         </f:for>
             </ul>

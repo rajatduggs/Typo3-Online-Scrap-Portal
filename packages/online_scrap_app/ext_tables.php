@@ -54,6 +54,12 @@ call_user_func(
             'CustomerBooking'
         );
 
+        \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+            'RajatDuggal.OnlineScrapApp',
+            'CustomerBookingList',
+            'CustomerBookingList'
+        );
+
 
         \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile('online_scrap_app', 'Configuration/TypoScript', 'Online Scrap App');
 

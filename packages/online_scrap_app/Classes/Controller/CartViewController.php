@@ -78,8 +78,8 @@ class CartViewController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
      * action create
      * 
      * @param \RajatDuggal\OnlineScrapApp\Domain\Model\CartView $newCartView
+     * @throws UnsupportedRequestTypeException*@throws IllegalObjectTypeException
      * @throws StopActionException
-     * @throws UnsupportedRequestTypeException
      * @return void
      */
     public function createAction(\RajatDuggal\OnlineScrapApp\Domain\Model\CartView $newCartView)
@@ -92,8 +92,8 @@ class CartViewController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
     /**
      * action temp
      * 
-     * @param Category $category
-     * @param SubCategory $subCategory
+     * @param Category|null $category
+     * @param SubCategory|null $subCategory
      * @param int $quantity
      * @param Locality $locality
      * @throws IllegalObjectTypeException
@@ -108,13 +108,13 @@ class CartViewController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
         // trigger automatically resolving for submitted `uid` (integer) values
         // @see https://docs.typo3.org/m/typo3/book-extbasefluid/master/en-us/7-Controllers/1-Creating-Controllers-and-Actions.html#flow-pattern-display-a-single-domain-object
         $cartView = $this->cartViewRepository->findAll();
-        $this->view->assign('locality', $locality);
         if (null != $category && null != $subCategory && $quantity != null) {
             $newCartView = new CartView();
-            $newCartView->setCategory($category->getName());
-            $newCartView->setSubCategory($subCategory->getName());
+            $this->view->assign('category', $category);
+            $newCartView->addCategory($category);
+            $newCartView->addSubcategory($subCategory);
             $newCartView->setQuantity($quantity);
-            $newCartView->setLocality($locality);
+            $newCartView->addLocality($locality);
 
             // $container = new CartContainer();
             // $container->addCartView($newCartView);
@@ -125,13 +125,12 @@ class CartViewController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
             $this->view->assign('subcategory', $subCategory);
             $this->view->assign('quantity', $quantity);
             $this->view->assign('cartView', $cartView);
-            $this->redirect('temp', null, null, ['locality' => $locality]);
+            $this->view->assign('locality', $locality->getName());
+            $this->redirect('temp', null, null, ['locality' => $locality->getUid()]);
 
-            //$this->redirect('selectCategory', 'Category', 'AddToCart', ['locality' => $newCartView->getLocality()],'22');
+            // $this->redirect('selectCategory', 'Category', 'AddToCart', ['locality' => $locality],'22');
         } elseif ($cartView != null) {
-            $cartView = $this->cartViewRepository->findAll();
             $this->view->assign('cartView', $cartView);
-            $this->view->assign('locality', $locality);
         }
 
         // $this->redirect('temp');

@@ -12,4 +12,25 @@ plugin.tx_onlinescrapapp_onlinescrapfrontend {
         # cat=plugin.tx_onlinescrapapp_onlinescrapfrontend//a; type=string; label=Default storage PID
         storagePid =
     }
+
+    settings  {
+        pages {
+
+           # cat=plugin.tx_onlinescrapapp_onlinescrapfrontend//a; type=string; label=Page ID for rendering home
+            home=
+           # cat=plugin.tx_onlinescrapapp_onlinescrapfrontend//a; type=string; label=Page ID for rendering myprofile
+            myprofile=
+            # cat=plugin.tx_onlinescrapapp_onlinescrapfrontend//a; type=string; label=Page ID for rendering bookings
+            bookings=
+            # cat=plugin.tx_onlinescrapapp_onlinescrapfrontend//a; type=string; label=Page ID for rendering category
+            category=
+            # cat=plugin.tx_onlinescrapapp_onlinescrapfrontend//a; type=string; label=Page ID for rendering viewcart
+            viewcart=
+            # cat=plugin.tx_onlinescrapapp_onlinescrapfrontend//a; type=string; label=Page ID for rendering newbookings
+            newbookings=
+            # cat=plugin.tx_onlinescrapapp_onlinescrapfrontend//a; type=string; label=Page ID for rendering scrapcollector
+            scrapcollector=
+        }
+
+    }
 }

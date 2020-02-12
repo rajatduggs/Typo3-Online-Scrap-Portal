@@ -1,19 +1,27 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
 <table class="tx-online-scrap-app" >
-	<tr>
+	<!--<tr>
 		<td>
 			<f:translate key="tx_onlinescrapapp_domain_model_bookings.customer_id" />
 		</td>
 		<td>
 		{bookings.customerId}
 		</td>
-	</tr>
+	</tr>-->
 	<tr>
 		<td>
 			<f:translate key="tx_onlinescrapapp_domain_model_bookings.booking_time" />
 		</td>
 		<td>
-		{bookings.bookingTime}
+		{bookings.bookingTime -> f:format.date()}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_onlinescrapapp_domain_model_bookings.date_time" />
+		</td>
+		<td>
+		{bookings.dateTime -> f:format.date()}
 		</td>
 	</tr>
 	<tr>
@@ -40,21 +48,13 @@
 		{bookings.comments}
 		</td>
 	</tr>
-	<tr>
+	<!--<tr>
 		<td>
 			<f:translate key="tx_onlinescrapapp_domain_model_bookings.status" />
 		</td>
 		<td>
 		{bookings.status}
 		</td>
-	</tr>
-	<tr>
-		<td>
-			<f:translate key="tx_onlinescrapapp_domain_model_bookings.booking_id" />
-		</td>
-		<td>
-		{bookings.bookingId}
-		</td>
-	</tr>
+	</tr>-->
 </table>
 </html>

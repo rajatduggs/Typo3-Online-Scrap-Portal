@@ -1,5 +1,5 @@
 
-plugin.tx_onlinescrapapp_onlinescrapfrontend {
+plugin.tx_onlinescrapapp {
     view {
         templateRootPaths.0 = EXT:online_scrap_app/Resources/Private/Templates/
         templateRootPaths.1 = {$plugin.tx_onlinescrapapp_onlinescrapfrontend.view.templateRootPath}
@@ -21,6 +21,18 @@ plugin.tx_onlinescrapapp_onlinescrapfrontend {
     }
     mvc {
         #callDefaultActionIfActionCantBeResolved = 1
+    }
+
+    settings{
+        pages{
+            home= {$plugin.tx_onlinescrapapp_onlinescrapfrontend.settings.pages.home}
+            myprofile= {$plugin.tx_onlinescrapapp_onlinescrapfrontend.settings.pages.myprofile}
+            bookings= {$plugin.tx_onlinescrapapp_onlinescrapfrontend.settings.pages.bookings}
+            category= {$plugin.tx_onlinescrapapp_onlinescrapfrontend.settings.pages.category}
+            viewcart= {$plugin.tx_onlinescrapapp_onlinescrapfrontend.settings.pages.viewcart}
+            newbookings= {$plugin.tx_onlinescrapapp_onlinescrapfrontend.settings.pages.newbookings}
+            scrapcollector= {$plugin.tx_onlinescrapapp_onlinescrapfrontend.settings.pages.scrapcollector}
+        }
     }
 }
 

@@ -24,23 +24,15 @@ class Bookings extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var string
      * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
-    protected $customerId = '';
+    protected $customerId = 0;
 
     /**
      * bookingTime
      * 
-     * @var \DateTime
+     * @var string
      * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $bookingTime = null;
-
-    /**
-     * dateTime
-     * 
-     * @var \DateTime
-     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
-     */
-    protected $dateTime = null;
 
     /**
      * visitId
@@ -48,7 +40,7 @@ class Bookings extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var string
      * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
-    protected $visitId = '';
+    protected $visitId = 0;
 
     /**
      * orderSummary
@@ -84,7 +76,7 @@ class Bookings extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * bookingDetails
      * 
-     * @var \RajatDuggal\OnlineScrapApp\Domain\Model\BookingDetails
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RajatDuggal\OnlineScrapApp\Domain\Model\BookingDetails>
      */
     protected $bookingDetails = null;
 
@@ -94,6 +86,13 @@ class Bookings extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var \RajatDuggal\OnlineScrapApp\Domain\Model\Locality
      */
     protected $locality = null;
+
+    /**
+     * bookingId
+     * 
+     * @var string
+     */
+    protected $bookingId = '';
 
     /**
      * Returns the customerId
@@ -114,48 +113,6 @@ class Bookings extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setCustomerId($customerId)
     {
         $this->customerId = $customerId;
-    }
-
-    /**
-     * Returns the bookingTime
-     * 
-     * @return \DateTime $bookingTime
-     */
-    public function getBookingTime()
-    {
-        return $this->bookingTime;
-    }
-
-    /**
-     * Sets the bookingTime
-     * 
-     * @param \DateTime $bookingTime
-     * @return void
-     */
-    public function setBookingTime(\DateTime $bookingTime)
-    {
-        $this->bookingTime = $bookingTime;
-    }
-
-    /**
-     * Returns the dateTime
-     * 
-     * @return \DateTime $dateTime
-     */
-    public function getDateTime()
-    {
-        return $this->dateTime;
-    }
-
-    /**
-     * Sets the dateTime
-     * 
-     * @param \DateTime $dateTime
-     * @return void
-     */
-    public function setDateTime(\DateTime $dateTime)
-    {
-        $this->dateTime = $dateTime;
     }
 
     /**
@@ -222,27 +179,6 @@ class Bookings extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Returns the bookingDetails
-     * 
-     * @return \RajatDuggal\OnlineScrapApp\Domain\Model\BookingDetails bookingDetails
-     */
-    public function getBookingDetails()
-    {
-        return $this->bookingDetails;
-    }
-
-    /**
-     * Sets the bookingDetails
-     * 
-     * @param string $bookingDetails
-     * @return void
-     */
-    public function setBookingDetails($bookingDetails)
-    {
-        $this->bookingDetails = $bookingDetails;
-    }
-
-    /**
      * Returns the scrapCollector
      * 
      * @return \RajatDuggal\OnlineScrapApp\Domain\Model\ScrapCollector scrapCollector
@@ -303,5 +239,113 @@ class Bookings extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setStatus($status)
     {
         $this->status = $status;
+    }
+
+    /**
+     * Returns the bookingTime
+     * 
+     * @return string bookingTime
+     */
+    public function getBookingTime()
+    {
+        return $this->bookingTime;
+    }
+
+    /**
+     * Sets the bookingTime
+     * 
+     * @param string $bookingTime
+     * @return void
+     */
+    public function setBookingTime(string $bookingTime)
+    {
+        $this->bookingTime = $bookingTime;
+    }
+
+    /**
+     * __construct
+     */
+    public function __construct()
+    {
+
+        //Do not remove the next line: It would break the functionality
+        $this->initStorageObjects();
+    }
+
+    /**
+     * Initializes all ObjectStorage properties
+     * Do not modify this method!
+     * It will be rewritten on each save in the extension builder
+     * You may modify the constructor of this class instead
+     * 
+     * @return void
+     */
+    protected function initStorageObjects()
+    {
+        $this->bookingDetails = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+    }
+
+    /**
+     * Adds a BookingDetails
+     * 
+     * @param \RajatDuggal\OnlineScrapApp\Domain\Model\BookingDetails $bookingDetail
+     * @return void
+     */
+    public function addBookingDetail(\RajatDuggal\OnlineScrapApp\Domain\Model\BookingDetails $bookingDetail)
+    {
+        $this->bookingDetails->attach($bookingDetail);
+    }
+
+    /**
+     * Removes a BookingDetails
+     * 
+     * @param \RajatDuggal\OnlineScrapApp\Domain\Model\BookingDetails $bookingDetailToRemove The BookingDetails to be removed
+     * @return void
+     */
+    public function removeBookingDetail(\RajatDuggal\OnlineScrapApp\Domain\Model\BookingDetails $bookingDetailToRemove)
+    {
+        $this->bookingDetails->detach($bookingDetailToRemove);
+    }
+
+    /**
+     * Returns the bookingDetails
+     * 
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RajatDuggal\OnlineScrapApp\Domain\Model\BookingDetails> $bookingDetails
+     */
+    public function getBookingDetails()
+    {
+        return $this->bookingDetails;
+    }
+
+    /**
+     * Sets the bookingDetails
+     * 
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RajatDuggal\OnlineScrapApp\Domain\Model\BookingDetails> $bookingDetails
+     * @return void
+     */
+    public function setBookingDetails(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $bookingDetails)
+    {
+        $this->bookingDetails = $bookingDetails;
+    }
+
+    /**
+     * Returns the bookingId
+     * 
+     * @return string $bookingId
+     */
+    public function getBookingId()
+    {
+        return $this->bookingId;
+    }
+
+    /**
+     * Sets the bookingId
+     * 
+     * @param string $bookingId
+     * @return void
+     */
+    public function setBookingId($bookingId)
+    {
+        $this->bookingId = $bookingId;
     }
 }
