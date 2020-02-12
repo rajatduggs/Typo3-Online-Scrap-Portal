@@ -159,18 +159,16 @@ class BookingsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
         $bookingId=trim($bookingId);
         var_dump($bookingId);
 
-        // filling booking details with view cart parameter
-        $newbookingDetails = new BookingDetails();
+        /** @var CartView $cart */
         foreach ($cartView as $cart) {
-            $category= new Category();
-            $category=$cart->getCategory();
-            $newbookingDetails->addCategory($category);
+            // filling booking details with view cart parameter
+            $newbookingDetails = new BookingDetails();
+            $newbookingDetails->setCategory($cart->getCategory());
             $newbookingDetails->setQuantity($cart->getQuantity());
             $newbookingDetails->setBookingId($bookingId);
             $this->bookingDetailsRepository->add($newbookingDetails);
-            $locality = $cart->getLocality();
-
-            $newbookingDetails = null;
+            // get current (only one) Locality from Cart
+            $locality = $cart->getLocality()->current();
         }
 
         //adding missing parameters in newBooking object
