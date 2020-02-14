@@ -7,6 +7,7 @@ use RajatDuggal\OnlineScrapApp\Domain\Model\Bookings;
 use RajatDuggal\OnlineScrapApp\Domain\Model\CartView;
 use RajatDuggal\OnlineScrapApp\Domain\Model\Category;
 use RajatDuggal\OnlineScrapApp\Domain\Model\Customer;
+use RajatDuggal\OnlineScrapApp\Domain\Model\Locality;
 use RajatDuggal\OnlineScrapApp\Domain\Repository\BookingsRepository;
 use RajatDuggal\OnlineScrapApp\Domain\Repository\CartViewRepository;
 use RajatDuggal\OnlineScrapApp\Domain\Repository\ScrapCollectorRepository;
@@ -29,21 +30,21 @@ class BookingsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 
     /**
      * cartViewRepository
-     * 
+     *
      * @var CartViewRepository
      */
     protected $cartViewRepository = null;
 
     /**
      * bookingsRepository
-     * 
+     *
      * @var BookingsRepository
      */
     protected $bookingsRepository = null;
 
     /**
      * bookingDetailsRepository
-     * 
+     *
      * @var \RajatDuggal\OnlineScrapApp\Domain\Repository\BookingDetailsRepository
      */
     protected $bookingDetailsRepository = null;
@@ -83,7 +84,7 @@ class BookingsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 
     /**
      * action list
-     * 
+     *
      * @return void
      */
     public function listAction()
@@ -94,22 +95,20 @@ class BookingsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 
     /**
      * action list
-     * 
+     *
      * @return void
      */
     public function customerBookingListAction()
     {
         $customer = SubjectResolver::get()->forClassName(Customer::class)->forPropertyName('user')->resolve();
         $this->view->assign('customer', $customer);
-        $bookings = $this->bookingsRepository->findByCustomerId($customer->getCustomerId());
+        $bookings = $this->bookingsRepository->findAllByCustomerId($customer->getCustomerId());
         $this->view->assign('bookings', $bookings);
-
-        //$this->redirect('customerBookingList');
     }
 
     /**
      * action show
-     * 
+     *
      * @param Bookings $bookings
      * @return void
      */
@@ -120,7 +119,7 @@ class BookingsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 
     /**
      * action newBooking
-     * 
+     *
      * @return void
      */
     public function newbookingAction()
@@ -134,7 +133,7 @@ class BookingsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 
     /**
      * action createBooking
-     * 
+     *
      * @param Bookings $newBookings
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
@@ -142,7 +141,7 @@ class BookingsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
      */
     public function createBookingAction(Bookings $newBookings)
     {
-        $locality = null;
+        $locality = new Locality();
         $customer = SubjectResolver::get()->forClassName(Customer::class)->forPropertyName('user')->resolve();
 
         $cartView = $this->cartViewRepository->findAll();
@@ -157,36 +156,35 @@ class BookingsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
         $customerId=$customer->getCustomerId();
         $bookingId = $customerId . $random ;
         $bookingId=trim($bookingId);
-        var_dump($bookingId);
 
-        // filling booking details with view cart parameter
-        $newbookingDetails = new BookingDetails();
+        /** @var CartView $cart */
         foreach ($cartView as $cart) {
-            $category= new Category();
-            $category=$cart->getCategory();
-            $newbookingDetails->addCategory($category);
+            // filling booking details with view cart parameter
+            $newbookingDetails = new BookingDetails();
+            $newbookingDetails->setCategory($cart->getCategory());
             $newbookingDetails->setQuantity($cart->getQuantity());
             $newbookingDetails->setBookingId($bookingId);
+            $locality = $cart->getLocality()->current();
             $this->bookingDetailsRepository->add($newbookingDetails);
-            $locality = $cart->getLocality();
+            // get current (only one) Locality from Cart
 
-            $newbookingDetails = null;
         }
 
         //adding missing parameters in newBooking object
         $newBookings->setStatus("NEW");
+        $newBookings->setCustomerId($customerId);
         $newBookings->setLocality($locality);
         $newBookings->setBookingId($bookingId);
         $this->bookingsRepository->add($newBookings);
         $this->view->assign('customer', $customer);
 
-         $this->redirect('customBookingList', 'Bookings', 'CustomerBookingList',[],'17');
-        $this->redirect('list');
+        $this->cartViewRepository->removeAll();
+        $this->redirect('customBookingList', 'Bookings', 'CustomerBookingList',[],'17');
     }
 
     /**
      * action create
-     * 
+     *
      * @param Bookings $newBookings
      * @return void
      */
@@ -199,7 +197,7 @@ class BookingsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 
     /**
      * action edit
-     * 
+     *
      * @param Bookings $bookings
      * @ignorevalidation $bookings
      * @return void
@@ -230,7 +228,7 @@ class BookingsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 
     /**
      * action update
-     * 
+     *
      * @param Bookings $bookings
      * @return void
      */
@@ -243,7 +241,7 @@ class BookingsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 
     /**
      * action delete
-     * 
+     *
      * @param Bookings $bookings
      * @return void
      */
@@ -256,7 +254,7 @@ class BookingsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 
     /**
      * action new
-     * 
+     *
      * @return void
      */
     public function newAction()

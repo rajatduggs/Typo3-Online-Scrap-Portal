@@ -17,7 +17,7 @@ call_user_func(
                 'CustomerAddress' => 'list, show, new, create, edit, update, delete',
                 'ScrapCollector' => 'list, show, new, create, edit, update, delete',
                 'Customer' => 'list, show, new, create, edit, update, delete',
-                'CartView' => 'list, show, new, create, edit, update, delete,temp',
+                'CartView' => 'list, show, new, create, edit, update, delete,storecart',
                 'Collections' => 'list, show, new, create, edit, update, delete'
 
             ],
@@ -115,7 +115,6 @@ call_user_func(
 
                 'Customer' => 'list,show, new, create, edit, update, delete',
                 'CustomerAddress' => 'list, show, new, create, edit, update, delete',
-
                 'Collections' => 'list, show, new, create, edit, update, delete'
             ],
             // non-cacheable actions
@@ -131,7 +130,7 @@ call_user_func(
             'RajatDuggal.OnlineScrapApp',
             'CustomerAddress',
             [
-                'CustomerAddress' => 'list, new, show, create, edit, update, delete',
+                'CustomerAddress' => 'show,list, new, create, edit, update, delete',
                 'Customer' => 'list, show, new, create, edit, update, delete',
                 'Collections' => 'list, show, new, create, edit, update, delete'
             ],
@@ -148,7 +147,7 @@ call_user_func(
             'RajatDuggal.OnlineScrapApp',
             'CartView',
             [
-                'CartView' => 'temp,list, show, new, create, edit, update, delete',
+                'CartView' => 'storecart,list, show, new, create, edit, update, delete',
                 'CustomerAddress' => 'list, new, show, create, edit, update, delete',
                 'Customer' => 'list, show, new, create, edit, update, delete',
                 'Bookings' => 'list, show, new, create, edit, update, delete',
@@ -159,7 +158,7 @@ call_user_func(
                 'BookingDetails' => 'create, update, delete',
                 'Bookings' => 'create, update, delete',
                 'ScrapCollector' => 'create, update, delete',
-                'CartView' => 'temp,list, show, new, create, edit, update, delete',
+                'CartView' => 'storecart,list, show, new, create, edit, update, delete',
 
             ]
         );
@@ -177,7 +176,7 @@ call_user_func(
                 'CustomerAddress' => 'list, show, new, create, edit, update, delete',
                 'ScrapCollector' => 'list, show, new, create, edit, update, delete',
                 'Customer' => 'list, show, new, create, edit, update, delete',
-                'CartView' => 'list, show, new, create, edit, update, delete,temp',
+                'CartView' => 'list, show, new, create, edit, update, delete,storecart',
                 'Collections' => 'list, show, new, create, edit, update, delete'
 
             ],

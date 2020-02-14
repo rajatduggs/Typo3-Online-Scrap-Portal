@@ -15,12 +15,12 @@ Otherwise your changes will be overwritten the next time you save the extension 
 <f:section name="content">
 
     <f:debug>{_all}</f:debug>
-    <h1>Listing for Customer Bookings</h1>
+    <h2 style="padding-left: 40%">Customer Bookings List</h2>
 
     <f:flashMessages />
 
     <table  class="tx_onlinescrapapp" >
-        <tr>
+        <tr style="color: red">
             <th><f:translate key="tx_onlinescrapapp_domain_model_bookings.customer_id" /></th>
             <th><f:translate key="tx_onlinescrapapp_domain_model_bookings.booking_time" /></th>
             <th><f:translate key="tx_onlinescrapapp_domain_model_bookings.date_time" /></th>
@@ -31,26 +31,35 @@ Otherwise your changes will be overwritten the next time you save the extension 
             <th><f:translate key="tx_onlinescrapapp_domain_model_bookings.feedback" /></th>
             <th>Locality</th>
             <th>Scrap Collector</th>
-            <th> </th>
+            <th>Cancel Booking</th>
             <th> </th>
         </tr>
 
         <f:for each="{bookings}" as="bookings">
-            <tr>
-                <td><f:link.action action="show" arguments="{bookings : bookings}">{bookings.customerId}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{bookings : bookings}">{bookings.bookingTime -> f:format.date()}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{bookings : bookings}">{bookings.dateTime -> f:format.date()}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{bookings : bookings}">{bookings.visitId}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{bookings : bookings}">{bookings.orderSummary}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{bookings : bookings}">{bookings.comments}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{bookings : bookings}">{bookings.status}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{bookings : bookings}">{bookings.feedback}</f:link.action></td>
+            <tr style="color: white">
+                <td><span>{bookings.customerId}</span></td>
+                <td><span >{bookings.bookingTime -> f:format.date()}</span></td>
+                <td><span>{bookings.dateTime -> f:format.date()}</span></td>
+                <td><span>{bookings.visitId}</span></td>
+                <td><span>{bookings.orderSummary}</span></td>
+                <td><span >{bookings.comments}</span></td>
+                <td><span>{bookings.status}</span></td>
+                <td><span>{bookings.feedback}</span></td>
+                <td><span>{bookings.locality.name}</span></td>
 
-                <td><f:link.action action="show" arguments="{bookings : bookings}">{bookings.locality.name}</f:link.action></td>
+                <f:security.ifHasRole role="Manager">
+                <td><span action="show" pluginName="Onlinescrapfrontend"  pageUid="{settings.pages.scrapcollector}"  controller="scrapCollector" arguments="{scrapCollector : bookings.scrapCollector}">{bookings.scrapCollector.name}</span></td>
+                    <td><f:link.action action="edit" arguments="{bookings : bookings}">Edit</f:link.action></td>
+                </f:security.ifHasRole>
+                <f:security.ifHasRole role="Customer">
+                    <td>
+                        <span>{bookings.scrapCollector.name}</span>
 
-                <td><f:link.action action="show" pluginName="Onlinescrapfrontend"  pageUid="{settings.pages.scrapcollector}"  controller="scrapCollector" arguments="{scrapCollector : bookings.scrapCollector}">{bookings.scrapCollector.name}</f:link.action></td>
-                <td><f:link.action action="edit" arguments="{bookings : bookings}">Edit</f:link.action></td>
-                <td><f:link.action action="delete" arguments="{bookings : bookings}">Delete</f:link.action></td>
+                    </td>
+
+                </f:security.ifHasRole>
+
+                <td><f:link.action class="btn btn-danger" action="delete" arguments="{bookings : bookings}">Delete</f:link.action></td>
             </tr>
         </f:for>
     </table>

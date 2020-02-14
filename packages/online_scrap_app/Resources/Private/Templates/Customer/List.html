@@ -13,12 +13,12 @@ in /Configuration/ExtensionBuilder/settings.yaml:
 Otherwise your changes will be overwritten the next time you save the extension in the extension builder
 
 <f:section name="content">
-    <h1>Listing for Customer</h1>
-
+    <h1>Customer Information</h1>
+<f:debug>{_all}</f:debug>
     <f:flashMessages />
 
     <table  class="tx_onlinescrapapp" >
-        <tr>
+        <tr style="color: red">
             <th><f:translate key="tx_onlinescrapapp_domain_model_customer.customer_id" /></th>
             <th><f:translate key="tx_onlinescrapapp_domain_model_customer.name" /></th>
             <th><f:translate key="tx_onlinescrapapp_domain_model_customer.email" /></th>
@@ -28,21 +28,19 @@ Otherwise your changes will be overwritten the next time you save the extension 
         </tr>
 
         <f:for each="{customers}" as="customer">
-            <tr>
-                <td> <f:link.action  action="show" pluginName="CustomAddress" controller="CustomAddress" arguments="{customerAddress: customer.customAddress}">Test</f:link.action></td>
-                <td><f:link.action action="show" controller="CustomAddress" arguments="{customer : customer.customerAddress}">{customer.customerId}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{customer : customer}">{customer.name}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{customer : customer}">{customer.email}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{customer : customer}">{customer.customerAddress.phone}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{customer : customer}">{customer.customerAddress.pincode}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{customer : customer}">{customer.customerAddress.city}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{customer : customer}">{customer.customerAddress.locality.name}</f:link.action></td>
-                <td><f:link.action action="edit" arguments="{customer : customer}">Edit</f:link.action></td>
-                <td><f:link.action action="delete" arguments="{customer : customer}">Delete</f:link.action></td>
+            <tr style="color: white">
+                <td><span action="show" controller="CustomerAddress" arguments="{customerAddress : customer.customerAddress.0}">{customer.customerId}</span></td>
+                <td><span >{customer.name}</span></td>
+                <td><span >{customer.email}</span></td>
+                <td><span>{customer.customerAddress.phone}</span></td>
+                <td><span >{customer.customerAddress.pincode}</span></td>
+                <td><span>{customer.customerAddress.city}</span></td>
+                <td><span>{customer.customerAddress.locality.name}</span></td>
+                <td><f:link.action   class="btn btn-primary" action="edit" arguments="{customer : customer}">Edit</f:link.action></td>
+                <td> <f:link.action class="btn btn-primary" action="show" controller="CustomerAddress" arguments="{customerAddress: customer.customerAddress.0}">Detail Customer Address</f:link.action></td>
             </tr>
         </f:for>
     </table>
 
-    <f:link.action action="new">New Customer</f:link.action>
 </f:section>
 </html>

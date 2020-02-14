@@ -8,35 +8,42 @@
     <f:debug>{_all}</f:debug>
     <div style="padding-left: 10%;padding-top: 1%" class="container-fluid">
 
-    <f:if condition="{cartView==null}">
+    <f:if condition="{cartView}<=0">
         <f:then>
-            <div class="row mt-3">
-                <div class="col-3">
-                <h3>Cart is Empty</h3>
+            <div></div>
+            <div class="row">
+
+                <div class="col-4">
+                    <f:link.action  class="btn btn-success" action="list" pluginName="Onlinescrapfrontend" pageUid="{settings.pages.home}" controller="Locality">Home Page</f:link.action><br />
+
                 </div>
+                <div class="col-8">
+                <h5 style="color: white">Cart is Empty. Click on Home Page to Initiate Booking Process</h5>
+                </div>
+
             </div>
 
     </f:then>
 
     <f:else>
-        <div class="row mt-3">
-            <div class="col-3"><h5><f:translate key="tx_onlinescrapapp_domain_model_cartview.category" /></h5></div>
-            <div class="col-3"><h5><f:translate key="tx_onlinescrapapp_domain_model_cartview.subcategory" /></h5></div>
-            <div class="col-3"><h5><f:translate key="tx_onlinescrapapp_domain_model_cartview.quantity" /></h5></div>
-            <div class="col-3"><h5><span>Remove</span></h5></div>
+        <div class="row mt-3" style="color: red">
+            <div class="col-3" ><h4><f:translate key="tx_onlinescrapapp_domain_model_cartview.category" /></h4></div>
+            <div class="col-3"><h4><f:translate key="tx_onlinescrapapp_domain_model_cartview.subcategory" /></h4></div>
+            <div class="col-3"><h4><f:translate key="tx_onlinescrapapp_domain_model_cartview.quantity" /></h4></div>
+            <div class="col-3"><h4><span>Remove</span></h4></div>
 
         </div>
         <f:for each="{cartView}" as="cartView" iteration="count">
             <div class="row mt-3 border-top">
                 <f:for each="{cartView.category}" as="cat">
-                <div class="col-3"><f:link.action action="show" arguments="{cartView : cartView}">{cat.name}</f:link.action></div>
+                <div class="col-3"><span>{cat.name}</span></div>
                 </f:for>
                 <f:for each="{cartView.subcategory}" as="subcat">
-                    <div class="col-3"><f:link.action action="show" arguments="{cartView : cartView}">{subcat.name}</f:link.action></div>
+                    <div class="col-3"><span>{subcat.name}</span></div>
                 </f:for>
-                <div class="col-3"><f:link.action action="show" arguments="{cartView : cartView}">{cartView.quantity}</f:link.action></div>
+                <div class="col-3"><span>{cartView.quantity}</span></div>
 
-                <div class="col-3"><f:link.action action="delete" arguments="{cartView : cartView}">Delete</f:link.action></div>
+                <div class="col-3"><f:link.action  style="color:white" action="delete" arguments="{cartView : cartView}">Delete</f:link.action></div>
 
                 <f:for each="{cartView.locality}" as="locality" >
                     <f:if condition="{count.isLast}">

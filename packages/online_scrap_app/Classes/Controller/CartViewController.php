@@ -90,7 +90,7 @@ class CartViewController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
     }
 
     /**
-     * action temp
+     * action storecart
      * 
      * @param Category|null $category
      * @param SubCategory|null $subCategory
@@ -101,7 +101,7 @@ class CartViewController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
      * @throws UnsupportedRequestTypeException
      * @return void
      */
-    public function tempAction(Category $category = null, SubCategory $subCategory = null, int $quantity = 1, Locality $locality = null)
+    public function storeCartAction(Category $category = null, SubCategory $subCategory = null, int $quantity = 1, Locality $locality = null)
     {
 
         // having type hints to models, like Category or SubCategory will
@@ -115,22 +115,17 @@ class CartViewController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
             $newCartView->addSubcategory($subCategory);
             $newCartView->setQuantity($quantity);
             $newCartView->addLocality($locality);
-
-            // $container = new CartContainer();
-            // $container->addCartView($newCartView);
             $this->cartViewRepository->add($newCartView);
-            $testName = $subCategory->getName();
-            $this->view->assign('testName', $testName);
-            $this->view->assign('category', $category);
-            $this->view->assign('subcategory', $subCategory);
-            $this->view->assign('quantity', $quantity);
+
+            $category=null;
             $this->view->assign('cartView', $cartView);
             $this->view->assign('locality', $locality->getName());
-            $this->redirect('temp', null, null, ['locality' => $locality->getUid()]);
+            $this->redirect('storecart', null, null, ['locality' => $locality->getUid()]);
 
             // $this->redirect('selectCategory', 'Category', 'AddToCart', ['locality' => $locality],'22');
-        } elseif ($cartView != null) {
-            $this->view->assign('cartView', $cartView);
+        } elseif (sizeof($cartView->toArray())>0) {
+
+            $this->view->assign('cartView', $cartView->toArray());
         }
 
         // $this->redirect('temp');
@@ -174,10 +169,9 @@ class CartViewController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
     public function deleteAction(\RajatDuggal\OnlineScrapApp\Domain\Model\CartView $cartView)
     {
 
-        //$this->addFlashMessage('The object was deleted. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/typo3cms/extensions/extension_builder/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
-        $this->cartViewRepository->remove($cartView);
+      $this->cartViewRepository->remove($cartView);
 
-        //$this->redirect('temp');
-        $this->redirect('temp', null, null, ['locality' => $cartView->getLocality()]);
+       // $this->redirect('storecart');
+        $this->redirect('storecart', 'CartView', null, null);
     }
 }

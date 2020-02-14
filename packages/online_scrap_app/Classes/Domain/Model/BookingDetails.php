@@ -107,12 +107,12 @@ class BookingDetails extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Adds a Category
+     * Adds a SubCategory
      *
      * @param \RajatDuggal\OnlineScrapApp\Domain\Model\Category $category
      * @return void
      */
-    public function addCategory(\RajatDuggal\OnlineScrapApp\Domain\Model\Category $category)
+    public function addCategory(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $category)
     {
         $this->category->attach($category);
     }

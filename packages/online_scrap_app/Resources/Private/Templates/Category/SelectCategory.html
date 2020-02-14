@@ -21,7 +21,7 @@
             + referencing entities works by their identified (e.g. {category.uid} or some cases {category} directly)
             + using {category.name} is just a scalar value, but cannot be resolved back to its original entity (since not unique)
         --></f:comment>
-        <f:form controller="CartView" action="temp" pluginName="CartView" pageUid="{settings.pages.viewcart}" >
+        <f:form controller="CartView" action="storecart" pluginName="CartView" pageUid="{settings.pages.viewcart}" >
             <div class="row mt-3 ">
                 <div class="col-3">
                     <h5><span style="padding-left: 5%;" class="font-weight-bold">{category.name}</span></h5>

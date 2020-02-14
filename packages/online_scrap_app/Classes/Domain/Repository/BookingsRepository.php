@@ -26,13 +26,15 @@ class BookingsRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     /**
      * @param string $customerId
      */
-    public function findByCustomerId(string $customerId)
+    public function findAllByCustomerId(string $customerId)
     {
+        $bookings=[];
         $query = $this->createQuery();
         try {
             $query->matching($query->equals('customerId', $customerId));
         } catch (InvalidQueryException $e) {
         }
-        return $query->execute();
+        $bookings=$query->execute()->toArray();
+        return $bookings;
     }
 }
