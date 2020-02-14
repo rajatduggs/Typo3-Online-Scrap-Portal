@@ -162,9 +162,9 @@ class BookingsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
             $newbookingDetails->setCategory($cart->getCategory());
             $newbookingDetails->setQuantity($cart->getQuantity());
             $newbookingDetails->setBookingId($bookingId);
-            $locality = $cart->getLocality()->current();
             $this->bookingDetailsRepository->add($newbookingDetails);
             // get current (only one) Locality from Cart
+            $locality = $cart->getLocality()->current();
 
         }
 
