@@ -28,7 +28,7 @@ class CartViewController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 
     /**
      * cartViewRepository
-     * 
+     *
      * @var CartViewRepository
      */
     protected $cartViewRepository = null;
@@ -43,7 +43,7 @@ class CartViewController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 
     /**
      * action list
-     * 
+     *
      * @param RajatDuggal\OnlineScrapApp\Domain\Model\CartView
      * @return void
      */
@@ -55,7 +55,7 @@ class CartViewController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 
     /**
      * action show
-     * 
+     *
      * @param RajatDuggal\OnlineScrapApp\Domain\Model\CartView
      * @return void
      */
@@ -66,7 +66,7 @@ class CartViewController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 
     /**
      * action new
-     * 
+     *
      * @param RajatDuggal\OnlineScrapApp\Domain\Model\CartView
      * @return void
      */
@@ -76,7 +76,7 @@ class CartViewController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 
     /**
      * action create
-     * 
+     *
      * @param \RajatDuggal\OnlineScrapApp\Domain\Model\CartView $newCartView
      * @throws UnsupportedRequestTypeException*@throws IllegalObjectTypeException
      * @throws StopActionException
@@ -91,7 +91,7 @@ class CartViewController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 
     /**
      * action storecart
-     * 
+     *
      * @param Category|null $category
      * @param SubCategory|null $subCategory
      * @param int $quantity
@@ -107,7 +107,7 @@ class CartViewController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
         // having type hints to models, like Category or SubCategory will
         // trigger automatically resolving for submitted `uid` (integer) values
         // @see https://docs.typo3.org/m/typo3/book-extbasefluid/master/en-us/7-Controllers/1-Creating-Controllers-and-Actions.html#flow-pattern-display-a-single-domain-object
-        $cartView = $this->cartViewRepository->findAll();
+
         if (null != $category && null != $subCategory && $quantity != null) {
             $newCartView = new CartView();
             $this->view->assign('category', $category);
@@ -121,21 +121,22 @@ class CartViewController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
             $this->view->assign('category', $category);
             $this->view->assign('subcategory', $subCategory);
             $this->view->assign('quantity', $quantity);
+            $cartView = $this->cartViewRepository->findAll();
             $this->view->assign('cartView', $cartView);
             $this->view->assign('locality', $locality->getName());
-            $this->redirect('storecart', null, null, []);
+            $this->redirect('storecart', null, null, ['locality' => $locality->getUid()]);
 
-            // $this->forward('selectCategory', 'Category', 'AddToCart', ['locality' => $locality->getUid()],'22');
-        } elseif (sizeof($cartView->toArray())>0) {
+        } elseif (sizeof($this->cartViewRepository->findAll()->toArray())>0) {
 
-            $this->view->assign('cartView', $cartView->toArray());
+            $this->view->assign('cartView', $this->cartViewRepository->findAll()->toArray());
         }
+
 
     }
 
     /**
      * action edit
-     * 
+     *
      * @param RajatDuggal\OnlineScrapApp\Domain\Model\CartView
      * @ignorevalidation $cartView
      * @return void
@@ -147,7 +148,7 @@ class CartViewController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 
     /**
      * action update
-     * 
+     *
      * @param \RajatDuggal\OnlineScrapApp\Domain\Model\CartView $cartView
      * @throws IllegalObjectTypeException
      * @throws StopActionException
@@ -164,7 +165,7 @@ class CartViewController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 
     /**
      * action delete
-     * 
+     *
      * @param RajatDuggal\OnlineScrapApp\Domain\Model\CartView
      * @return void
      */

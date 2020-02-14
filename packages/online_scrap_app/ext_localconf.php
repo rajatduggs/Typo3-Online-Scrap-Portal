@@ -155,10 +155,11 @@ call_user_func(
             ],
             // non-cacheable actions
             [
+                'CartView' => 'storecart,list, show, new, create, edit, update, delete',
                 'BookingDetails' => 'create, update, delete',
                 'Bookings' => 'create, update, delete',
-                'ScrapCollector' => 'create, update, delete',
-                'CartView' => 'storecart,list, show, new, create, edit, update, delete',
+                'ScrapCollector' => 'create, update, delete'
+
 
             ]
         );
