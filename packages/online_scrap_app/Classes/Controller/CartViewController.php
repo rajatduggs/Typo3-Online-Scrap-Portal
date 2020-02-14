@@ -116,19 +116,21 @@ class CartViewController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
             $newCartView->setQuantity($quantity);
             $newCartView->addLocality($locality);
             $this->cartViewRepository->add($newCartView);
-
-            $category=null;
+            $testName = $subCategory->getName();
+            $this->view->assign('testName', $testName);
+            $this->view->assign('category', $category);
+            $this->view->assign('subcategory', $subCategory);
+            $this->view->assign('quantity', $quantity);
             $this->view->assign('cartView', $cartView);
             $this->view->assign('locality', $locality->getName());
-            $this->redirect('storecart', null, null, ['locality' => $locality->getUid()]);
+            $this->redirect('storecart', null, null, []);
 
-            // $this->redirect('selectCategory', 'Category', 'AddToCart', ['locality' => $locality],'22');
+            // $this->forward('selectCategory', 'Category', 'AddToCart', ['locality' => $locality->getUid()],'22');
         } elseif (sizeof($cartView->toArray())>0) {
 
             $this->view->assign('cartView', $cartView->toArray());
         }
 
-        // $this->redirect('temp');
     }
 
     /**

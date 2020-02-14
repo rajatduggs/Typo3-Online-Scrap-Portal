@@ -4,23 +4,11 @@
     <h2 style="padding-left: 30%">Add Scrap details to Cart</h2>
 
     <f:flashMessages />
-    <f:debug>{settings}</f:debug>
+<f:comment>  <f:debug>{settings}</f:debug></f:comment>
 
     <div style="padding-left: 20%;padding-top: 1%">
 
     <f:for each="{categories}" as="category">
-        <f:comment><!--
-            + <f:form /> is calling correpsonding controller-action pair when sent back to server
-            + values of attribte "name" in form elements (input field, radio element, ...) need
-              to be the same as parameter names of receiving controller-action, e.g.
-                  <f:form.hidden name="category" value="{category.uid}" />
-                  <f:form.radio name="subCategory" value="{subcat.uid}" />
-                  <f:form.textfield name="quantity" placeholder="Quantity" size="10" value="0" type="text" maxlength="4"/>
-              and
-                  public function testAction($category, $subCategory = null, $quantity = 1) { // ignoring types at this point
-            + referencing entities works by their identified (e.g. {category.uid} or some cases {category} directly)
-            + using {category.name} is just a scalar value, but cannot be resolved back to its original entity (since not unique)
-        --></f:comment>
         <f:form controller="CartView" action="storecart" pluginName="CartView" pageUid="{settings.pages.viewcart}" >
             <div class="row mt-3 ">
                 <div class="col-3">
@@ -46,28 +34,14 @@
 
                     </div>
                     <div class="col-2">
-                        <f:comment><!--
-                            could be a plain <button> as well, since it does not contain any value assignments,
-                            but is just used to actually send the surrounding <form> element...
-                        --></f:comment>
+
                         <f:form.button class="btn btn-success">Add to Cart</f:form.button>
                     </div>
-                        <f:comment><!--
-                            Using a link here does not work, since it does not take the dynamically selected value of the radio button
-                            (or as alternative you'd have to create static links for all possible combinations - please, don't do it ;-)
-                            <f:link.action  action="test" pluginName="CollectionData"  pageUid="21" controller="Collections" arguments="{category: category,subCategory:'english',quantity:'12'}">Add to Cart</f:link.action>
-                        --></f:comment>
 
 
             </div>
         </f:form>
     </f:for>
-
-      <f:comment><!--
-        @todo: View Cart should use a link that points to corresponding
-        target controller, action and maybe pageUid (target page)
-         <f:form.button>View Cart</f:form.button>
-    --></f:comment>
 
 
             <div class="row mt-3">

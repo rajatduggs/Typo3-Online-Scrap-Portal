@@ -5,9 +5,7 @@ use OliverHader\SessionService\SubjectResolver;
 use RajatDuggal\OnlineScrapApp\Domain\Model\BookingDetails;
 use RajatDuggal\OnlineScrapApp\Domain\Model\Bookings;
 use RajatDuggal\OnlineScrapApp\Domain\Model\CartView;
-use RajatDuggal\OnlineScrapApp\Domain\Model\Category;
 use RajatDuggal\OnlineScrapApp\Domain\Model\Customer;
-use RajatDuggal\OnlineScrapApp\Domain\Model\Locality;
 use RajatDuggal\OnlineScrapApp\Domain\Repository\BookingsRepository;
 use RajatDuggal\OnlineScrapApp\Domain\Repository\CartViewRepository;
 use RajatDuggal\OnlineScrapApp\Domain\Repository\ScrapCollectorRepository;
@@ -141,7 +139,7 @@ class BookingsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
      */
     public function createBookingAction(Bookings $newBookings)
     {
-        $locality = new Locality();
+        $locality =null;
         $customer = SubjectResolver::get()->forClassName(Customer::class)->forPropertyName('user')->resolve();
 
         $cartView = $this->cartViewRepository->findAll();
@@ -173,7 +171,6 @@ class BookingsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
         //adding missing parameters in newBooking object
         $newBookings->setStatus("NEW");
         $newBookings->setCustomerId($customerId);
-        $newBookings->setLocality($locality);
         $newBookings->setBookingId($bookingId);
         $this->bookingsRepository->add($newBookings);
         $this->view->assign('customer', $customer);
@@ -244,12 +241,17 @@ class BookingsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
      *
      * @param Bookings $bookings
      * @return void
+     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
+     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
      */
     public function deleteAction(Bookings $bookings)
     {
-        $this->addFlashMessage('The object was deleted. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/typo3cms/extensions/extension_builder/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
         $this->bookingsRepository->remove($bookings);
-        $this->redirect('list');
+
+
+            $this->redirect('customBookingList', 'Bookings', 'CustomerBookingList', [], '17');
+
     }
 
     /**
